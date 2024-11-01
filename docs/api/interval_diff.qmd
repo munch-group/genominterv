@@ -1,0 +1,29 @@
+# interval_diff { #genominterv.interval_diff }
+
+```python
+genominterv.interval_diff(query, annot)
+```
+
+This function computes the difference between two sets of genomic intervals.
+The genomic intervals in each set must be non-overlapping. This can be
+achieved using :any:interval_collapse.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+
+:   Data frame with query intervals.
+
+<code>[**annot**]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+
+:   Data frame with annotation intervals.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+
+:   A data frame with chr, start, end columns representing the difference.
+
+## See Also {.doc-section .doc-section-see-also}
+
+[](`genominterv.interval_union`), [](`genominterv.interval_intersect`), [](`genominterv.interval_collapse`).

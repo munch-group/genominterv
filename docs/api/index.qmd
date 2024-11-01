@@ -6,5 +6,5 @@
 
 | | |
 | --- | --- |
-| [foo](foo.qmd#libraryname.foo) | The sum of two numbers. |
-| [bar.baz](bar.baz.qmd#libraryname.bar.baz) |  |
+| [foo](foo.qmd#genominterv.foo) | The sum of two numbers. |
+| [bar.baz](bar.baz.qmd#genominterv.bar.baz) |  |

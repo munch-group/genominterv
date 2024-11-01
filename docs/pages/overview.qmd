@@ -10,14 +10,14 @@ jupyter:
 ---
 
 
-**libraryname** lets you ... 
+**genominterv** lets you ... 
 
 {{< lipsum 1 >}}
 
 ## Installation
 
 ```bash
-conda install -c munch-group libraryname
+conda install -c munch-group genominterv
 ```
 
 ## Basic use
@@ -26,7 +26,7 @@ conda install -c munch-group libraryname
 
 ## Some use case
 
-The [foo function](`libraryname.foo`) does ... [](`libraryname.foo`) does ... [](`~libraryname.foo`) does ...
+The [foo function](`genominterv.foo`) does ... [](`genominterv.foo`) does ... [](`~genominterv.foo`) does ...
 
 {{< lipsum 1 >}}
 

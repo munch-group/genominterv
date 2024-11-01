@@ -32,7 +32,7 @@ interlinks:
     #   inv: objects-test.txt
 
 website:
-  title: "libraryname"
+  title: "genominterv"
   page-navigation: true
   navbar:
     left:
@@ -42,7 +42,7 @@ website:
         text: Reference
     right:
       - icon: github
-        href: https://github.com/munch-group/libraryname/
+        href: https://github.com/munch-group/genominterv/
   sidebar:
     - id: pages
       title: Get Started
@@ -75,7 +75,7 @@ format:
 quartodoc:
   style: pkgdown
   dir: api
-  package: libraryname
+  package: genominterv
   render_interlinks: true
   options:
     signature_name: full

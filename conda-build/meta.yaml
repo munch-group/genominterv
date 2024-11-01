@@ -1,11 +1,11 @@
 {% set data = load_setup_py_data() %}
 
 package:
-  name: libraryname
+  name: genominterv
   version: {{ data.get('version') }}  
 
 source:
-  git_url: https://github.com/munch-group/libraryname.git
+  git_url: https://github.com/munch-group/genominterv.git
 
 build:
   # noarch: python
@@ -42,16 +42,16 @@ dependencies:   # Keep this block with only these two packages
   
 test:
   imports:
-    - libraryname
+    - genominterv
   # commands:
   #   - exercises --help    
 
 about:
-  home: https://github.com/munch-group/libraryname.git
+  home: https://github.com/munch-group/genominterv.git
   license: MIT
   # summary: "Blah blah"
   # description: |
   #   "Blah blah"
   #   "Blah blah"
-  dev_url: https://github.com/munch-group/libraryname.git
-  doc_url: https://munch-group.org/libraryname
+  dev_url: https://github.com/munch-group/genominterv.git
+  doc_url: https://munch-group.org/genominterv

@@ -1,6 +1,6 @@
-# bar.baz { #libraryname.bar.baz }
+# bar.baz { #genominterv.bar.baz }
 
 ```python
-libraryname.bar.baz()
+genominterv.bar.baz()
 ```
 

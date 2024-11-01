@@ -1,7 +1,7 @@
-# foo { #libraryname.foo }
+# foo { #genominterv.foo }
 
 ```python
-libraryname.foo(x, y=1)
+genominterv.foo(x, y=1)
 ```
 
 The sum of two numbers.

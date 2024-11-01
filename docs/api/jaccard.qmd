@@ -1,0 +1,23 @@
+# jaccard { #genominterv.jaccard }
+
+```python
+genominterv.jaccard(a, b)
+```
+
+Compute Jaccard overlap test statistic.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**a**]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)\[[tuple](`tuple`)\]]{.parameter-annotation}</code>
+
+:   List of tuples with (start, end) coordinates.
+
+<code>[**a**]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)\[[tuple](`tuple`)\]]{.parameter-annotation}</code>
+
+:   List of tuples with (start, end) coordinates.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[float](`float`)]{.parameter-annotation}</code>
+
+:   The Jaccard test statistic.

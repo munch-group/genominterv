@@ -1,0 +1,47 @@
+---
+title: Decorators for intervals
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+**genominterv** provides decorators for various tasks to reduce boilerplate code.
+
+## Genomic decorator 
+
+To make it easy to create other interval functions that work across chromosomes,
+the module provides a [](`~genominterv.genomic`) decorator that can be applied to functions
+that operate lists of `(start, end)` tuples. Applying the decorator changes
+the signature of a function to make it operate on DataFrames that include
+`chrom`, `start`, and `end` columns. Here is an example function that
+shifts intervals by 1000bp:
+
+```python
+@genomic
+def inverval_shift(tuples):
+    return [(x+1000, y+1000) for (x, y) in tuples]
+
+df = pandas.DataFrame()
+
+shifted = inverval_shift(df)
+```  
+
+## Bootstrap decorator 
+
+The bootstrap decorator turns a function producing
+a statistic into one that also produces a p-value. The bootstrapping resamples
+the intervals of the second argument for each chromosome independently. Only
+required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the [](`~genominterv.jaccard`) statistic to make a `jaccard_test` function that produce a p-value for the significane of overlap between two sets.
+
+```python
+@bootstrap('hg19', samples=1000)
+def jaccard_test(query, annot):
+    return jaccard(query, annot)
+
+jaccard_stat, p_value = jaccard_test(intervals, other_intervals)
+```
+
+
+

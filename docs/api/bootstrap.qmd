@@ -1,0 +1,39 @@
+# bootstrap { #genominterv.bootstrap }
+
+```python
+genominterv.bootstrap(
+    chromosome_sizes
+    samples=1000
+    smaller=False
+    return_boot=False
+)
+```
+
+Parameterized decorator that turns a function producing a statistic into one that also
+produces a p-value from bootstrapping. The bootstrapping resamples the
+intervals of the second argument for each chromosome independently. Only
+required argument to bootstrap is the name of the genome assembly used.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**chromosome_sizes**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`) \| [dict](`dict`)]{.parameter-annotation}</code>
+
+:   Name of a genome assembly or a dictionary mapping chromosomes to their lengths.
+
+<code>[**samples**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [1000]{.parameter-default}</code>
+
+:   Number of bootstrap samples to use.
+
+<code>[**smaller**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Whether to test for significantly small values of the statistic rather than large ones.
+
+<code>[**return_boot**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Whether to return the bootstrap samples too.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [([float](`float`), \[[float](`float`)\], \[[list](`list`)\])]{.parameter-annotation}</code>
+
+:   The decorated function returns a statistic and a p-value. A decorated function that takes data  frames with chrom, start, end columns and executes on each chromosome individually.

@@ -1,6 +1,6 @@
 # Function reference {.doc .doc-index}
 
-## Some section
+## Set operations
 
 
 
@@ -10,3 +10,25 @@
 | [interval_union](interval_union.qmd#genominterv.interval_union) | This function computes the union of two sets of genomic intervals. The genomic intervals |
 | [interval_intersect](interval_intersect.qmd#genominterv.interval_intersect) | This function computes the intersection of two sets of genomic intervals. The genomic intervals |
 | [interval_collapse](interval_collapse.qmd#genominterv.interval_collapse) | This function computes the union of intervals in a single set. |
+| [proximity_test](proximity_test.qmd#genominterv.proximity_test) | Test for proximity of intervals to a set of annotations. |
+| [jaccard](jaccard.qmd#genominterv.jaccard) | Compute Jaccard overlap test statistic. |
+
+## Mapping
+
+
+
+| | |
+| --- | --- |
+| [remap](remap.qmd#genominterv.remap) | Remap the coordinates of a single interval in `query` to the distance from |
+| [interval_distance](interval_distance.qmd#genominterv.interval_distance) | Computes the distance from each query interval to the closest interval in |
+| [interval_relative_distance](interval_relative_distance.qmd#genominterv.interval_relative_distance) | Computes the relative distance from each query interval to the closest interval in |
+| [remap_interval_data](remap_interval_data.qmd#genominterv.remap_interval_data) | Computes the distance from each query interval to the closest interval |
+
+## Decorators
+
+Blah blah 
+
+| | |
+| --- | --- |
+| [genomic](genomic.qmd#genominterv.genomic) | Decorator for converting a function operating on (start, end) tuples to one |
+| [bootstrap](bootstrap.qmd#genominterv.bootstrap) | Parameterized decorator that turns a function producing a statistic into one that also |

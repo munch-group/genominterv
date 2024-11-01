@@ -1,0 +1,30 @@
+# interval_distance { #genominterv.interval_distance }
+
+```python
+genominterv.interval_distance(query, annot)
+```
+
+Computes the distance from each query interval to the closest interval in
+annot. If a query interval overlaps the midpoint between two annot intervals
+it is split into two intervals proximal to each annot interval.    Intervals
+from ``query`` that overlap intervals in ``annot`` are discarded.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+
+:   Data frame with query intervals.
+
+<code>[**annot**]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+
+:   Data frame with annotation intervals.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+
+:   A data frame with remapped intervals.
+
+## See Also {.doc-section .doc-section-see-also}
+
+If you want to retain the original columns in `query`, use [](`~genominterv.remap_interval_data`).

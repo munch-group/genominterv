@@ -1,0 +1,36 @@
+---
+title: Tests on intervals
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+## Proximity
+
+[](`~genominterv.proximity_test`) computes tests if intervals in one set is significantly
+proximal to intervals in another set.
+
+
+## Overlap
+
+[](`~genominterv.jaccard`) computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index)
+statistic for two sets of genomic intervals.
+
+
+This can be combined with the [](`~genominterv.bootstrap`) decorator to produce a test for overlap. The decorator turns a function producing
+a statistic into one that also produces a p-value. The bootstrapping resamples
+the intervals of the second argument for each chromosome independently. Only
+required argument to bootstrap is the name of the chromosome assembly used.
+
+```python
+@bootstrap('hg19', samples=1000)
+def jaccard_test(query, annot):
+    return jaccard(query, annot)
+
+jaccard_stat, p_value = jaccard_test(intervals, other_intervals)
+```
+
+The decorator works on any function that takes two sets of intervals.
+

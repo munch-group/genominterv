@@ -51,17 +51,18 @@ website:
       style: floating
       align: left
       contents:
-        - pages/overview.qmd
-        - section: "Basics"
+        - pages/getting_started.qmd
+        - section: "Set operations"
           contents:
-            - pages/basics.qmd
+            - pages/set_operations.qmd
+            - pages/decorators.qmd
+        - section: "Mapping"
+          contents:
+            - pages/mapping.qmd  
+            - pages/interval_tests.qmd
         - section: "Examples"
           contents:
-            - examples/example.ipynb            
-            - examples/something.ipynb            
-        - section: "Advanced"
-          contents:
-            - pages/advanced.qmd
+            - examples/examples.ipynb            
         - section: "Library reference"
           contents:
             - api/index.qmd
@@ -72,6 +73,9 @@ format:
     css:
       - api/_styles-quartodoc.css
       - styles.css
+    # highlight-style: breeze 
+    highlight-style: github 
+    code-block-bg: true
     toc: true
 
 quartodoc:
@@ -88,10 +92,27 @@ quartodoc:
   css: "api/_styles-quartodoc.css"
 
   sections:
-    - title: Some section
+    - title: Set operations
       desc: ""
       contents:
         - interval_diff     
         - interval_union   
         - interval_intersect 
         - interval_collapse
+        - proximity_test        
+        - jaccard
+    - title: Mapping
+      desc: ""
+      contents:
+        - remap 
+        - interval_distance
+        - interval_relative_distance
+        - remap_interval_data
+    - title: Decorators
+      desc: "Blah blah "
+      contents:
+        - genomic 
+        - bootstrap
+
+        
+

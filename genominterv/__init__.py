@@ -8,9 +8,12 @@ from statsmodels.distributions.empirical_distribution import ECDF
 
 from collections import namedtuple
 
+from collections.abc import Callable
+from typing import Any, TypeVar
+
 from genominterv.chrom_sizes import chrom_sizes
 
-def by_chrom(func):
+def by_chrom(func: function) -> function:
     """
     Decorator that converting a function that operates on a data frame with only
     one chromosome to one operating on a data frame with many chromosomes.
@@ -47,7 +50,7 @@ def by_chrom(func):
     return wrapper
 
 
-def with_chrom(func):
+def with_chrom(func: function) -> function:
     """
     Decorator for converting a function operating on (start, end) tuples to one
     that takes data frames with chrom, start, end columns. Also sorts intervals.
@@ -67,12 +70,22 @@ def with_chrom(func):
         return res_df
     return wrapper
 
-
-def genomic(func):
+# A decorator that preserves the signature.
+def genomic(func: function) -> function:
     """
     Decorator for converting a function operating on (start, end) tuples to one
     that takes data frames with chrom, start, end columns and executes on each
     chromosome individually.
+
+    Parameters
+    ----------
+    func : 
+        Function accepting (start, end) tuples.
+
+    Returns
+    -------
+    :
+        A decorated function that takes data frames with chrom, start, end columns and executes on each chromosome individually.
     """
     @wraps(func)
     @by_chrom
@@ -305,19 +318,22 @@ def interval_collapse(interv: pandas.DataFrame) -> pandas.DataFrame:
     return collapse(interv)
 
 
-def remap(query, annot, relative=False, include_prox_coord=False):
+def remap(query: tuple[int|float, int|float], annot: list[tuple], relative=False, include_prox_coord=False) -> list[tuple[float, float]]:
     """
-    Remap the coordinates of a single interval in ``query`` to the distance from
-    the closet interval in ``annot``. Returns empty set if annot is empty for
-    the chromosome. Intervals from ``query`` that overlap intervals in ``annot``
+    Remap the coordinates of a single interval in `query` to the distance from
+    the closet interval in `annot`. Returns empty set if annot is empty for
+    the chromosome. Intervals from `query` that overlap intervals in `annot`
     are discarded.
 
-    :param query: A ``(start, end)`` tuple.
-    :type query: tuple or list
-    :param annot: List of ``(start, end)`` tuples on the same chromosome.
-    :type annot: list
-    :returns: List of ``(start, end)`` tuples
-    :rtype: list
+    Parameters
+    ----------
+    query : 
+        A tuple of (start, end) coordinates.
+
+    Returns
+    -------
+    :
+        A list of tuples with (start, end) coordinates.
     """
 
     if not (query and annot):
@@ -389,21 +405,28 @@ def remap(query, annot, relative=False, include_prox_coord=False):
     return remapped
 
 @genomic
-def interval_distance(query, annot):
+def interval_distance(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
     """
     Computes the distance from each query interval to the closest interval in
-    annot. If a query interval overlaps the midpoint between two annot intarvals
+    annot. If a query interval overlaps the midpoint between two annot intervals
     it is split into two intervals proximal to each annot interval.    Intervals
     from ``query`` that overlap intervals in ``annot`` are discarded.
 
-    :param query: Data frame with intervals.
-    :type query: pandas.DataFrame
-    :param annot: Data frame with intervals.
-    :type annot: pandas.DataFrame
-    :returns: A data frame with remapped intervals.
-    :rtype: pandas.DataFrame
+    Parameters
+    ----------
+    query : 
+        Data frame with query intervals.
+    annot : 
+        Data frame with annotation intervals.        
 
-    If you want to retain the origianl columns in ``query``, use :any:remap_interval_data.
+    Returns
+    -------
+    :
+        A data frame with remapped intervals.
+
+    See Also
+    --------
+    If you want to retain the original columns in `query`, use [](`~genominterv.remap_interval_data`).
     """
     return list(chain.from_iterable(remap(q, annot) for q in query))
 
@@ -411,34 +434,56 @@ def interval_distance(query, annot):
 @genomic
 def interval_relative_distance(query, annot):
     """
-    Same as :any:interval_relative_distance, but computes the *relative* distance.
-    I.e. distances between 0 and 0.5.
+    Computes the relative distance from each query interval to the closest interval in
+    annot. If a query interval overlaps the midpoint between two annot intervals
+    it is split into two intervals proximal to each annot interval. Intervals
+    from `query` that overlap intervals in `annot` are discarded.
 
-    :param query: Data frame with intervals.
-    :type query: pandas.DataFrame
-    :param annot: Data frame with intervals.
-    :type annot: pandas.DataFrame
-    :returns: A data frame with remapped intervals.
-    :rtype: pandas.DataFrame
+    Parameters
+    ----------
+    query : 
+        Data frame with query intervals.
+    annot : 
+        Data frame with annotation intervals.        
+
+    Returns
+    -------
+    :
+        A data frame with remapped intervals.
+
+    See Also
+    --------
+    Same as [](`~genominterv.interval_distance`), but computes the *relative* distance.
+    I.e. distances between 0 and 0.5.
     """
+
     return list(chain.from_iterable(remap(q, annot, relative=True) for q in query))
 
 
 def remap_interval_data(query, annot):
     """
     Computes the distance from each query interval to the closest interval
-    in annot. Original coordinates are preserved as ``'orig_start'`` and
-    ``'orig_end'`` columns. If a query interval overlaps the midpoint between two
-    annot intarvals it is split into two intervals proximal to each
+    in annot. Original coordinates are preserved as `orig_start` and
+    `orig_end` columns. If a query interval overlaps the midpoint between two
+    annot intervals it is split into two intervals proximal to each
     annot interval, thus contributing two rows to the returned data frame.
-    Intervals from ``query`` that overlap intervals in ``annot`` are discarded.
+    Intervals from `query` that overlap intervals in `annot` are discarded.
 
-    :param query: Data frame with intervals.
-    :type query: pandas.DataFrame
-    :param annot: Data frame with intervals.
-    :type annot: pandas.DataFrame
-    :returns: A data frame with remapped intervals.
-    :rtype: pandas.DataFrame
+    Parameters
+    ----------
+    query : 
+        Data frame with query intervals.
+    annot : 
+        Data frame with annotation intervals.        
+
+    Returns
+    -------
+    :
+        A data frame with remapped intervals.
+
+    See Also
+    --------
+    If you do not want to retain the original columns in `query`, use [](`~genominterv.interval_distance`).
     """
 
     annot_grouped = annot.groupby('chrom')
@@ -557,27 +602,31 @@ def interval_permute(df, chromosome_sizes):
     return pandas.concat(group_list)
 
 
-def bootstrap(chromosome_sizes, samples=1000, smaller=False, return_boot=False):
+def bootstrap(chromosome_sizes: str | dict, samples: int=1000, smaller: bool=False, return_boot: bool=False):
     """
-    Decorator that turns a function producing a statistic into one that also
+    Parameterized decorator that turns a function producing a statistic into one that also
     produces a p-value from bootstrapping. The bootstrapping resamples the
     intervals of the second argument for each chromosome independently. Only
     required argument to bootstrap is the name of the genome assembly used.
 
-    :param chromosome_sizes: The name of the genome assembly used, or a dictionary mapping chromosome names to chromosome lengths.
-    :type chromosome_sizes: str or dict
-    :param samples: The number of bootstrap samples to use. Default is 1000. 
-    :type samples: int
-    :param smaller: Whether to consider extremely small values rather than more extreme large ones.
-    :type smaller: bool
-    :param return_boot: Whether to return the bootstrap samples too.
-    :type return_boot: bool
-
-    :returns: statistic, p-value With ``return_boot=True`` a list of bootstrap values are returned as well.
-    :rtype: float, float, [list]
-
-    :raises: KeyError if ``chromosome_sizes`` string is not an assembly known to the module. In that case specify as dictionary.
+    Parameters
+    ----------
+    chromosome_sizes : 
+        Name of a genome assembly or a dictionary mapping chromosomes to their lengths.
+    samples : 
+        Number of bootstrap samples to use.
+    smaller :
+        Whether to test for significantly small values of the statistic rather than large ones.
+    return_boot :
+        Whether to return the bootstrap samples too.
+        
+    Returns
+    -------
+    : float, [float], [list]
+        The decorated function returns a statistic and a p-value. A decorated function that takes data 
+        frames with chrom, start, end columns and executes on each chromosome individually. 
     """
+
     if type(chromosome_sizes) is str:
         chromosome_sizes = chrom_sizes[chromosome_sizes]
 
@@ -608,15 +657,29 @@ def bootstrap(chromosome_sizes, samples=1000, smaller=False, return_boot=False):
     return decorator
 
 
-def proximity_test(query, annot, samples=10000, npoints=1000, two_sided=False):
-    """This function does something.
-    :param name: The name to use.
-    :type name: str.
-    :param state: Current state to be in.
-    :type state: bool.
-    :returns:  int -- the return code.
-    :raises: AttributeError, KeyError
+def proximity_test(query: pandas.DataFrame, annot: pandas.DataFrame, samples: int=10000, npoints: int=1000, two_sided: bool=False) -> namedtuple:
     """
+    Test for proximity of intervals to a set of annotations.
+
+    Parameters
+    ----------
+    query :
+        Data frame with query intervals.
+    annot :
+        Data frame with annotation intervals.
+    samples : 
+        Number of bootstrap samples to use.
+    npoints :
+        Number of points to use in the ECDF.
+    two_sided :
+        Whether to test for proximity in both directions.
+        
+    Returns
+    -------
+    : 
+        A named tuple with the test statistic and p-value.
+    """
+
     remapped_df = interval_relative_distance(query, annot)
     distances = abs(remapped_df.start)
 
@@ -644,17 +707,23 @@ def proximity_test(query, annot, samples=10000, npoints=1000, two_sided=False):
     return TestResult(test_stat, p_value)
 
 
-def jaccard(a, b):
+def jaccard(a: list[tuple], b:list[tuple]) -> float:
     """
-    Compute Jaccard overlap statistic
+    Compute Jaccard overlap test statistic.
 
-    :param name: The name to use.
-    :type name: str.
-    :param state: Current state to be in.
-    :type state: bool.
-    :returns:  int -- the return code.
-    :raises: AttributeError, KeyError
-    """
+    Parameters
+    ----------
+    a :
+        List of tuples with (start, end) coordinates.
+    a :
+        List of tuples with (start, end) coordinates.
+        
+    Returns
+    -------
+    : 
+        The Jaccard test statistic.
+    """    
+
     inter = interval_intersect(a, b)
     union = interval_union(a, b)
 

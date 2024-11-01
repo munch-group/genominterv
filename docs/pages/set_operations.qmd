@@ -1,0 +1,15 @@
+---
+title: Set operations on intervals
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+
+The three functions, [](`~genominterv.interval_diff`), [](`~genominterv.interval_intersect`), and [](`~genominterv.interval_union`), do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the [](`~genominterv.interval_collapse`) function, which produces the union of genomic intervals in a single set genomic ofintervals.
+
+```python
+
+```

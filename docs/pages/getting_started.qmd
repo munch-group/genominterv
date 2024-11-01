@@ -1,0 +1,20 @@
+---
+title: Getting started
+aliases:
+  - ../index.html
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+<!-- 
+The [foo function](`genominterv.interval_diff`) does ... [](`genominterv.interval_diff`) does ... [](`~genominterv.interval_diff`) does ...
+ -->
+
+
+*genomeinterv* provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value `x` is in an interval `(start, end)` included in the inrval if `start <= x and x < end`. All functions take pandas.DataFrame as arguments. These data frames must include `chrom`, `start`, and `end` columns.
+
+See the [the library reference](api/) for detailed documentation of each function and decorator.
+

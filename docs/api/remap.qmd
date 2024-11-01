@@ -1,0 +1,22 @@
+# remap { #genominterv.remap }
+
+```python
+genominterv.remap(query, annot, relative=False, include_prox_coord=False)
+```
+
+Remap the coordinates of a single interval in `query` to the distance from
+the closet interval in `annot`. Returns empty set if annot is empty for
+the chromosome. Intervals from `query` that overlap intervals in `annot`
+are discarded.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[tuple](`tuple`)\[[int](`int`) \| [float](`float`), [int](`int`) \| [float](`float`)\]]{.parameter-annotation}</code>
+
+:   A tuple of (start, end) coordinates.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)\[[tuple](`tuple`)\[[float](`float`), [float](`float`)\]\]]{.parameter-annotation}</code>
+
+:   A list of tuples with (start, end) coordinates.

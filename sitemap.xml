@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://munch-group.github.io/libraryname/api/foo.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/api/foo.html</loc>
+    <lastmod>2024-11-01T06:42:11.946Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/api/bar.baz.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/api/bar.baz.html</loc>
+    <lastmod>2024-11-01T06:42:11.946Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/pages/overview.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/pages/overview.html</loc>
+    <lastmod>2024-11-01T06:42:11.950Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/pages/something.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/pages/something.html</loc>
+    <lastmod>2024-11-01T06:42:11.950Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/about.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/about.html</loc>
+    <lastmod>2024-11-01T06:42:11.946Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/pages/advanced.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/pages/advanced.html</loc>
+    <lastmod>2024-11-01T06:42:11.946Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/pages/example.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/pages/example.html</loc>
+    <lastmod>2024-11-01T06:42:11.950Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/pages/basics.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/pages/basics.html</loc>
+    <lastmod>2024-11-01T06:42:11.946Z</lastmod>
   </url>
   <url>
-    <loc>https://munch-group.github.io/libraryname/api/index.html</loc>
-    <lastmod>2024-10-31T21:19:08.160Z</lastmod>
+    <loc>https://munch-group.github.io/genominterv/api/index.html</loc>
+    <lastmod>2024-11-01T06:42:11.946Z</lastmod>
   </url>
 </urlset>

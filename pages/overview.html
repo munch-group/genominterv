@@ -242,9 +242,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#basic-use" id="toc-basic-use" class="nav-link" data-scroll-target="#basic-use">Basic use</a></li>
-  <li><a href="#some-use-case" id="toc-some-use-case" class="nav-link" data-scroll-target="#some-use-case">Some use case</a></li>
+  <li><a href="#set-operations" id="toc-set-operations" class="nav-link active" data-scroll-target="#set-operations">Set operations</a></li>
+  <li><a href="#genomic-decorator" id="toc-genomic-decorator" class="nav-link" data-scroll-target="#genomic-decorator">Genomic decorator</a></li>
+  <li><a href="#remapping-functions" id="toc-remapping-functions" class="nav-link" data-scroll-target="#remapping-functions">Remapping functions</a></li>
+  <li><a href="#two-set-statistics" id="toc-two-set-statistics" class="nav-link" data-scroll-target="#two-set-statistics">Two-set statistics</a></li>
+  <li><a href="#bootstrap-decorator" id="toc-bootstrap-decorator" class="nav-link" data-scroll-target="#bootstrap-decorator">Bootstrap decorator</a></li>
+  <li><a href="#ready-made-tests" id="toc-ready-made-tests" class="nav-link" data-scroll-target="#ready-made-tests">Ready-made tests</a></li>
   <li><a href="#learning-more" id="toc-learning-more" class="nav-link" data-scroll-target="#learning-more">Learning more</a></li>
   </ul>
 </nav>
@@ -271,23 +274,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>genominterv</strong> lets you …</p>
-<p>Maecenas turpis velit, ultricies non elementum vel, luctus nec nunc. Nulla a diam interdum, faucibus sapien viverra, finibus metus. Donec non tortor diam. In ut elit aliquet, bibendum sem et, aliquam tortor. Donec congue, sem at rhoncus ultrices, nunc augue cursus erat, quis porttitor mauris libero ut ex. Nullam quis leo urna. Donec faucibus ligula eget pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus interdum erat ut ultricies. Aenean tempus ex non elit suscipit, quis dignissim enim efficitur. Proin laoreet enim massa, vitae laoreet nulla mollis quis.</p>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> munch-group genominterv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="basic-use" class="level2">
-<h2 class="anchored" data-anchor-id="basic-use">Basic use</h2>
-<p>Nunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.</p>
-</section>
-<section id="some-use-case" class="level2">
-<h2 class="anchored" data-anchor-id="some-use-case">Some use case</h2>
 <!-- 
 The [foo function](`genominterv.interval_diff`) does ... [](`genominterv.interval_diff`) does ... [](`~genominterv.interval_diff`) does ...
  -->
-<p>Proin sodales neque erat, varius cursus diam tincidunt sit amet. Etiam scelerisque fringilla nisl eu venenatis. Donec sem ipsum, scelerisque ac venenatis quis, hendrerit vel mauris. Praesent semper erat sit amet purus condimentum, sit amet auctor mi feugiat. In hac habitasse platea dictumst. Nunc ac mauris in massa feugiat bibendum id in dui. Praesent accumsan urna at lacinia aliquet. Proin ultricies eu est quis pellentesque. In vel lorem at nisl rhoncus cursus eu quis mi. In eu rutrum ante, quis placerat justo. Etiam euismod nibh nibh, sed elementum nunc imperdiet in. Praesent gravida nunc vel odio lacinia, at tempus nisl placerat. Aenean id ipsum sed est sagittis hendrerit non in tortor.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>foo(<span class="dv">4</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>genomeinterv</em> provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value <code>x</code> is in an interval <code>(start, end)</code> included in the inrval if <code>start &lt;= x and x &lt; end</code>. All functions take pandas.DataFrame as arguments. These data frames must include <code>chrom</code>, <code>start</code>, and <code>end</code> columns.</p>
+<p>See the <a href="api/">the library reference</a> for detailed documentation of each function and decorator.</p>
+<section id="set-operations" class="level2">
+<h2 class="anchored" data-anchor-id="set-operations">Set operations</h2>
+<p>The three functions, <a href="../api/interval_diff.html#genominterv.interval_diff"><code>interval_diff</code></a>, <a href="../api/interval_intersect.html#genominterv.interval_intersect"><code>interval_intersect</code></a>, and <a href="../api/interval_union.html#genominterv.interval_union"><code>interval_union</code></a>, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the <a href="../api/interval_collapse.html#genominterv.interval_collapse"><code>interval_collapse</code></a> function, which produces the union of genomic intervals in a single set genomic ofintervals.</p>
+</section>
+<section id="genomic-decorator" class="level2">
+<h2 class="anchored" data-anchor-id="genomic-decorator">Genomic decorator</h2>
+<p>To make it easy to create other interval functions that work across chromosomes, the module provides a <code>genomic</code> decorator that can be applied to functions that operate lists of <code>(start, end)</code> tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include <code>chrom</code>, <code>start</code>, and <code>end</code> columns. Here is an example function that shifts intervals by 1000bp:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@genomic</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inverval_shift(tuples):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(x<span class="op">+</span><span class="dv">1000</span>, y<span class="op">+</span><span class="dv">1000</span>) <span class="cf">for</span> (x, y) <span class="kw">in</span> tuples]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pandas.DataFrame()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>shifted <span class="op">=</span> inverval_shift(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="remapping-functions" class="level2">
+<h2 class="anchored" data-anchor-id="remapping-functions">Remapping functions</h2>
+<p>The function <code>interval_distance</code> converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. <code>interval_relative_distance</code> does the same but returns relative distances.</p>
+</section>
+<section id="two-set-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="two-set-statistics">Two-set statistics</h2>
+<p>The module also provides two statistics for relations between sets: <code>jaccard</code> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard index</a> statistic for two sets of genomic intervals.</p>
+</section>
+<section id="bootstrap-decorator" class="level2">
+<h2 class="anchored" data-anchor-id="bootstrap-decorator">Bootstrap decorator</h2>
+<p>The module provides a <code>bootstrap</code> decorator that turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.</p>
+<p>This example does this for the provided <code>jaccard</code> statistic</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(query, annot):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard(query, annot)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>jaccard_stat, p_value <span class="op">=</span> jaccard_test(intervals, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The decorator works on any function that takes two sets of intervals.</p>
+</section>
+<section id="ready-made-tests" class="level2">
+<h2 class="anchored" data-anchor-id="ready-made-tests">Ready-made tests</h2>
+<p><code>proximity_test</code> computes tests if intervals in one set is significantly proximal to intervals in another set.</p>
 </section>
 <section id="learning-more" class="level2">
 <h2 class="anchored" data-anchor-id="learning-more">Learning more</h2>

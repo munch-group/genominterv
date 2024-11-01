@@ -127,37 +127,67 @@
     "href": "pages/overview.html",
     "title": "Overview",
     "section": "",
-    "text": "genominterv lets you …\nMaecenas turpis velit, ultricies non elementum vel, luctus nec nunc. Nulla a diam interdum, faucibus sapien viverra, finibus metus. Donec non tortor diam. In ut elit aliquet, bibendum sem et, aliquam tortor. Donec congue, sem at rhoncus ultrices, nunc augue cursus erat, quis porttitor mauris libero ut ex. Nullam quis leo urna. Donec faucibus ligula eget pellentesque interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean rhoncus interdum erat ut ultricies. Aenean tempus ex non elit suscipit, quis dignissim enim efficitur. Proin laoreet enim massa, vitae laoreet nulla mollis quis.",
+    "text": "genomeinterv provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value x is in an interval (start, end) included in the inrval if start &lt;= x and x &lt; end. All functions take pandas.DataFrame as arguments. These data frames must include chrom, start, and end columns.\nSee the the library reference for detailed documentation of each function and decorator.",
     "crumbs": [
       "Overview"
     ]
   },
   {
-    "objectID": "pages/overview.html#installation",
-    "href": "pages/overview.html#installation",
+    "objectID": "pages/overview.html#set-operations",
+    "href": "pages/overview.html#set-operations",
     "title": "Overview",
-    "section": "Installation",
-    "text": "Installation\nconda install -c munch-group genominterv",
+    "section": "Set operations",
+    "text": "Set operations\nThe three functions, interval_diff, interval_intersect, and interval_union, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the interval_collapse function, which produces the union of genomic intervals in a single set genomic ofintervals.",
     "crumbs": [
       "Overview"
     ]
   },
   {
-    "objectID": "pages/overview.html#basic-use",
-    "href": "pages/overview.html#basic-use",
+    "objectID": "pages/overview.html#genomic-decorator",
+    "href": "pages/overview.html#genomic-decorator",
     "title": "Overview",
-    "section": "Basic use",
-    "text": "Basic use\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.",
+    "section": "Genomic decorator",
+    "text": "Genomic decorator\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns. Here is an example function that shifts intervals by 1000bp:\n@genomic\ndef inverval_shift(tuples):\n    return [(x+1000, y+1000) for (x, y) in tuples]\n\ndf = pandas.DataFrame()\n\nshifted = inverval_shift(df)",
     "crumbs": [
       "Overview"
     ]
   },
   {
-    "objectID": "pages/overview.html#some-use-case",
-    "href": "pages/overview.html#some-use-case",
+    "objectID": "pages/overview.html#remapping-functions",
+    "href": "pages/overview.html#remapping-functions",
     "title": "Overview",
-    "section": "Some use case",
-    "text": "Some use case\n\nProin sodales neque erat, varius cursus diam tincidunt sit amet. Etiam scelerisque fringilla nisl eu venenatis. Donec sem ipsum, scelerisque ac venenatis quis, hendrerit vel mauris. Praesent semper erat sit amet purus condimentum, sit amet auctor mi feugiat. In hac habitasse platea dictumst. Nunc ac mauris in massa feugiat bibendum id in dui. Praesent accumsan urna at lacinia aliquet. Proin ultricies eu est quis pellentesque. In vel lorem at nisl rhoncus cursus eu quis mi. In eu rutrum ante, quis placerat justo. Etiam euismod nibh nibh, sed elementum nunc imperdiet in. Praesent gravida nunc vel odio lacinia, at tempus nisl placerat. Aenean id ipsum sed est sagittis hendrerit non in tortor.\nfoo(4, 2)",
+    "section": "Remapping functions",
+    "text": "Remapping functions\nThe function interval_distance converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. interval_relative_distance does the same but returns relative distances.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#two-set-statistics",
+    "href": "pages/overview.html#two-set-statistics",
+    "title": "Overview",
+    "section": "Two-set statistics",
+    "text": "Two-set statistics\nThe module also provides two statistics for relations between sets: jaccard computes the Jaccard index statistic for two sets of genomic intervals.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#bootstrap-decorator",
+    "href": "pages/overview.html#bootstrap-decorator",
+    "title": "Overview",
+    "section": "Bootstrap decorator",
+    "text": "Bootstrap decorator\nThe module provides a bootstrap decorator that turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.\nThis example does this for the provided jaccard statistic\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard(query, annot)\n\njaccard_stat, p_value = jaccard_test(intervals, other_intervals)\nThe decorator works on any function that takes two sets of intervals.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#ready-made-tests",
+    "href": "pages/overview.html#ready-made-tests",
+    "title": "Overview",
+    "section": "Ready-made tests",
+    "text": "Ready-made tests\nproximity_test computes tests if intervals in one set is significantly proximal to intervals in another set.",
     "crumbs": [
       "Overview"
     ]
@@ -205,7 +235,7 @@
     "href": "pages/advanced.html",
     "title": "Advanced use",
     "section": "",
-    "text": "Etiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.\nEtiam congue quam eget velit convallis, eu sagittis orci vestibulum. Vestibulum at massa turpis. Curabitur ornare ex sed purus vulputate, vitae porta augue rhoncus. Phasellus auctor suscipit purus, vel ultricies nunc. Nunc eleifend nulla ac purus volutpat, id fringilla felis aliquet. Duis vitae porttitor nibh, in rhoncus risus. Vestibulum a est vitae est tristique vehicula. Proin mollis justo id est tempus hendrerit. Praesent suscipit placerat congue. Aliquam eu elit gravida, consequat augue non, ultricies sapien. Nunc ultricies viverra ante, sit amet vehicula ante volutpat id. Etiam tempus purus vitae tellus mollis viverra. Donec at ornare mauris. Aliquam sodales hendrerit ornare. Suspendisse accumsan lacinia sapien, sit amet imperdiet dui molestie ut.",
+    "text": "Etiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.\nDuis urna urna, pellentesque eu urna ut, malesuada bibendum dolor. Suspendisse potenti. Vivamus ornare, arcu quis molestie ultrices, magna est accumsan augue, auctor vulputate erat quam quis neque. Nullam scelerisque odio vel ultricies facilisis. Ut porta arcu non magna sagittis lacinia. Cras ornare vulputate lectus a tristique. Pellentesque ac arcu congue, rhoncus mi id, dignissim ligula.",
     "crumbs": [
       "Advanced",
       "Advanced use"
@@ -269,7 +299,7 @@
     "href": "pages/basics.html",
     "title": "Basic use",
     "section": "",
-    "text": "Etiam quis tortor luctus, pellentesque ante a, finibus dolor. Phasellus in nibh et magna pulvinar malesuada. Ut nisl ex, sagittis at sollicitudin et, sollicitudin id nunc. In id porta urna. Proin porta dolor dolor, vel dapibus nisi lacinia in. Pellentesque ante mauris, ornare non euismod a, fermentum ut sapien. Proin sed vehicula enim. Aliquam tortor odio, vestibulum vitae odio in, tempor molestie justo. Praesent maximus lacus nec leo maximus blandit.\nEtiam maximus accumsan gravida. Maecenas at nunc dignissim, euismod enim ac, bibendum ipsum. Maecenas vehicula velit in nisl aliquet ultricies. Nam eget massa interdum, maximus arcu vel, pretium erat. Maecenas sit amet tempor purus, vitae aliquet nunc. Vivamus cursus urna velit, eleifend dictum magna laoreet ut. Duis eu erat mollis, blandit magna id, tincidunt ipsum. Integer massa nibh, commodo eu ex vel, venenatis efficitur ligula. Integer convallis lacus elit, maximus eleifend lacus ornare ac. Vestibulum scelerisque viverra urna id lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean eget enim at diam bibendum tincidunt eu non purus. Nullam id magna ultrices, sodales metus viverra, tempus turpis.",
+    "text": "Nulla eget cursus ipsum. Vivamus porttitor leo diam, sed volutpat lectus facilisis sit amet. Maecenas et pulvinar metus. Ut at dignissim tellus. In in tincidunt elit. Etiam vulputate lobortis arcu, vel faucibus leo lobortis ac. Aliquam erat volutpat. In interdum orci ac est euismod euismod. Nunc eleifend tristique risus, at lacinia odio commodo in. Sed aliquet ligula odio, sed tempor neque ultricies sit amet.\nNunc ac dignissim magna. Vestibulum vitae egestas elit. Proin feugiat leo quis ante condimentum, eu ornare mauris feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris cursus laoreet ex, dignissim bibendum est posuere iaculis. Suspendisse et maximus elit. In fringilla gravida ornare. Aenean id lectus pulvinar, sagittis felis nec, rutrum risus. Nam vel neque eu arcu blandit fringilla et in quam. Aliquam luctus est sit amet vestibulum eleifend. Phasellus elementum sagittis molestie. Proin tempor lorem arcu, at condimentum purus volutpat eu. Fusce et pellentesque ligula. Pellentesque id tellus at erat luctus fringilla. Suspendisse potenti.",
     "crumbs": [
       "Basics",
       "Basic use"

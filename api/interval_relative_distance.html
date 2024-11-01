@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>interval_collapse – genominterv</title>
+<title>interval_relative_distance – genominterv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/proximity_test.html" rel="next">
-<link href="../api/interval_intersect.html" rel="prev">
+<link href="../api/remap_interval_data.html" rel="next">
+<link href="../api/interval_distance.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/interval_diff.html">Set operations</a></li><li class="breadcrumb-item"><a href="../api/interval_collapse.html">interval_collapse</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/remap.html">Mapping</a></li><li class="breadcrumb-item"><a href="../api/interval_relative_distance.html">interval_relative_distance</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_collapse.html" class="sidebar-item-text sidebar-link active">
+  <a href="../api/interval_collapse.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">interval_collapse</span></a>
   </div>
 </li>
@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_relative_distance.html" class="sidebar-item-text sidebar-link">
+  <a href="../api/interval_relative_distance.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">interval_relative_distance</span></a>
   </div>
 </li>
@@ -280,7 +280,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#genominterv.interval_collapse" id="toc-genominterv.interval_collapse" class="nav-link active" data-scroll-target="#genominterv.interval_collapse">interval_collapse</a>
+  <li><a href="#genominterv.interval_relative_distance" id="toc-genominterv.interval_relative_distance" class="nav-link active" data-scroll-target="#genominterv.interval_relative_distance">interval_relative_distance</a>
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
@@ -295,31 +295,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="genominterv.interval_collapse" class="level1">
-<h1>interval_collapse</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.interval_collapse(interv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This function computes the union of intervals in a single set.</p>
+<section id="genominterv.interval_relative_distance" class="level1">
+<h1>interval_relative_distance</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.interval_relative_distance(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Computes the relative distance from each query interval to the closest interval in annot. If a query interval overlaps the midpoint between two annot intervals it is split into two intervals proximal to each annot interval. Intervals from <code>query</code> that overlap intervals in <code>annot</code> are discarded.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <dl>
-<dt><code><span class="parameter-name"><strong>interv</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"><strong>query</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span></code></dt>
 <dd>
-<p>Data frame with intervals.</p>
+<p>Data frame with query intervals.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>annot</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span></code></dt>
+<dd>
+<p>Data frame with annotation intervals.</p>
 </dd>
 </dl>
 </section>
 <section id="returns" class="level2 doc-section doc-section-returns">
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <dl>
-<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span></code></dt>
 <dd>
-<p>A data frame with chr, start, end columns representing the union.</p>
+<p>A data frame with remapped intervals.</p>
 </dd>
 </dl>
 </section>
 <section id="see-also" class="level2 doc-section doc-section-see-also">
 <h2 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../api/interval_diff.html#genominterv.interval_diff"><code>genominterv.interval_diff</code></a>, <a href="../api/interval_union.html#genominterv.interval_union"><code>genominterv.interval_union</code></a>, <a href="../api/interval_intersect.html#genominterv.interval_intersect"><code>genominterv.interval_intersect</code></a>.</p>
+<p>Same as <a href="../api/interval_distance.html#genominterv.interval_distance"><code>interval_distance</code></a>, but computes the <em>relative</em> distance. I.e. distances between 0 and 0.5.</p>
 
 
 </section>
@@ -748,13 +752,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/interval_intersect.html" class="pagination-link" aria-label="interval_intersect">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">interval_intersect</span>
+      <a href="../api/interval_distance.html" class="pagination-link" aria-label="interval_distance">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">interval_distance</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../api/proximity_test.html" class="pagination-link" aria-label="proximity_test">
-        <span class="nav-page-text">proximity_test</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../api/remap_interval_data.html" class="pagination-link" aria-label="remap_interval_data">
+        <span class="nav-page-text">remap_interval_data</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

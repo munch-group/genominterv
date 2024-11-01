@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Overview – genominterv</title>
+<title>Set operations on intervals – genominterv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/basics.html" rel="next">
+<link href="../pages/decorators.html" rel="next">
+<link href="../pages/getting_started.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -146,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/overview.html">Overview</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/set_operations.html">Set operations</a></li><li class="breadcrumb-item"><a href="../pages/set_operations.html">Set operations on intervals</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -160,14 +161,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/overview.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Overview</span></a>
+  <a href="../pages/getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Basics</span></a>
+ <span class="menu-text">Set operations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -175,8 +176,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic use</span></a>
+  <a href="../pages/set_operations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Set operations on intervals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decorators for intervals</span></a>
   </div>
 </li>
       </ul>
@@ -184,24 +191,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Examples</span></a>
+ <span class="menu-text">Mapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">examples/example.ipynb</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../pages/mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Remapping intervals</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">examples/something.ipynb</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../pages/interval_tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests on intervals</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced</span></a>
+ <span class="menu-text">Examples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -209,8 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced use</span></a>
+  <a href="../examples/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter notebook</span></a>
   </div>
 </li>
       </ul>
@@ -237,27 +250,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#set-operations" id="toc-set-operations" class="nav-link active" data-scroll-target="#set-operations">Set operations</a></li>
-  <li><a href="#genomic-decorator" id="toc-genomic-decorator" class="nav-link" data-scroll-target="#genomic-decorator">Genomic decorator</a></li>
-  <li><a href="#remapping-functions" id="toc-remapping-functions" class="nav-link" data-scroll-target="#remapping-functions">Remapping functions</a></li>
-  <li><a href="#two-set-statistics" id="toc-two-set-statistics" class="nav-link" data-scroll-target="#two-set-statistics">Two-set statistics</a></li>
-  <li><a href="#bootstrap-decorator" id="toc-bootstrap-decorator" class="nav-link" data-scroll-target="#bootstrap-decorator">Bootstrap decorator</a></li>
-  <li><a href="#ready-made-tests" id="toc-ready-made-tests" class="nav-link" data-scroll-target="#ready-made-tests">Ready-made tests</a></li>
-  <li><a href="#learning-more" id="toc-learning-more" class="nav-link" data-scroll-target="#learning-more">Learning more</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/set_operations.html">Set operations</a></li><li class="breadcrumb-item"><a href="../pages/set_operations.html">Set operations on intervals</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Overview</h1>
+<h1 class="title">Set operations on intervals</h1>
 </div>
 
 
@@ -274,58 +275,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<!-- 
-The [foo function](`genominterv.interval_diff`) does ... [](`genominterv.interval_diff`) does ... [](`~genominterv.interval_diff`) does ...
- -->
-<p><em>genomeinterv</em> provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value <code>x</code> is in an interval <code>(start, end)</code> included in the inrval if <code>start &lt;= x and x &lt; end</code>. All functions take pandas.DataFrame as arguments. These data frames must include <code>chrom</code>, <code>start</code>, and <code>end</code> columns.</p>
-<p>See the <a href="api/">the library reference</a> for detailed documentation of each function and decorator.</p>
-<section id="set-operations" class="level2">
-<h2 class="anchored" data-anchor-id="set-operations">Set operations</h2>
 <p>The three functions, <a href="../api/interval_diff.html#genominterv.interval_diff"><code>interval_diff</code></a>, <a href="../api/interval_intersect.html#genominterv.interval_intersect"><code>interval_intersect</code></a>, and <a href="../api/interval_union.html#genominterv.interval_union"><code>interval_union</code></a>, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the <a href="../api/interval_collapse.html#genominterv.interval_collapse"><code>interval_collapse</code></a> function, which produces the union of genomic intervals in a single set genomic ofintervals.</p>
-</section>
-<section id="genomic-decorator" class="level2">
-<h2 class="anchored" data-anchor-id="genomic-decorator">Genomic decorator</h2>
-<p>To make it easy to create other interval functions that work across chromosomes, the module provides a <code>genomic</code> decorator that can be applied to functions that operate lists of <code>(start, end)</code> tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include <code>chrom</code>, <code>start</code>, and <code>end</code> columns. Here is an example function that shifts intervals by 1000bp:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@genomic</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> inverval_shift(tuples):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(x<span class="op">+</span><span class="dv">1000</span>, y<span class="op">+</span><span class="dv">1000</span>) <span class="cf">for</span> (x, y) <span class="kw">in</span> tuples]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pandas.DataFrame()</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>shifted <span class="op">=</span> inverval_shift(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="remapping-functions" class="level2">
-<h2 class="anchored" data-anchor-id="remapping-functions">Remapping functions</h2>
-<p>The function <code>interval_distance</code> converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. <code>interval_relative_distance</code> does the same but returns relative distances.</p>
-</section>
-<section id="two-set-statistics" class="level2">
-<h2 class="anchored" data-anchor-id="two-set-statistics">Two-set statistics</h2>
-<p>The module also provides two statistics for relations between sets: <code>jaccard</code> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard index</a> statistic for two sets of genomic intervals.</p>
-</section>
-<section id="bootstrap-decorator" class="level2">
-<h2 class="anchored" data-anchor-id="bootstrap-decorator">Bootstrap decorator</h2>
-<p>The module provides a <code>bootstrap</code> decorator that turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.</p>
-<p>This example does this for the provided <code>jaccard</code> statistic</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(query, annot):</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard(query, annot)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>jaccard_stat, p_value <span class="op">=</span> jaccard_test(intervals, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The decorator works on any function that takes two sets of intervals.</p>
-</section>
-<section id="ready-made-tests" class="level2">
-<h2 class="anchored" data-anchor-id="ready-made-tests">Ready-made tests</h2>
-<p><code>proximity_test</code> computes tests if intervals in one set is significantly proximal to intervals in another set.</p>
-</section>
-<section id="learning-more" class="level2">
-<h2 class="anchored" data-anchor-id="learning-more">Learning more</h2>
-<p>Go <a href="../pages/advanced.html">to the anvanced page</a> to learn how to …</p>
-<ul>
-<li><a href="../pages/examples.html">Examples page</a>: sites using quartodoc.</li>
-</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -750,10 +703,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../pages/getting_started.html" class="pagination-link" aria-label="Getting started">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Getting started</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/basics.html" class="pagination-link" aria-label="Basic use">
-        <span class="nav-page-text">Basic use</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/decorators.html" class="pagination-link" aria-label="Decorators for intervals">
+        <span class="nav-page-text">Decorators for intervals</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>interval_collapse – genominterv</title>
+<title>bootstrap – genominterv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/proximity_test.html" rel="next">
-<link href="../api/interval_intersect.html" rel="prev">
+<link href="../api/genomic.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/interval_diff.html">Set operations</a></li><li class="breadcrumb-item"><a href="../api/interval_collapse.html">interval_collapse</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/genomic.html">Decorators</a></li><li class="breadcrumb-item"><a href="../api/bootstrap.html">bootstrap</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -194,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_collapse.html" class="sidebar-item-text sidebar-link active">
+  <a href="../api/interval_collapse.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">interval_collapse</span></a>
   </div>
 </li>
@@ -264,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/bootstrap.html" class="sidebar-item-text sidebar-link">
+  <a href="../api/bootstrap.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">bootstrap</span></a>
   </div>
 </li>
@@ -280,11 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#genominterv.interval_collapse" id="toc-genominterv.interval_collapse" class="nav-link active" data-scroll-target="#genominterv.interval_collapse">interval_collapse</a>
+  <li><a href="#genominterv.bootstrap" id="toc-genominterv.bootstrap" class="nav-link active" data-scroll-target="#genominterv.bootstrap">bootstrap</a>
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -295,31 +293,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="genominterv.interval_collapse" class="level1">
-<h1>interval_collapse</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.interval_collapse(interv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This function computes the union of intervals in a single set.</p>
+<section id="genominterv.bootstrap" class="level1">
+<h1>bootstrap</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.bootstrap(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    chromosome_sizes</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    samples<span class="op">=</span><span class="dv">1000</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    smaller<span class="op">=</span><span class="va">False</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    return_boot<span class="op">=</span><span class="va">False</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Parameterized decorator that turns a function producing a statistic into one that also produces a p-value from bootstrapping. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the genome assembly used.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <dl>
-<dt><code><span class="parameter-name"><strong>interv</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"><strong>chromosome_sizes</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | <a href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a></span></code></dt>
 <dd>
-<p>Data frame with intervals.</p>
+<p>Name of a genome assembly or a dictionary mapping chromosomes to their lengths.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>samples</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/functions.html#int">int</a></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">1000</span></code></dt>
+<dd>
+<p>Number of bootstrap samples to use.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>smaller</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">False</span></code></dt>
+<dd>
+<p>Whether to test for significantly small values of the statistic rather than large ones.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>return_boot</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/functions.html#bool">bool</a></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">False</span></code></dt>
+<dd>
+<p>Whether to return the bootstrap samples too.</p>
 </dd>
 </dl>
 </section>
 <section id="returns" class="level2 doc-section doc-section-returns">
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <dl>
-<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation">(<a href="https://docs.python.org/3/library/functions.html#float">float</a>, [<a href="https://docs.python.org/3/library/functions.html#float">float</a>], [<a href="https://docs.python.org/3/library/stdtypes.html#list">list</a>])</span></code></dt>
 <dd>
-<p>A data frame with chr, start, end columns representing the union.</p>
+<p>The decorated function returns a statistic and a p-value. A decorated function that takes data frames with chrom, start, end columns and executes on each chromosome individually.</p>
 </dd>
 </dl>
-</section>
-<section id="see-also" class="level2 doc-section doc-section-see-also">
-<h2 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../api/interval_diff.html#genominterv.interval_diff"><code>genominterv.interval_diff</code></a>, <a href="../api/interval_union.html#genominterv.interval_union"><code>genominterv.interval_union</code></a>, <a href="../api/interval_intersect.html#genominterv.interval_intersect"><code>genominterv.interval_intersect</code></a>.</p>
 
 
 </section>
@@ -748,14 +759,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/interval_intersect.html" class="pagination-link" aria-label="interval_intersect">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">interval_intersect</span>
+      <a href="../api/genomic.html" class="pagination-link" aria-label="genomic">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">genomic</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../api/proximity_test.html" class="pagination-link" aria-label="proximity_test">
-        <span class="nav-page-text">proximity_test</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

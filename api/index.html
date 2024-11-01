@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/advanced.html" rel="prev">
+<link href="../examples/examples.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -126,14 +126,14 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Overview</span></a>
+  <a href="../pages/getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Basics</span></a>
+ <span class="menu-text">Set operations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -141,8 +141,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic use</span></a>
+  <a href="../pages/set_operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Set operations on intervals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decorators for intervals</span></a>
   </div>
 </li>
       </ul>
@@ -150,24 +156,30 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Examples</span></a>
+ <span class="menu-text">Mapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
- <span class="menu-text">examples/example.ipynb</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../pages/mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Remapping intervals</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
- <span class="menu-text">examples/something.ipynb</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../pages/interval_tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests on intervals</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Advanced</span></a>
+ <span class="menu-text">Examples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -175,8 +187,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Advanced use</span></a>
+  <a href="../examples/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter notebook</span></a>
   </div>
 </li>
       </ul>
@@ -210,7 +222,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#function-reference" id="toc-function-reference" class="nav-link active" data-scroll-target="#function-reference">Function reference</a>
   <ul class="collapse">
-  <li><a href="#some-section" id="toc-some-section" class="nav-link" data-scroll-target="#some-section">Some section</a></li>
+  <li><a href="#set-operations" id="toc-set-operations" class="nav-link" data-scroll-target="#set-operations">Set operations</a></li>
+  <li><a href="#mapping" id="toc-mapping" class="nav-link" data-scroll-target="#mapping">Mapping</a></li>
+  <li><a href="#decorators" id="toc-decorators" class="nav-link" data-scroll-target="#decorators">Decorators</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -223,8 +237,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="function-reference" class="level1 doc doc-index">
 <h1 class="doc doc-index">Function reference</h1>
-<section id="some-section" class="level2">
-<h2 class="anchored" data-anchor-id="some-section">Some section</h2>
+<section id="set-operations" class="level2">
+<h2 class="anchored" data-anchor-id="set-operations">Set operations</h2>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -242,6 +256,53 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td><a href="../api/interval_collapse.html#genominterv.interval_collapse">interval_collapse</a></td>
 <td>This function computes the union of intervals in a single set.</td>
+</tr>
+<tr class="odd">
+<td><a href="../api/proximity_test.html#genominterv.proximity_test">proximity_test</a></td>
+<td>Test for proximity of intervals to a set of annotations.</td>
+</tr>
+<tr class="even">
+<td><a href="../api/jaccard.html#genominterv.jaccard">jaccard</a></td>
+<td>Compute Jaccard overlap test statistic.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="mapping" class="level2">
+<h2 class="anchored" data-anchor-id="mapping">Mapping</h2>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../api/remap.html#genominterv.remap">remap</a></td>
+<td>Remap the coordinates of a single interval in <code>query</code> to the distance from</td>
+</tr>
+<tr class="even">
+<td><a href="../api/interval_distance.html#genominterv.interval_distance">interval_distance</a></td>
+<td>Computes the distance from each query interval to the closest interval in</td>
+</tr>
+<tr class="odd">
+<td><a href="../api/interval_relative_distance.html#genominterv.interval_relative_distance">interval_relative_distance</a></td>
+<td>Computes the relative distance from each query interval to the closest interval in</td>
+</tr>
+<tr class="even">
+<td><a href="../api/remap_interval_data.html#genominterv.remap_interval_data">remap_interval_data</a></td>
+<td>Computes the distance from each query interval to the closest interval</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="decorators" class="level2">
+<h2 class="anchored" data-anchor-id="decorators">Decorators</h2>
+<p>Blah blah</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../api/genomic.html#genominterv.genomic">genomic</a></td>
+<td>Decorator for converting a function operating on (start, end) tuples to one</td>
+</tr>
+<tr class="even">
+<td><a href="../api/bootstrap.html#genominterv.bootstrap">bootstrap</a></td>
+<td>Parameterized decorator that turns a function producing a statistic into one that also</td>
 </tr>
 </tbody>
 </table>
@@ -673,8 +734,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/advanced.html" class="pagination-link" aria-label="Advanced use">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Advanced use</span>
+      <a href="../examples/examples.html" class="pagination-link" aria-label="Jupyter notebook">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Jupyter notebook</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

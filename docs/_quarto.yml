@@ -23,6 +23,8 @@ interlinks:
   sources:
     python:
       url: https://docs.python.org/3/
+    pandas:
+      url: https://pandas.pydata.org/docs/
     griffe:
       url: https://mkdocstrings.github.io/griffe/
     numpy:
@@ -55,8 +57,8 @@ website:
             - pages/basics.qmd
         - section: "Examples"
           contents:
-            - pages/example.ipynb            
-            - pages/something.ipynb            
+            - examples/example.ipynb            
+            - examples/something.ipynb            
         - section: "Advanced"
           contents:
             - pages/advanced.qmd
@@ -89,5 +91,7 @@ quartodoc:
     - title: Some section
       desc: ""
       contents:
-        - foo        # function: quartodoc.get_object
-        - bar.baz       # submodule func: quartodoc.ast.preview
+        - interval_diff     
+        - interval_union   
+        - interval_intersect 
+        - interval_collapse

@@ -26,7 +26,9 @@ conda install -c munch-group genominterv
 
 ## Some use case
 
-The [foo function](`genominterv.foo`) does ... [](`genominterv.foo`) does ... [](`~genominterv.foo`) does ...
+<!-- 
+The [foo function](`genominterv.interval_diff`) does ... [](`genominterv.interval_diff`) does ... [](`~genominterv.interval_diff`) does ...
+ -->
 
 {{< lipsum 1 >}}
 
@@ -39,5 +41,5 @@ foo(4, 2)
 
 Go [to the anvanced page](advanced.qmd) to learn how to ...
 
-* [Examples page](/examples/index.ipynb): sites using quartodoc.
+* [Examples page](examples.ipynb): sites using quartodoc.
 

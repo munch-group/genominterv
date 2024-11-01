@@ -1,31 +1,12 @@
 
 Install in development mode. 
 
+    cd .. ; conda develop . ; cd docs
 
-    conda develop ../conda-build
+Build docs and run interlinks filter
 
-
-
-Running the interlinks filter
-First, build the reference for your own site, which includes an objects.json inventory:
-
-    python -m quartodoc build
-
-Second, retrieve the inventory files for any other sources:
-
-    python -m quartodoc interlinks
-
-Finally you should see the filter run when previewing your docs:
-
-    quarto preview
-
-
-To render documentation as markdown:
-
-
-    quartodoc build
-
+    quartodoc build && quartodoc interlinks
 
 Uninstall 
 
-    conda develop ../conda-build -u
+    cd .. ; conda develop . -u ; cd docs

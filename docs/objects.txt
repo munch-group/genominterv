@@ -2,5 +2,7 @@
 # Project: genominterv
 # Version: 0.0.9999
 # The remainder of this file is compressed using zlib.
-genominterv.foo py:function 1 api/foo.html#genominterv.foo -
-genominterv.bar.baz py:function 1 api/bar.baz.html#genominterv.bar.baz -
+genominterv.interval_diff py:function 1 api/interval_diff.html#genominterv.interval_diff -
+genominterv.interval_union py:function 1 api/interval_union.html#genominterv.interval_union -
+genominterv.interval_intersect py:function 1 api/interval_intersect.html#genominterv.interval_intersect -
+genominterv.interval_collapse py:function 1 api/interval_collapse.html#genominterv.interval_collapse -

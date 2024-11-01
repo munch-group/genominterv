@@ -3,8 +3,10 @@ website:
   - contents:
     - api/index.qmd
     - contents:
-      - api/foo.qmd
-      - api/bar.baz.qmd
+      - api/interval_diff.qmd
+      - api/interval_union.qmd
+      - api/interval_intersect.qmd
+      - api/interval_collapse.qmd
       section: Some section
     id: api
   - id: dummy-sidebar

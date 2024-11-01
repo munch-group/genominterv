@@ -18,17 +18,11 @@ requirements:
   host:
     - python
     - pip
-  run:       # write here the list of libraries to look for your library dependencies
+  run:       # write here the list of your library dependencies
     - python
-    # - jupyter
-    # - ipython
-    # - matplotlib>=3.0
-    # - numpy>=1.1
-    # - requests
-    # - biopython
-    # - goatools>=1.2
-    # - pytables
-    # - wget
+    - pandas
+    - numpy
+    - statsmodels
 
 channels:    # write here the list of channels to look for your library dependencies
   # - uibcdf

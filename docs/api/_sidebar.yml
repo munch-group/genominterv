@@ -1,0 +1,10 @@
+website:
+  sidebar:
+  - contents:
+    - api/index.qmd
+    - contents:
+      - api/foo.qmd
+      - api/bar.baz.qmd
+      section: Some section
+    id: api
+  - id: dummy-sidebar

@@ -1,0 +1,10 @@
+# Function reference {.doc .doc-index}
+
+## Some section
+
+
+
+| | |
+| --- | --- |
+| [foo](foo.qmd#libraryname.foo) | The sum of two numbers. |
+| [bar.baz](bar.baz.qmd#libraryname.bar.baz) |  |

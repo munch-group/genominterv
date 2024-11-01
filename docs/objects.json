@@ -1,0 +1,1 @@
+{"project": "libraryname", "version": "0.0.9999", "count": 2, "items": [{"name": "libraryname.foo", "domain": "py", "role": "function", "priority": "1", "uri": "api/foo.html#libraryname.foo", "dispname": "-"}, {"name": "libraryname.bar.baz", "domain": "py", "role": "function", "priority": "1", "uri": "api/bar.baz.html#libraryname.bar.baz", "dispname": "-"}]}

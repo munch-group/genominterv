@@ -1,0 +1,6 @@
+# Sphinx inventory version 2
+# Project: libraryname
+# Version: 0.0.9999
+# The remainder of this file is compressed using zlib.
+libraryname.foo py:function 1 api/foo.html#libraryname.foo -
+libraryname.bar.baz py:function 1 api/bar.baz.html#libraryname.bar.baz -

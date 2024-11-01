@@ -1,0 +1,43 @@
+---
+title: Overview
+aliases:
+  - ../index.html
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+
+**libraryname** lets you ... 
+
+{{< lipsum 1 >}}
+
+## Installation
+
+```bash
+conda install -c munch-group libraryname
+```
+
+## Basic use
+
+{{< lipsum 1 >}}
+
+## Some use case
+
+The [foo function](`libraryname.foo`) does ... [](`libraryname.foo`) does ... [](`~libraryname.foo`) does ...
+
+{{< lipsum 1 >}}
+
+```python
+foo(4, 2)
+```
+
+
+## Learning more
+
+Go [to the anvanced page](advanced.qmd) to learn how to ...
+
+* [Examples page](/examples/index.ipynb): sites using quartodoc.
+

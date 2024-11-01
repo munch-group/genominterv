@@ -1,0 +1,246 @@
+[
+  {
+    "objectID": "api/foo.html",
+    "href": "api/foo.html",
+    "title": "foo",
+    "section": "",
+    "text": "libraryname.foo(x, y=1)\nThe sum of two numbers.\n\n\n\nx : int\n\nThe first number\n\ny :  = 1\n\nThe second number.\n\n\n\n\n\n\n : int\n\nSum of two numbers.\n\n\n\n\n\nscripts.bar : “Printing hello world”.",
+    "crumbs": [
+      "Some section",
+      "foo"
+    ]
+  },
+  {
+    "objectID": "api/foo.html#parameters",
+    "href": "api/foo.html#parameters",
+    "title": "foo",
+    "section": "",
+    "text": "x : int\n\nThe first number\n\ny :  = 1\n\nThe second number.",
+    "crumbs": [
+      "Some section",
+      "foo"
+    ]
+  },
+  {
+    "objectID": "api/foo.html#returns",
+    "href": "api/foo.html#returns",
+    "title": "foo",
+    "section": "",
+    "text": ": int\n\nSum of two numbers.",
+    "crumbs": [
+      "Some section",
+      "foo"
+    ]
+  },
+  {
+    "objectID": "api/foo.html#see-also",
+    "href": "api/foo.html#see-also",
+    "title": "foo",
+    "section": "",
+    "text": "scripts.bar : “Printing hello world”.",
+    "crumbs": [
+      "Some section",
+      "foo"
+    ]
+  },
+  {
+    "objectID": "api/bar.baz.html",
+    "href": "api/bar.baz.html",
+    "title": "bar.baz",
+    "section": "",
+    "text": "bar.baz\nlibraryname.bar.baz()",
+    "crumbs": [
+      "Some section",
+      "bar.baz"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html",
+    "href": "pages/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "libraryname lets you …\nNullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#installation",
+    "href": "pages/overview.html#installation",
+    "title": "Overview",
+    "section": "Installation",
+    "text": "Installation\nconda install -c munch-group libraryname",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#basic-use",
+    "href": "pages/overview.html#basic-use",
+    "title": "Overview",
+    "section": "Basic use",
+    "text": "Basic use\nNullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#some-use-case",
+    "href": "pages/overview.html#some-use-case",
+    "title": "Overview",
+    "section": "Some use case",
+    "text": "Some use case\nThe foo function does … libraryname.foo does … foo does …\nEtiam congue quam eget velit convallis, eu sagittis orci vestibulum. Vestibulum at massa turpis. Curabitur ornare ex sed purus vulputate, vitae porta augue rhoncus. Phasellus auctor suscipit purus, vel ultricies nunc. Nunc eleifend nulla ac purus volutpat, id fringilla felis aliquet. Duis vitae porttitor nibh, in rhoncus risus. Vestibulum a est vitae est tristique vehicula. Proin mollis justo id est tempus hendrerit. Praesent suscipit placerat congue. Aliquam eu elit gravida, consequat augue non, ultricies sapien. Nunc ultricies viverra ante, sit amet vehicula ante volutpat id. Etiam tempus purus vitae tellus mollis viverra. Donec at ornare mauris. Aliquam sodales hendrerit ornare. Suspendisse accumsan lacinia sapien, sit amet imperdiet dui molestie ut.\nfoo(4, 2)",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/overview.html#learning-more",
+    "href": "pages/overview.html#learning-more",
+    "title": "Overview",
+    "section": "Learning more",
+    "text": "Learning more\nGo to the anvanced page to learn how to …\n\nExamples page: sites using quartodoc.",
+    "crumbs": [
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "pages/something.html",
+    "href": "pages/something.html",
+    "title": "Some other use case",
+    "section": "",
+    "text": "Import some plotting libraries and set some defaults:\n%config InlineBackend.figure_formats = ['svg']\nparams = load_params('../global_params.yml')\nparams\n\n{'questions': ['Blah blah blah',\n               'Blah blah blah',\n               'Blah blah blah',\n               'Blah blah blah'],\n 'sample_size': 24}\nparams.sample_size\n\n24",
+    "crumbs": [
+      "Examples",
+      "Some other use case"
+    ]
+  },
+  {
+    "objectID": "pages/something.html#sampling",
+    "href": "pages/something.html#sampling",
+    "title": "Some other use case",
+    "section": "Sampling",
+    "text": "Sampling\n\nsubjects = pd.read_csv('../data/data_table.csv')\nassert subjects.index.size == params.sample_size\n\n\nTip:\nBy adding a label and caption to a cell displaying a table, you can refer to that table elsewhere and insert it in a manuscript.\n\n\nsubjects\n\n\n\nTable 1: People included in the analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK\n\n\n\n\n\n\n\n\n\n\n\nTip:\nBy generaing markdown for descriptions that will eventually end up in the manuscript, you can imbed python values. It also ensures that the manuscript exactly reflects the notebook.\n\n\n\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+    "crumbs": [
+      "Examples",
+      "Some other use case"
+    ]
+  },
+  {
+    "objectID": "pages/something.html#interviews",
+    "href": "pages/something.html#interviews",
+    "title": "Some other use case",
+    "section": "Interviews",
+    "text": "Interviews\n\n\nThe 24 subjects were asked to score the follow statements:\n\nBlah blah blah\nBlah blah blah\nBlah blah blah\nBlah blah blah",
+    "crumbs": [
+      "Examples",
+      "Some other use case"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "libraryname",
+    "section": "",
+    "text": "libraryname\nBlah blah…"
+  },
+  {
+    "objectID": "pages/advanced.html",
+    "href": "pages/advanced.html",
+    "title": "Advanced use",
+    "section": "",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sagittis posuere ligula sit amet lacinia. Duis dignissim pellentesque magna, rhoncus congue sapien finibus mollis. Ut eu sem laoreet, vehicula ipsum in, convallis erat. Vestibulum magna sem, blandit pulvinar augue sit amet, auctor malesuada sapien. Nullam faucibus leo eget eros hendrerit, non laoreet ipsum lacinia. Curabitur cursus diam elit, non tempus ante volutpat a. Quisque hendrerit blandit purus non fringilla. Integer sit amet elit viverra ante dapibus semper. Vestibulum viverra rutrum enim, at luctus enim posuere eu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\nDuis urna urna, pellentesque eu urna ut, malesuada bibendum dolor. Suspendisse potenti. Vivamus ornare, arcu quis molestie ultrices, magna est accumsan augue, auctor vulputate erat quam quis neque. Nullam scelerisque odio vel ultricies facilisis. Ut porta arcu non magna sagittis lacinia. Cras ornare vulputate lectus a tristique. Pellentesque ac arcu congue, rhoncus mi id, dignissim ligula.",
+    "crumbs": [
+      "Advanced",
+      "Advanced use"
+    ]
+  },
+  {
+    "objectID": "pages/advanced.html#some-topic",
+    "href": "pages/advanced.html#some-topic",
+    "title": "Advanced use",
+    "section": "Some topic",
+    "text": "Some topic\nFinding Python objects to document involves two pieces of configuration:\n\nthe package name.\na list of objects for content.\n\nquartodoc can look up a wide variety of objects, including functions, modules, classes, attributes, and methods:",
+    "crumbs": [
+      "Advanced",
+      "Advanced use"
+    ]
+  },
+  {
+    "objectID": "pages/example.html",
+    "href": "pages/example.html",
+    "title": "Some common use case",
+    "section": "",
+    "text": "Import some plotting libraries and set some defaults:\n%config InlineBackend.figure_formats = ['svg']\nparams = load_params('../global_params.yml')\nparams\n\n{'questions': ['Blah blah blah',\n               'Blah blah blah',\n               'Blah blah blah',\n               'Blah blah blah'],\n 'sample_size': 24}\nparams.sample_size\n\n24",
+    "crumbs": [
+      "Examples",
+      "Some common use case"
+    ]
+  },
+  {
+    "objectID": "pages/example.html#sampling",
+    "href": "pages/example.html#sampling",
+    "title": "Some common use case",
+    "section": "Sampling",
+    "text": "Sampling\n\nsubjects = pd.read_csv('../data/data_table.csv')\nassert subjects.index.size == params.sample_size\n\n\nTip:\nBy adding a label and caption to a cell displaying a table, you can refer to that table elsewhere and insert it in a manuscript.\n\n\nsubjects\n\n\n\nTable 1: People included in the analysis.\n\n\n\n\n\n\n\n\n\n\nname\nage\nsex\nposition\nnationality\n\n\n\n\n0\nJulie\n27\nF\nPhDstudent\nDK\n\n\n1\nThomas\n33\nM\nPostdoc\nGB\n\n\n2\nEmilie\n23\nF\nPhDstudent\nCH\n\n\n3\nSofie\n31\nF\nPostdoc\nDK\n\n\n4\nSara\n29\nF\nPostdoc\nUS\n\n\n5\nCecilie\n34\nF\nPostdoc\nDK\n\n\n6\nAnders\n32\nM\nPhDstudent\nUK\n\n\n7\nEmma\n42\nF\nProfessor\nDK\n\n\n8\nCaroline\n31\nF\nPhDstudent\nDK\n\n\n9\nLaura\n30\nF\nPostdoc\nDK\n\n\n10\nMikkel\n33\nM\nPostdoc\nNL\n\n\n11\nJens\n27\nM\nPhDstudent\nDK\n\n\n12\nAndreas\n29\nM\nPhDstudent\nDK\n\n\n13\nJakob\n28\nM\nPhDstudent\nDK\n\n\n14\nMathilde\n61\nF\nProfessor\nDK\n\n\n15\nKatrine\n35\nF\nPostdoc\nDK\n\n\n16\nPoul\n30\nM\nPostdoc\nDK\n\n\n17\nAnna\n26\nF\nPhDstudent\nDK\n\n\n18\nPeter\n42\nM\nProfessor\nGB\n\n\n19\nIda\n53\nF\nPostdoc\nDK\n\n\n20\nFreja\n30\nF\nPostdoc\nDK\n\n\n21\nMaria\n39\nF\nProfessor\nUK\n\n\n22\nAmalie\n29\nF\nPhDstudent\nDK\n\n\n23\nCamilla\n35\nF\nPostdoc\nDK\n\n\n\n\n\n\n\n\n\n\n\nTip:\nBy generaing markdown for descriptions that will eventually end up in the manuscript, you can imbed python values. It also ensures that the manuscript exactly reflects the notebook.\n\n\n\nThe 24 subjects from workplaces in Denmark were interviewed …. blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+    "crumbs": [
+      "Examples",
+      "Some common use case"
+    ]
+  },
+  {
+    "objectID": "pages/example.html#interviews",
+    "href": "pages/example.html#interviews",
+    "title": "Some common use case",
+    "section": "Interviews",
+    "text": "Interviews\n\n\nThe 24 subjects were asked to score the follow statements:\n\nBlah blah blah\nBlah blah blah\nBlah blah blah\nBlah blah blah",
+    "crumbs": [
+      "Examples",
+      "Some common use case"
+    ]
+  },
+  {
+    "objectID": "pages/basics.html",
+    "href": "pages/basics.html",
+    "title": "Basic use",
+    "section": "",
+    "text": "Nullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.\nNullam dapibus cursus dolor sit amet consequat. Nulla facilisi. Curabitur vel nulla non magna lacinia tincidunt. Duis porttitor quam leo, et blandit velit efficitur ut. Etiam auctor tincidunt porttitor. Phasellus sed accumsan mi. Fusce ut erat dui. Suspendisse eu augue eget turpis condimentum finibus eu non lorem. Donec finibus eros eu ante condimentum, sed pharetra sapien sagittis. Phasellus non dolor ac ante mollis auctor nec et sapien. Pellentesque vulputate at nisi eu tincidunt. Vestibulum at dolor aliquam, hendrerit purus eu, eleifend massa. Morbi consectetur eros id tincidunt gravida. Fusce ut enim quis orci hendrerit lacinia sed vitae enim.",
+    "crumbs": [
+      "Basics",
+      "Basic use"
+    ]
+  },
+  {
+    "objectID": "pages/basics.html#some-topic",
+    "href": "pages/basics.html#some-topic",
+    "title": "Basic use",
+    "section": "Some topic",
+    "text": "Some topic\nFinding Python objects to document involves two pieces of configuration:\n\nthe package name.\na list of objects for content.\n\nquartodoc can look up a wide variety of objects, including functions, modules, classes, attributes, and methods:",
+    "crumbs": [
+      "Basics",
+      "Basic use"
+    ]
+  },
+  {
+    "objectID": "api/index.html",
+    "href": "api/index.html",
+    "title": "Function reference",
+    "section": "",
+    "text": "foo\nThe sum of two numbers.\n\n\nbar.baz",
+    "crumbs": [
+      "Library reference",
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "api/index.html#some-section",
+    "href": "api/index.html#some-section",
+    "title": "Function reference",
+    "section": "",
+    "text": "foo\nThe sum of two numbers.\n\n\nbar.baz",
+    "crumbs": [
+      "Library reference",
+      "Function reference"
+    ]
+  }
+]

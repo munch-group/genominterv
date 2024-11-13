@@ -1,0 +1,19 @@
+# flatten { #genominterv.flatten }
+
+```python
+genominterv.flatten(list_of_tps)
+```
+
+Convert a list of sorted intervals to a list of endpoints.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**list_of_tps**]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation}</code>
+
+:   List of intervals.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation}</code>
+
+:   A list of interval ends

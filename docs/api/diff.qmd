@@ -1,0 +1,23 @@
+# diff { #genominterv.diff }
+
+```python
+genominterv.diff(a, b)
+```
+
+Difference intervals of two sorted lists of (start, end) intervals.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**a**]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)]{.parameter-annotation}</code>
+
+:   List of intervals.
+
+<code>[**b**]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)]{.parameter-annotation}</code>
+
+:   List of intervals.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)]{.parameter-annotation}</code>
+
+:   List of intervals.

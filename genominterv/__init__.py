@@ -15,8 +15,9 @@ from genominterv.chrom_sizes import chrom_sizes
 
 def by_chrom(func: function) -> function:
     """
-    Decorator that converting a function that operates on a data frame with only
-    one chromosome to one operating on a data frame with many chromosomes.
+    Decorator that converts a function operating on a pandas.DataFrame with
+    intervals from a single chromosome to one operating on one with
+    many chromosomes.
     """
     @wraps(func)
     def wrapper(*args):
@@ -52,8 +53,8 @@ def by_chrom(func: function) -> function:
 
 def with_chrom(func: function) -> function:
     """
-    Decorator for converting a function operating on (start, end) tuples to one
-    that takes data frames with chrom, start, end columns. Also sorts intervals.
+    Decorator for converting a function operating on a list of (start, end) tuples to one
+    that takes a pandas.DataFrame with chrom, start, end columns. Also sorts intervals.
     """
     @wraps(func)
     def wrapper(*args):
@@ -73,7 +74,7 @@ def with_chrom(func: function) -> function:
 # A decorator that preserves the signature.
 def genomic(func: function) -> function:
     """
-    Decorator for converting a function operating on (start, end) tuples to one
+    Decorator for converting a function operating on lists of (start, end) tuples to one
     that takes data frames with chrom, start, end columns and executes on each
     chromosome individually.
 
@@ -102,10 +103,15 @@ def flatten(list_of_tps):
     """
     Convert a list of sorted intervals to a list of endpoints.
 
-    :param query: Sorted list of (start, end) tuples.
-    :type query: list
-    :returns: A list of interval ends
-    :rtype: list
+    Parameters
+    ----------
+    list_of_tps : 
+        List of intervals.
+
+    Returns
+    ----------
+    : 
+        A list of interval ends
     """
     return reduce(lambda ls, ival: ls + list(ival), list_of_tps, [])
 
@@ -114,33 +120,41 @@ def unflatten(list_of_endpoints):
     """
     Convert a list of sorted endpoints into a list of intervals.
 
-    :param query: Sorted list of ends.
-    :type query: list
-    :returns: A list of intervals.
-    :rtype: list
+    Parameters
+    ----------
+    list_of_endpoints : 
+        List of endpoints.
+
+    Returns
+    ----------
+    : 
+        List of intervals.
     """
     return [ [list_of_endpoints[i], list_of_endpoints[i + 1]]
           for i in range(0, len(list_of_endpoints) - 1, 2)]
 
 
-def merge(query, annot, op):
+def merge(query: list, annot: list, op: Callable[[bool, bool], bool]) -> list:
     """
-    Merge two lists of sorted intervals according to the boolean function op.
+    Merge two lists of sorted (start, end) intervals according to the boolean function op.
 
-    :param query: List of (start, end) tuples.
-    :type query: list
-    :param query: List of (start, end) tuples.
-    :type query: list
-    :param op: Boolean function taking two a bolean arguments.
-    :type op: function
-    :returns: A list of interval merged according to op
-    :rtype: list
+    Parameters
+    ----------
+    a : 
+        List of intervals.
+    b : 
+        List of intervals.
+
+    Returns
+    ----------
+    : 
+        List of intervals.
     """
     a_endpoints = flatten(query)
     b_endpoints = flatten(annot)
 
-    assert a_endpoints == sorted(a_endpoints), "not sorted or non-overlaping"
-    assert b_endpoints == sorted(b_endpoints), "not sorted or non-overlaping"
+    assert a_endpoints == sorted(a_endpoints), "not sorted or non-overlapping"
+    assert b_endpoints == sorted(b_endpoints), "not sorted or non-overlapping"
 
 
     sentinel = max(a_endpoints[-1], b_endpoints[-1]) + 1
@@ -168,22 +182,82 @@ def merge(query, annot, op):
 
     return unflatten(res)
 
-def diff(a, b):
+def diff(a: list, b: list) -> list:
+    """
+    Difference intervals of two sorted lists of (start, end) intervals.
+
+    Parameters
+    ----------
+    a :
+        List of intervals.
+    b : 
+        List of intervals.
+
+    Returns
+    ----------
+    :
+        List of intervals.
+    """
     if not (a and b):
         return a and a or b
     return merge(a, b, lambda in_a, in_b: in_a and not in_b)
 
-def union(a, b):
+def union(a: list, b: list) -> list:
+    """
+    Union intervals of two sorted lists of (start, end) intervals.
+
+    Parameters
+    ----------
+    a :
+        List of intervals.
+    b :
+        List of intervals.
+
+    Returns
+    ----------
+    :
+        List of intervals.
+    """
     if not (a and b):
         return []
     return merge(a, b, lambda in_a, in_b: in_a or in_b)
 
-def intersect(a, b):
+def intersect(a: list, b: list) -> list:
+    """
+    Intersection intervals of two sorted lists of (start, end) intervals.
+
+    Parameters
+    ----------
+    a :
+        List of intervals.
+    b :
+        List of intervals.
+
+    Returns
+    ----------
+    :
+        List of intervals.
+    """
     if not (a and b):
         return []
     return merge(a, b, lambda in_a, in_b: in_a and in_b)
 
 def collapse(a):
+    """
+    Converts a list of sorted overlapping intervals to non-overlapping
+    intervals spanning each inCollapsed non intervals of two sorted 
+    lists of (start, end) intervals.
+
+    Parameters
+    ----------
+    a :
+        List of intervals.
+
+    Returns
+    ----------
+    :
+        List of intervals.
+    """    
     a_union = [list(a[0])]
     for i in range(1, len(a)):
         x = a[i]
@@ -193,7 +267,25 @@ def collapse(a):
             a_union[-1][1] = x[1]
     return a_union
 
-def invert(a, left, right):
+def invert(a: list, left: int, right: int) -> list:
+    """
+    Produces the complement of a list of sorted intervals 
+    limited by the left `left` and `right` parameters.
+
+    Parameters
+    ----------
+    a :
+        List of intervals.
+    left :
+        Left boundary position.
+    right :
+        Left boundary position.
+
+    Returns
+    ----------
+    :
+        List of intervals.
+    """
     starts, ends = zip(*collapse(sorted(a)))
     
     assert left <= starts[0] and right >= ends[-1]    
@@ -707,7 +799,7 @@ def proximity_test(query: pandas.DataFrame, annot: pandas.DataFrame, samples: in
     return TestResult(test_stat, p_value)
 
 
-def jaccard(a: list[tuple], b:list[tuple]) -> float:
+def jaccard_stat(a: list[tuple], b:list[tuple]) -> float:
     """
     Compute Jaccard overlap test statistic.
 
@@ -800,7 +892,7 @@ if __name__ == "__main__":
     chromosome_sizes={'chr1': 1500000, 'chr2': 1500000}
     @bootstrap(chromosome_sizes, samples=10)
     def my_stat(a, b):
-        return jaccard(a, b)
+        return jaccard_stat(a, b)
 
     print(my_stat(query, annot))
 

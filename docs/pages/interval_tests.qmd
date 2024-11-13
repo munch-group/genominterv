@@ -15,7 +15,7 @@ proximal to intervals in another set.
 
 ## Overlap
 
-[](`~genominterv.jaccard`) computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index)
+[](`~genominterv.jaccard_stat`) computes the [Jaccard index](https://en.wikipedia.org/wiki/Jaccard_index)
 statistic for two sets of genomic intervals.
 
 
@@ -27,9 +27,9 @@ required argument to bootstrap is the name of the chromosome assembly used.
 ```python
 @bootstrap('hg19', samples=1000)
 def jaccard_test(query, annot):
-    return jaccard(query, annot)
+    return jaccard_stat(query, annot)
 
-jaccard_stat, p_value = jaccard_test(intervals, other_intervals)
+stat, p_value = jaccard_test(intervals, other_intervals)
 ```
 
 The decorator works on any function that takes two sets of intervals.

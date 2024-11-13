@@ -33,7 +33,7 @@ shifted = inverval_shift(df)
 The bootstrap decorator turns a function producing
 a statistic into one that also produces a p-value. The bootstrapping resamples
 the intervals of the second argument for each chromosome independently. Only
-required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the [](`~genominterv.jaccard`) statistic to make a `jaccard_test` function that produce a p-value for the significane of overlap between two sets.
+required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the [](`~genominterv.jaccard_stat`) statistic to make a `jaccard_test` function that produce a p-value for the significane of overlap between two sets.
 
 ```python
 @bootstrap('hg19', samples=1000)

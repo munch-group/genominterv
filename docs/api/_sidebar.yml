@@ -8,7 +8,7 @@ website:
       - api/interval_intersect.qmd
       - api/interval_collapse.qmd
       - api/proximity_test.qmd
-      - api/jaccard.qmd
+      - api/jaccard_stat.qmd
       section: Set operations
     - contents:
       - api/remap.qmd
@@ -20,5 +20,14 @@ website:
       - api/genomic.qmd
       - api/bootstrap.qmd
       section: Decorators
+    - contents:
+      - api/union.qmd
+      - api/diff.qmd
+      - api/invert.qmd
+      - api/invert.qmd
+      - api/collapse.qmd
+      - api/flatten.qmd
+      - api/unflatten.qmd
+      section: Interval lists
     id: api
   - id: dummy-sidebar

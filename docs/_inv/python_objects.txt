@@ -10918,6 +10918,7 @@ sys.getdefaultencoding py:function 1 library/sys.html#$ -
 sys.getdlopenflags py:function 1 library/sys.html#$ -
 sys.getfilesystemencodeerrors py:function 1 library/sys.html#$ -
 sys.getfilesystemencoding py:function 1 library/sys.html#$ -
+sys.getobjects py:function 1 library/sys.html#$ -
 sys.getprofile py:function 1 library/sys.html#$ -
 sys.getrecursionlimit py:function 1 library/sys.html#$ -
 sys.getrefcount py:function 1 library/sys.html#$ -
@@ -13362,6 +13363,7 @@ zoneinfo.reset_tzpath py:function 1 library/zoneinfo.html#$ -
 --disable-test-modules std:cmdoption 1 using/configure.html#cmdoption-disable-test-modules -
 --enable-big-digits std:cmdoption 1 using/configure.html#cmdoption-enable-big-digits -
 --enable-bolt std:cmdoption 1 using/configure.html#cmdoption-enable-bolt -
+--enable-experimental-jit std:cmdoption 1 using/configure.html#cmdoption-enable-experimental-jit -
 --enable-framework std:cmdoption 1 using/configure.html#cmdoption-enable-framework -
 --enable-loadable-sqlite-extensions std:cmdoption 1 using/configure.html#cmdoption-enable-loadable-sqlite-extensions -
 --enable-optimizations std:cmdoption 1 using/configure.html#cmdoption-enable-optimizations -
@@ -13532,7 +13534,7 @@ EXCEPTION_HANDLED std:monitoring-event 1 library/sys.monitoring.html#monitoring-
 EXTENDED_ARG std:opcode 1 library/dis.html#opcode-$ -
 EXTRA_CFLAGS std:envvar 1 using/configure.html#envvar-$ -
 FORMAT_SIMPLE std:opcode 1 library/dis.html#opcode-$ -
-FORMAT_SPEC std:opcode 1 library/dis.html#opcode-$ -
+FORMAT_WITH_SPEC std:opcode 1 library/dis.html#opcode-$ -
 FOR_ITER std:opcode 1 library/dis.html#opcode-$ -
 GDBM_CFLAGS std:cmdoption 1 using/configure.html#cmdoption-arg-$ -
 GDBM_LIBS std:cmdoption 1 using/configure.html#cmdoption-arg-$ -
@@ -14285,7 +14287,7 @@ deprecations/index std:doc -1 deprecations/index.html Deprecations
 deprecations/pending-removal-in-3.13 std:doc -1 deprecations/pending-removal-in-3.13.html Pending Removal in Python 3.13
 deprecations/pending-removal-in-3.14 std:doc -1 deprecations/pending-removal-in-3.14.html Pending Removal in Python 3.14
 deprecations/pending-removal-in-3.15 std:doc -1 deprecations/pending-removal-in-3.15.html Pending Removal in Python 3.15
-deprecations/pending-removal-in-3.16 std:doc -1 deprecations/pending-removal-in-3.16.html Pending Removal in Python 3.16
+deprecations/pending-removal-in-3.16 std:doc -1 deprecations/pending-removal-in-3.16.html Pending removal in Python 3.16
 deprecations/pending-removal-in-future std:doc -1 deprecations/pending-removal-in-future.html Pending Removal in Future Versions
 describing-warning-filters std:label -1 library/warnings.html#$ Describing Warning Filters
 description std:label -1 library/argparse.html#$ -
@@ -15789,6 +15791,7 @@ regular package std:term -1 glossary.html#term-regular-package -
 relativeimports std:label -1 reference/import.html#$ Package Relative Imports
 relevant-peps std:label -1 library/typing.html#$ Specification for the Python Type System
 removed-in-python-39 std:label -1 whatsnew/3.9.html#$ Removed
+repeated-warning-suppression-criteria std:label -1 library/warnings.html#$ Repeated Warning Suppression Criteria
 reporting-bugs std:label -1 bugs.html#$ Dealing with Bugs
 repr-objects std:label -1 library/reprlib.html#$ Repr Objects
 request-objects std:label -1 library/urllib.request.html#$ Request Objects

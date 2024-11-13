@@ -4,7 +4,7 @@
 genominterv.genomic(func)
 ```
 
-Decorator for converting a function operating on (start, end) tuples to one
+Decorator for converting a function operating on lists of (start, end) tuples to one
 that takes data frames with chrom, start, end columns and executes on each
 chromosome individually.
 

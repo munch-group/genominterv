@@ -93,14 +93,14 @@ quartodoc:
 
   sections:
     - title: Set operations
-      desc: ""
+      desc: "Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns"
       contents:
         - interval_diff     
         - interval_union   
         - interval_intersect 
         - interval_collapse
         - proximity_test        
-        - jaccard
+        - jaccard_stat
     - title: Mapping
       desc: ""
       contents:
@@ -109,10 +109,24 @@ quartodoc:
         - interval_relative_distance
         - remap_interval_data
     - title: Decorators
-      desc: "Blah blah "
+      desc: "Utilities for user created genomic intervals and bootstrap tests."
       contents:
         - genomic 
         - bootstrap
+    - title: Interval lists
+      desc: "Standard set operations on sorted lists of (start, end) tuples."
+      contents:
+        - union 
+        - diff
+        - invert
+        - invert
+        - collapse
+        - flatten
+        - unflatten
+
+
+
+    
 
         
 

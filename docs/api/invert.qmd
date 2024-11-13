@@ -1,0 +1,28 @@
+# invert { #genominterv.invert }
+
+```python
+genominterv.invert(a, left, right)
+```
+
+Produces the complement of a list of sorted intervals 
+limited by the left `left` and `right` parameters.
+
+## Parameters {.doc-section .doc-section-parameters}
+
+<code>[**a**]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)]{.parameter-annotation}</code>
+
+:   List of intervals.
+
+<code>[**left**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation}</code>
+
+:   Left boundary position.
+
+<code>[**right**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation}</code>
+
+:   Left boundary position.
+
+## Returns {.doc-section .doc-section-returns}
+
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)]{.parameter-annotation}</code>
+
+:   List of intervals.

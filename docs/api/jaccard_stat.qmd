@@ -4,7 +4,7 @@
 genominterv.jaccard_stat(a, b)
 ```
 
-Compute jaccard_stat overlap test statistic.
+Compute Jaccard overlap test statistic.
 
 ## Parameters {.doc-section .doc-section-parameters}
 
@@ -20,4 +20,4 @@ Compute jaccard_stat overlap test statistic.
 
 <code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[float](`float`)]{.parameter-annotation}</code>
 
-:   The jaccard_stat test statistic.
+:   The Jaccard test statistic.

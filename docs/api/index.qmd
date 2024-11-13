@@ -2,7 +2,7 @@
 
 ## Set operations
 
-
+Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns
 
 | | |
 | --- | --- |
@@ -11,7 +11,7 @@
 | [interval_intersect](interval_intersect.qmd#genominterv.interval_intersect) | This function computes the intersection of two sets of genomic intervals. The genomic intervals |
 | [interval_collapse](interval_collapse.qmd#genominterv.interval_collapse) | This function computes the union of intervals in a single set. |
 | [proximity_test](proximity_test.qmd#genominterv.proximity_test) | Test for proximity of intervals to a set of annotations. |
-| [jaccard](jaccard.qmd#genominterv.jaccard) | Compute Jaccard overlap test statistic. |
+| [jaccard_stat](jaccard_stat.qmd#genominterv.jaccard_stat) | Compute Jaccard overlap test statistic. |
 
 ## Mapping
 
@@ -26,9 +26,23 @@
 
 ## Decorators
 
-Blah blah 
+Utilities for user created genomic intervals and bootstrap tests.
 
 | | |
 | --- | --- |
-| [genomic](genomic.qmd#genominterv.genomic) | Decorator for converting a function operating on (start, end) tuples to one |
+| [genomic](genomic.qmd#genominterv.genomic) | Decorator for converting a function operating on lists of (start, end) tuples to one |
 | [bootstrap](bootstrap.qmd#genominterv.bootstrap) | Parameterized decorator that turns a function producing a statistic into one that also |
+
+## Interval lists
+
+Standard set operations on sorted lists of (start, end) tuples.
+
+| | |
+| --- | --- |
+| [union](union.qmd#genominterv.union) | Union intervals of two sorted lists of (start, end) intervals. |
+| [diff](diff.qmd#genominterv.diff) | Difference intervals of two sorted lists of (start, end) intervals. |
+| [invert](invert.qmd#genominterv.invert) | Produces the complement of a list of sorted intervals  |
+| [invert](invert.qmd#genominterv.invert) | Produces the complement of a list of sorted intervals  |
+| [collapse](collapse.qmd#genominterv.collapse) | Converts a list of sorted overlapping intervals to non-overlapping |
+| [flatten](flatten.qmd#genominterv.flatten) | Convert a list of sorted intervals to a list of endpoints. |
+| [unflatten](unflatten.qmd#genominterv.unflatten) | Convert a list of sorted endpoints into a list of intervals. |

@@ -13,7 +13,7 @@ from typing import Any, TypeVar
 
 from genominterv.chrom_sizes import chrom_sizes
 
-def by_chrom(func: function) -> function:
+def by_chrom(func: Callable) -> Callable: 
     """
     Decorator that converts a function operating on a pandas.DataFrame with
     intervals from a single chromosome to one operating on one with
@@ -51,7 +51,7 @@ def by_chrom(func: function) -> function:
     return wrapper
 
 
-def with_chrom(func: function) -> function:
+def with_chrom(func: Callable) -> Callable:
     """
     Decorator for converting a function operating on a list of (start, end) tuples to one
     that takes a pandas.DataFrame with chrom, start, end columns. Also sorts intervals.
@@ -72,7 +72,7 @@ def with_chrom(func: function) -> function:
     return wrapper
 
 # A decorator that preserves the signature.
-def genomic(func: function) -> function:
+def genomic(func: Callable) -> Callable:
     """
     Decorator for converting a function operating on lists of (start, end) tuples to one
     that takes data frames with chrom, start, end columns and executes on each
@@ -714,7 +714,7 @@ def bootstrap(chromosome_sizes: str | dict, samples: int=1000, smaller: bool=Fal
         
     Returns
     -------
-    : float, [float], [list]
+    : 
         The decorated function returns a statistic and a p-value. A decorated function that takes data 
         frames with chrom, start, end columns and executes on each chromosome individually. 
     """

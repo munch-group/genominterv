@@ -34,6 +34,6 @@ required argument to bootstrap is the name of the genome assembly used.
 
 ## Returns {.doc-section .doc-section-returns}
 
-<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [([float](`float`), \[[float](`float`)\], \[[list](`list`)\])]{.parameter-annotation}</code>
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation}</code>
 
 :   The decorated function returns a statistic and a p-value. A decorated function that takes data  frames with chrom, start, end columns and executes on each chromosome individually.

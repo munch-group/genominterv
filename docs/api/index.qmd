@@ -15,7 +15,7 @@ Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns
 
 ## Mapping
 
-
+Mapping intervals relative to other coordinates.
 
 | | |
 | --- | --- |

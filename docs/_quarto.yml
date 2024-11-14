@@ -102,7 +102,7 @@ quartodoc:
         - proximity_test        
         - jaccard_stat
     - title: Mapping
-      desc: ""
+      desc: "Mapping intervals relative to other coordinates."
       contents:
         - remap 
         - interval_distance
@@ -123,10 +123,3 @@ quartodoc:
         - collapse
         - flatten
         - unflatten
-
-
-
-    
-
-        
-

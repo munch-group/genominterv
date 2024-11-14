@@ -10,12 +10,12 @@ chromosome individually.
 
 ## Parameters {.doc-section .doc-section-parameters}
 
-<code>[**func**]{.parameter-name} [:]{.parameter-annotation-sep} [[function](`function`)]{.parameter-annotation}</code>
+<code>[**func**]{.parameter-name} [:]{.parameter-annotation-sep} [[Callable](`collections.abc.Callable`)]{.parameter-annotation}</code>
 
 :   Function accepting (start, end) tuples.
 
 ## Returns {.doc-section .doc-section-returns}
 
-<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[function](`function`)]{.parameter-annotation}</code>
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[Callable](`collections.abc.Callable`)]{.parameter-annotation}</code>
 
 :   A decorated function that takes data frames with chrom, start, end columns and executes on each chromosome individually.

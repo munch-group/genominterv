@@ -225,6 +225,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#set-operations" id="toc-set-operations" class="nav-link" data-scroll-target="#set-operations">Set operations</a></li>
   <li><a href="#mapping" id="toc-mapping" class="nav-link" data-scroll-target="#mapping">Mapping</a></li>
   <li><a href="#decorators" id="toc-decorators" class="nav-link" data-scroll-target="#decorators">Decorators</a></li>
+  <li><a href="#interval-lists" id="toc-interval-lists" class="nav-link" data-scroll-target="#interval-lists">Interval lists</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -239,6 +240,7 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="doc doc-index">Function reference</h1>
 <section id="set-operations" class="level2">
 <h2 class="anchored" data-anchor-id="set-operations">Set operations</h2>
+<p>Set operations on pandas.DataFrames with <code>chrom</code>, <code>start</code>, <code>end</code> columns</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -262,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
 <td>Test for proximity of intervals to a set of annotations.</td>
 </tr>
 <tr class="even">
-<td><a href="../api/jaccard.html#genominterv.jaccard">jaccard</a></td>
+<td><a href="../api/jaccard_stat.html#genominterv.jaccard_stat">jaccard_stat</a></td>
 <td>Compute Jaccard overlap test statistic.</td>
 </tr>
 </tbody>
@@ -270,6 +272,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="mapping" class="level2">
 <h2 class="anchored" data-anchor-id="mapping">Mapping</h2>
+<p>Mapping intervals relative to other coordinates.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -293,16 +296,52 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="decorators" class="level2">
 <h2 class="anchored" data-anchor-id="decorators">Decorators</h2>
-<p>Blah blah</p>
+<p>Utilities for user created genomic intervals and bootstrap tests.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td><a href="../api/genomic.html#genominterv.genomic">genomic</a></td>
-<td>Decorator for converting a function operating on (start, end) tuples to one</td>
+<td>Decorator for converting a function operating on lists of (start, end) tuples to one</td>
 </tr>
 <tr class="even">
 <td><a href="../api/bootstrap.html#genominterv.bootstrap">bootstrap</a></td>
 <td>Parameterized decorator that turns a function producing a statistic into one that also</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="interval-lists" class="level2">
+<h2 class="anchored" data-anchor-id="interval-lists">Interval lists</h2>
+<p>Standard set operations on sorted lists of (start, end) tuples.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../api/union.html#genominterv.union">union</a></td>
+<td>Union intervals of two sorted lists of (start, end) intervals.</td>
+</tr>
+<tr class="even">
+<td><a href="../api/diff.html#genominterv.diff">diff</a></td>
+<td>Difference intervals of two sorted lists of (start, end) intervals.</td>
+</tr>
+<tr class="odd">
+<td><a href="../api/invert.html#genominterv.invert">invert</a></td>
+<td>Produces the complement of a list of sorted intervals</td>
+</tr>
+<tr class="even">
+<td><a href="../api/invert.html#genominterv.invert">invert</a></td>
+<td>Produces the complement of a list of sorted intervals</td>
+</tr>
+<tr class="odd">
+<td><a href="../api/collapse.html#genominterv.collapse">collapse</a></td>
+<td>Converts a list of sorted overlapping intervals to non-overlapping</td>
+</tr>
+<tr class="even">
+<td><a href="../api/flatten.html#genominterv.flatten">flatten</a></td>
+<td>Convert a list of sorted intervals to a list of endpoints.</td>
+</tr>
+<tr class="odd">
+<td><a href="../api/unflatten.html#genominterv.unflatten">unflatten</a></td>
+<td>Convert a list of sorted endpoints into a list of intervals.</td>
 </tr>
 </tbody>
 </table>

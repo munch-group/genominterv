@@ -288,13 +288,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="overlap" class="level2">
 <h2 class="anchored" data-anchor-id="overlap">Overlap</h2>
-<p><a href="../api/jaccard.html#genominterv.jaccard"><code>jaccard</code></a> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard index</a> statistic for two sets of genomic intervals.</p>
+<p><a href="../api/jaccard_stat.html#genominterv.jaccard_stat"><code>jaccard_stat</code></a> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard index</a> statistic for two sets of genomic intervals.</p>
 <p>This can be combined with the <a href="../api/bootstrap.html#genominterv.bootstrap"><code>bootstrap</code></a> decorator to produce a test for overlap. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">1000</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(query, annot):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard(query, annot)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard_stat(query, annot)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>jaccard_stat, p_value <span class="op">=</span> jaccard_test(intervals, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(intervals, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The decorator works on any function that takes two sets of intervals.</p>
 
 

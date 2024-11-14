@@ -206,8 +206,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/jaccard.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jaccard</span></a>
+  <a href="../api/jaccard_stat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">jaccard_stat</span></a>
   </div>
 </li>
       </ul>
@@ -270,6 +270,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Interval lists</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/union.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">union</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/diff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">diff</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/invert.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">invert</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/invert.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">invert</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/collapse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">collapse</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/flatten.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">flatten</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/unflatten.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">unflatten</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -297,11 +350,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="genominterv.genomic" class="level1">
 <h1>genomic</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.genomic(func)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Decorator for converting a function operating on (start, end) tuples to one that takes data frames with chrom, start, end columns and executes on each chromosome individually.</p>
+<p>Decorator for converting a function operating on lists of (start, end) tuples to one that takes data frames with chrom, start, end columns and executes on each chromosome individually.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <dl>
-<dt><code><span class="parameter-name"><strong>func</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>function</code></span></code></dt>
+<dt><code><span class="parameter-name"><strong>func</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span></code></dt>
 <dd>
 <p>Function accepting (start, end) tuples.</p>
 </dd>
@@ -310,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2 doc-section doc-section-returns">
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <dl>
-<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>function</code></span></code></dt>
+<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span></code></dt>
 <dd>
 <p>A decorated function that takes data frames with chrom, start, end columns and executes on each chromosome individually.</p>
 </dd>

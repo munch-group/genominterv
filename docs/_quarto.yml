@@ -55,7 +55,7 @@ website:
         - section: "Set operations"
           contents:
             - pages/set_operations.qmd
-            - pages/decorators.qmd
+            - pages/decorators.ipynb
         - section: "Mapping"
           contents:
             - pages/mapping.qmd  

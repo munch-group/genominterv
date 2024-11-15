@@ -1,5 +1,5 @@
-import pandas
-import numpy
+import pandas as pd
+import numpy as np
 
 from functools import wraps, reduce, partial
 import bisect, math, random, sys
@@ -13,9 +13,74 @@ from typing import Any, TypeVar
 
 from genominterv.chrom_sizes import chrom_sizes
 
+
+def _plot_intervals(query=None, annot=None, **kwargs):
+
+    import matplotlib.pyplot as plt
+
+    tups = []
+    if query is not None:
+        tups.append(('query', query))
+    if annot is not None:
+        tups.append(('annot', annot))
+    tups.extend(kwargs.items())
+    tups = reversed(tups)
+
+    df_list = []
+    labels = []
+    for label, df in tups:
+        labels.append(label)
+        df['label'] = label
+        df_list.append(df)
+    bigdf = pd.concat(df_list)
+
+    bigdf['chrom'] = pd.Categorical(bigdf['chrom'], bigdf['chrom'].unique())
+    bigdf['label'] = pd.Categorical(bigdf['label'], bigdf['label'].unique())
+
+    gr = bigdf.groupby('chrom', observed=False)
+
+    fig, axes = plt.subplots(gr.ngroups, 1, figsize=(8, 1.5*gr.ngroups), 
+                            sharey=True
+                            #  sharex=True
+                             )
+    if type(axes) is not np.ndarray:
+        # in case there is only one axis so it not returned as a list
+        axes = [axes]
+    
+    # with plt.style.context(('default')):
+
+    for i, chrom in enumerate(gr.groups):
+        _df = gr.get_group(chrom)
+        _gr = _df.groupby('label', observed=False)
+        for y, label in enumerate(_gr.groups):
+            try:
+                df = _gr.get_group(label)
+            except KeyError:
+                continue
+            y = np.repeat(y, df.index.size)
+            axes[i].hlines(y, df.start.tolist(), df.end.tolist(), alpha=0.5, lw=5, colors=f'C{y[0]}')
+            delta = len(labels)/10
+            axes[i].vlines(df.start.tolist(), y-delta, y+delta, alpha=0.5, lw=2, colors=f'C{y[0]}')
+            axes[i].vlines(df.end.tolist(), y-delta, y+delta, alpha=0.5, lw=2, colors=f'C{y[0]}')
+
+        axes[i].spines['top'].set_visible(False)
+        axes[i].spines['left'].set_visible(False)
+        axes[i].spines['right'].set_visible(False)
+
+        axes[i].set_yticks(list(range(len(labels))), labels)
+        axes[i].tick_params(axis='y', which='both', left=False)
+        axes[i].set_ylim(-1, len(labels)-0.7)
+        # axes[i].set_xlim(df.start.min()-delta, df.end.max()+delta)
+        if i != gr.ngroups-1:
+            axes[i].tick_params(axis='x', which='both', bottom=False)
+
+        axes[i].set_title(chrom, loc='left', fontsize=10)
+    plt.tight_layout()
+    
+
 def by_chrom(func: Callable) -> Callable: 
     """
-    Decorator that converts a function operating on a pandas.DataFrame with
+    Decorator that converts a function operating on a pd.DataFrame with
     intervals from a single chromosome to one operating on one with
     many chromosomes.
     """
@@ -45,16 +110,24 @@ def by_chrom(func: Callable) -> Callable:
             func_args = list()
             for i, df in enumerate(data_frames):
                 func_args.append(df.loc[idx[i][chrom]])
-            results.append(func(*func_args))
-
-        return pandas.concat(results).reset_index()
+            _df = func(*func_args)
+            if _df.index.size > 0:
+                results.append(_df)
+        if len(results):
+            # df = pd.concat(results).reset_index()
+            df = pd.concat(results).reset_index(drop=True)        
+            # if 'index' in df:
+            #     df.drop(columns=['index'], inplace=True)        
+            return df
+        else:
+            return _df # to get the empty columns
     return wrapper
 
 
 def with_chrom(func: Callable) -> Callable:
     """
     Decorator for converting a function operating on a list of (start, end) tuples to one
-    that takes a pandas.DataFrame with chrom, start, end columns. Also sorts intervals.
+    that takes a pd.DataFrame with chrom, start, end columns. Also sorts intervals.
     """
     @wraps(func)
     def wrapper(*args):
@@ -66,7 +139,7 @@ def with_chrom(func: Callable) -> Callable:
             tps_list.append(tps)
         assert len(chrom_set) == 1
         chrom = chrom_set.pop()
-        res_df = pandas.DataFrame.from_records(func(*tps_list), columns = ['start', 'end'])
+        res_df = pd.DataFrame.from_records(func(*tps_list), columns = ['start', 'end'])
         res_df['chrom'] = chrom
         return res_df
     return wrapper
@@ -153,8 +226,8 @@ def merge(query: list, annot: list, op: Callable[[bool, bool], bool]) -> list:
     a_endpoints = flatten(query)
     b_endpoints = flatten(annot)
 
-    assert a_endpoints == sorted(a_endpoints), "not sorted or non-overlapping"
-    assert b_endpoints == sorted(b_endpoints), "not sorted or non-overlapping"
+    # assert a_endpoints == sorted(a_endpoints), "not sorted or non-overlapping"
+    # assert b_endpoints == sorted(b_endpoints), "not sorted or non-overlapping"
 
 
     sentinel = max(a_endpoints[-1], b_endpoints[-1]) + 1
@@ -308,7 +381,7 @@ def invert(a: list, left: int, right: int) -> list:
     return inverted
 
 @genomic
-def interval_diff(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
+def interval_diff(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
     """
     This function computes the difference between two sets of genomic intervals.
     The genomic intervals in each set must be non-overlapping. This can be
@@ -336,7 +409,7 @@ def interval_diff(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.Da
 
 
 @genomic
-def interval_union(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
+def interval_union(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
     """
     This function computes the union of two sets of genomic intervals. The genomic intervals
     in each set must be non-overlapping. This can be achieved using interval_collapse.
@@ -362,7 +435,7 @@ def interval_union(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.D
 
 
 @genomic
-def interval_intersect(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
+def interval_intersect(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
     """
     This function computes the intersection of two sets of genomic intervals. The genomic intervals
     in each set must be non-overlapping. This can be achieved using interval_collapse.
@@ -388,7 +461,7 @@ def interval_intersect(query: pandas.DataFrame, annot: pandas.DataFrame) -> pand
 
 
 @genomic
-def interval_collapse(interv: pandas.DataFrame) -> pandas.DataFrame:
+def interval_collapse(interv: pd.DataFrame) -> pd.DataFrame:
     """
     This function computes the union of intervals in a single set.
 
@@ -459,25 +532,25 @@ def remap(query: tuple[int|float, int|float], annot: list[tuple], relative=False
     if interval_mid < query_start:
         if include_prox_coord:
             remapped = [(query_end - interval_end, query_start - interval_end,
-                        idx == 0 and numpy.nan or annot_starts[idx], 
-                        idx == 0 and numpy.nan or annot_ends[idx])]
+                        idx == 0 and np.nan or annot_starts[idx], 
+                        idx == 0 and np.nan or annot_ends[idx])]
         else:
             remapped = [(query_end - interval_end, query_start - interval_end)]
     elif interval_mid >= query_end:
         if include_prox_coord:
             remapped = [(query_start - interval_start, query_end - interval_start,
-                        idx == len(annot_starts) and numpy.nan or annot_starts[idx-1], 
-                        idx == len(annot_ends) and numpy.nan or annot_ends[idx-1])]
+                        idx == len(annot_starts) and np.nan or annot_starts[idx-1], 
+                        idx == len(annot_ends) and np.nan or annot_ends[idx-1])]
         else:
             remapped = [(query_start - interval_start, query_end - interval_start)]            
     else:
         if include_prox_coord:
             remapped = [(query_start - interval_start, interval_mid - interval_start,
-                        idx == 0 and numpy.nan or annot_starts[idx-1], 
-                        idx == 0 and numpy.nan or annot_ends[idx-1]),
+                        idx == 0 and np.nan or annot_starts[idx-1], 
+                        idx == 0 and np.nan or annot_ends[idx-1]),
                         (query_end - interval_end, interval_mid - interval_end,
-                        idx == len(annot_starts) and numpy.nan or annot_starts[idx], 
-                        idx == len(annot_ends) and numpy.nan or annot_ends[idx])]
+                        idx == len(annot_starts) and np.nan or annot_starts[idx], 
+                        idx == len(annot_ends) and np.nan or annot_ends[idx])]
         else:
             remapped = [(query_start - interval_start, interval_mid - interval_start),
                         (query_end - interval_end, interval_mid - interval_end)]
@@ -489,7 +562,7 @@ def remap(query: tuple[int|float, int|float], annot: list[tuple], relative=False
     # compute remapped distance relative to the interval length (so that is is max 0.5)
     if relative:
         if interval_start is None or interval_end is None:
-            remapped = [(numpy.nan, numpy.nan)]
+            remapped = [(np.nan, np.nan)]
         else:
             interval_size = float(interval_end - interval_start)
             remapped = [(s/interval_size, e/interval_size) for (s, e) in remapped]
@@ -497,7 +570,7 @@ def remap(query: tuple[int|float, int|float], annot: list[tuple], relative=False
     return remapped
 
 @genomic
-def interval_distance(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
+def interval_distance(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
     """
     Computes the distance from each query interval to the closest interval in
     annot. If a query interval overlaps the midpoint between two annot intervals
@@ -595,14 +668,14 @@ def remap_interval_data(query, annot):
             for remapped_start, remapped_end, start_prox, end_prox in remap((start, end), annot_tups, include_prox_coord=True):
                 remapped.append((remapped_start, remapped_end, start_prox, end_prox) + tuple(row))
 
-        df = pandas.DataFrame().from_records(remapped, 
+        df = pd.DataFrame().from_records(remapped, 
                 columns=('start_remap', 'end_remap', 'start_prox', 'end_prox') + column_names)
-            # df = pandas.DataFrame().from_records(remapped, columns=['idx', 'start_remap', 'end_remap']).set_index('idx')
-            # df = pandas.merge(group, df, right_index=True, left_index=True)
+            # df = pd.DataFrame().from_records(remapped, columns=['idx', 'start_remap', 'end_remap']).set_index('idx')
+            # df = pd.merge(group, df, right_index=True, left_index=True)
 
         df_list.append(df)
 
-    df = (pandas.concat(df_list)
+    df = (pd.concat(df_list)
             .reset_index(drop=True)
             .rename(columns={'start': 'start_orig',
                             'end': 'end_orig'})
@@ -650,14 +723,14 @@ def remap_interval_data(query, annot):
 #         query_df_list.append(query_group.iloc[idx_list])
 #         annot_df_list.append(annot_group.loc[annot_idx_list, ['start', 'end']])
 
-#     query_data_overlap = (pandas.concat(query_df_list)
+#     query_data_overlap = (pd.concat(query_df_list)
 #                             .reset_index(drop=True)
 #                          )
-#     annot_intervals = (pandas.concat(annot_df_list)
+#     annot_intervals = (pd.concat(annot_df_list)
 #                         .reset_index(drop=True)
 #                         .rename(columns={'start': 'ovl_start', 'end': 'ovl_end'})
 #                         )
-#     return pandas.concat([query_data_overlap, annot_intervals], axis=1)
+#     return pd.concat([query_data_overlap, annot_intervals], axis=1)
 
 
 def interval_permute(df, chromosome_sizes):
@@ -671,8 +744,8 @@ def interval_permute(df, chromosome_sizes):
         assert group.end.max() <= chromosome_sizes[chrom]
 
         segment_lengths = group.end - group.start
-        total_gap = numpy.sum(group.start - group.end.shift())
-        if numpy.isnan(total_gap): # in case there are no internal gaps (one segment)
+        total_gap = np.sum(group.start - group.end.shift())
+        if np.isnan(total_gap): # in case there are no internal gaps (one segment)
             total_gap = 0
         else:
             total_gap = int(total_gap)
@@ -682,16 +755,16 @@ def interval_permute(df, chromosome_sizes):
             total_gap += chromosome_sizes[chrom] + 1 - group.end.iloc[-1]
 
         assert total_gap >= len(segment_lengths)+1, (total_gap, len(segment_lengths)+1)
-        idx = pandas.Series(sorted(random.sample(range(total_gap), len(segment_lengths)+1)))
+        idx = pd.Series(sorted(random.sample(range(total_gap), len(segment_lengths)+1)))
         gap_lengths = (idx - idx.shift()).dropna()
 
-        borders = numpy.cumsum([j for i in zip(gap_lengths, segment_lengths) for j in i])
+        borders = np.cumsum([j for i in zip(gap_lengths, segment_lengths) for j in i])
         starts, ends = borders[::2], borders[1::2]
 
-        new_df = pandas.DataFrame({'chrom': chrom, 'start': starts, 'end': ends})
+        new_df = pd.DataFrame({'chrom': chrom, 'start': starts, 'end': ends})
         group_list.append(new_df)
 
-    return pandas.concat(group_list)
+    return pd.concat(group_list)
 
 
 def bootstrap(chromosome_sizes: str | dict, samples: int=1000, smaller: bool=False, return_boot: bool=False):
@@ -749,7 +822,7 @@ def bootstrap(chromosome_sizes: str | dict, samples: int=1000, smaller: bool=Fal
     return decorator
 
 
-def proximity_test(query: pandas.DataFrame, annot: pandas.DataFrame, samples: int=10000, npoints: int=1000, two_sided: bool=False) -> namedtuple:
+def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000, npoints: int=1000, two_sided: bool=False) -> namedtuple:
     """
     Test for proximity of intervals to a set of annotations.
 
@@ -777,7 +850,7 @@ def proximity_test(query: pandas.DataFrame, annot: pandas.DataFrame, samples: in
 
     def _stat(distances, npoints):
         obs_ecdf = ECDF(distances)
-        points = numpy.linspace(0, 0.5, num=npoints)    
+        points = np.linspace(0, 0.5, num=npoints)    
         test_stat = sum(obs_ecdf(points) - 2 * points) * 2 / npoints
         return test_stat
     
@@ -785,7 +858,7 @@ def proximity_test(query: pandas.DataFrame, annot: pandas.DataFrame, samples: in
     
     null_distr = list()
     for i in range(samples):
-        sampled_distances = numpy.random.uniform(0, 0.5, len(distances))
+        sampled_distances = np.random.uniform(0, 0.5, len(distances))
         # we compute absolute values for the null distribution
         null_distr.append(_stat(sampled_distances, npoints))
     null_distr.sort()
@@ -829,17 +902,17 @@ if __name__ == "__main__":
 
     assert 0
 
-    query = pandas.DataFrame(dict(chrom='X', start=[3, 5], end=[15, 7], extra=['foo', 'bar']))
+    query = pd.DataFrame(dict(chrom='X', start=[3, 5], end=[15, 7], extra=['foo', 'bar']))
     print(query)
-    annot = pandas.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
+    annot = pd.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
     print(annot)
     print(remap_interval_data(query, annot))
 
     assert 0
 
-    query = pandas.DataFrame(dict(chrom='X', start=[3, 5], end=[22, 7], extra=['foo', 'bar']))
+    query = pd.DataFrame(dict(chrom='X', start=[3, 5], end=[22, 7], extra=['foo', 'bar']))
     print(query)
-    annot = pandas.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
+    annot = pd.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
     print(annot)
 
     print(ovl_interval_data(query, annot))
@@ -848,12 +921,12 @@ if __name__ == "__main__":
 
     # annotation
     tp = [('chr1', 1, 3), ('chr1', 4, 10), ('chr1', 25, 30), ('chr1', 20, 27), ('chr2', 1, 10), ('chr2', 1, 3)]
-    annot = pandas.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
+    annot = pd.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
     print("annot\n", annot)
 
     # query
     tp = [('chr1', 8, 22), ('chr8', 14, 15)]
-    query = pandas.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
+    query = pd.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
     print("query\n", query)
 
     annot_collapsed = interval_collapse(annot)
@@ -872,8 +945,8 @@ if __name__ == "__main__":
     # ##################################################################
 
     print('jaccard:')
-    annot = pandas.DataFrame({'chrom': 'chr1', 'start': range(0, 1000000, 1000), 'end': range(100, 1000100, 1000)})
-    query = pandas.DataFrame({'chrom': 'chr1', 'start': range(50, 1000050, 1000), 'end': range(150, 1000150, 1000)})
+    annot = pd.DataFrame({'chrom': 'chr1', 'start': range(0, 1000000, 1000), 'end': range(100, 1000100, 1000)})
+    query = pd.DataFrame({'chrom': 'chr1', 'start': range(50, 1000050, 1000), 'end': range(150, 1000150, 1000)})
 
     print(annot)
     print(query)
@@ -881,9 +954,9 @@ if __name__ == "__main__":
     # print(interval_jaccard(query, annot, samples=10, chromosome_sizes={'chr1': 1500000, 'chr2': 1500000}))
 
 
-    annot = pandas.DataFrame({'chrom': 'chr1', 'start': [500, 2000], 'end': [1000, 2500]})
-    query = pandas.concat([pandas.DataFrame({'chrom': 'chr1', 'start': [1100, 1800], 'end': [1200, 1900]}),
-                           pandas.DataFrame({'chrom': 'chr2', 'start': [1100, 1800], 'end': [1200, 1900]})
+    annot = pd.DataFrame({'chrom': 'chr1', 'start': [500, 2000], 'end': [1000, 2500]})
+    query = pd.concat([pd.DataFrame({'chrom': 'chr1', 'start': [1100, 1800], 'end': [1200, 1900]}),
+                           pd.DataFrame({'chrom': 'chr2', 'start': [1100, 1800], 'end': [1200, 1900]})
                            ])
 
     print(annot)
@@ -911,8 +984,8 @@ if __name__ == "__main__":
 
     # def overlap_count(query, annot):
     #       center = annot.start + (annot.end-annot.start)/2
-    #       b = numpy.equal(numpy.searchsorted(annot.start, center) - 1,
-    #                       numpy.searchsorted(annot.end, center, side='left')) & \
+    #       b = np.equal(np.searchsorted(annot.start, center) - 1,
+    #                       np.searchsorted(annot.end, center, side='left')) & \
     #             (query.chrom == annot.chrom)
 
     #       return b.sum()

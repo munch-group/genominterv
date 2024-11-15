@@ -58,8 +58,8 @@ website:
             - pages/decorators.ipynb
         - section: "Mapping"
           contents:
+            - pages/interval_tests.ipynb
             - pages/mapping.qmd  
-            - pages/interval_tests.qmd
         - section: "Examples"
           contents:
             - examples/examples.ipynb            

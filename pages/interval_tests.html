@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tests on intervals – genominterv</title>
+<title>Interval tests – genominterv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../examples/examples.html" rel="next">
-<link href="../pages/mapping.html" rel="prev">
+<link href="../pages/mapping.html" rel="next">
+<link href="../pages/decorators.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/mapping.html">Mapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Tests on intervals</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Mapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Interval tests</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -180,6 +180,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Set operations on intervals</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decorators for intervals</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -193,14 +199,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/mapping.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Remapping intervals</span></a>
+  <a href="../pages/interval_tests.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Interval tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/interval_tests.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Tests on intervals</span></a>
+  <a href="../pages/mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Remapping intervals</span></a>
   </div>
 </li>
       </ul>
@@ -257,9 +263,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/mapping.html">Mapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Tests on intervals</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Mapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Interval tests</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Tests on intervals</h1>
+<h1 class="title">Interval tests</h1>
 </div>
 
 
@@ -276,20 +282,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><strong>genomeinterv</strong> implements tests for a significant relationship between sets of intervals.</p>
 <section id="proximity" class="level2">
 <h2 class="anchored" data-anchor-id="proximity">Proximity</h2>
 <p><a href="../api/proximity_test.html#genominterv.proximity_test"><code>proximity_test</code></a> computes tests if intervals in one set is significantly proximal to intervals in another set.</p>
+<div id="cell-4" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">38_000_000</span>, <span class="dv">158_000_000</span>, <span class="dv">278_000_000</span>], </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_000_000</span>, <span class="dv">160_000_000</span>, <span class="dv">280_000_000</span>]))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">162_000_000</span>, <span class="dv">281_000_000</span>], </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">161_000_000</span>, <span class="dv">281_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-fig-intervals" class="cell" data-execution_count="30">
+<div class="cell-output cell-output-display">
+<div id="fig-intervals" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="interval_tests_files/figure-html/fig-intervals-output-1.svg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intervals-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Intervals
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv <span class="im">import</span> proximity_test</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>stat, pvalue <span class="op">=</span> proximity_test(query, annot)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>0.2022</code></pre>
+</div>
+</div>
 </section>
 <section id="overlap" class="level2">
 <h2 class="anchored" data-anchor-id="overlap">Overlap</h2>
 <p><a href="../api/jaccard_stat.html#genominterv.jaccard_stat"><code>jaccard_stat</code></a> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard index</a> statistic for two sets of genomic intervals.</p>
 <p>This can be combined with the <a href="../api/bootstrap.html#genominterv.bootstrap"><code>bootstrap</code></a> decorator to produce a test for overlap. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(query, annot):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard_stat(query, annot)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(intervals, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The decorator works on any function that takes two sets of intervals.</p>
+<div id="cell-8" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv <span class="im">import</span> bootstrap, jaccard_test</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(query, annot):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard_stat(query, annot)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(intervals, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
@@ -717,13 +758,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/mapping.html" class="pagination-link" aria-label="Remapping intervals">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Remapping intervals</span>
+      <a href="../pages/decorators.html" class="pagination-link" aria-label="Decorators for intervals">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Decorators for intervals</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../examples/examples.html" class="pagination-link" aria-label="Jupyter notebook">
-        <span class="nav-page-text">Jupyter notebook</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/mapping.html" class="pagination-link" aria-label="Remapping intervals">
+        <span class="nav-page-text">Remapping intervals</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

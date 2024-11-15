@@ -158,7 +158,7 @@
     "href": "api/interval_distance.html",
     "title": "interval_distance",
     "section": "",
-    "text": "genominterv.interval_distance(query, annot)\nComputes the distance from each query interval to the closest interval in annot. If a query interval overlaps the midpoint between two annot intervals it is split into two intervals proximal to each annot interval. Intervals from query that overlap intervals in annot are discarded.\n\n\n\nquery : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pandas.DataFrame\n\nA data frame with remapped intervals.\n\n\n\n\n\nIf you want to retain the original columns in query, use remap_interval_data.",
+    "text": "genominterv.interval_distance(query, annot)\nComputes the distance from each query interval to the closest interval in annot. If a query interval overlaps the midpoint between two annot intervals it is split into two intervals proximal to each annot interval. Intervals from query that overlap intervals in annot are discarded.\n\n\n\nquery : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pd.DataFrame\n\nA data frame with remapped intervals.\n\n\n\n\n\nIf you want to retain the original columns in query, use remap_interval_data.",
     "crumbs": [
       "Mapping",
       "interval_distance"
@@ -169,7 +169,7 @@
     "href": "api/interval_distance.html#parameters",
     "title": "interval_distance",
     "section": "",
-    "text": "query : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.",
+    "text": "query : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.",
     "crumbs": [
       "Mapping",
       "interval_distance"
@@ -180,7 +180,7 @@
     "href": "api/interval_distance.html#returns",
     "title": "interval_distance",
     "section": "",
-    "text": ": pandas.DataFrame\n\nA data frame with remapped intervals.",
+    "text": ": pd.DataFrame\n\nA data frame with remapped intervals.",
     "crumbs": [
       "Mapping",
       "interval_distance"
@@ -202,7 +202,7 @@
     "href": "api/interval_collapse.html",
     "title": "interval_collapse",
     "section": "",
-    "text": "genominterv.interval_collapse(interv)\nThis function computes the union of intervals in a single set.\n\n\n\ninterv : pandas.DataFrame\n\nData frame with intervals.\n\n\n\n\n\n\n : pandas.DataFrame\n\nA data frame with chr, start, end columns representing the union.\n\n\n\n\n\ngenominterv.interval_diff, genominterv.interval_union, genominterv.interval_intersect.",
+    "text": "genominterv.interval_collapse(interv)\nThis function computes the union of intervals in a single set.\n\n\n\ninterv : pd.DataFrame\n\nData frame with intervals.\n\n\n\n\n\n\n : pd.DataFrame\n\nA data frame with chr, start, end columns representing the union.\n\n\n\n\n\ngenominterv.interval_diff, genominterv.interval_union, genominterv.interval_intersect.",
     "crumbs": [
       "Set operations",
       "interval_collapse"
@@ -213,7 +213,7 @@
     "href": "api/interval_collapse.html#parameters",
     "title": "interval_collapse",
     "section": "",
-    "text": "interv : pandas.DataFrame\n\nData frame with intervals.",
+    "text": "interv : pd.DataFrame\n\nData frame with intervals.",
     "crumbs": [
       "Set operations",
       "interval_collapse"
@@ -224,7 +224,7 @@
     "href": "api/interval_collapse.html#returns",
     "title": "interval_collapse",
     "section": "",
-    "text": ": pandas.DataFrame\n\nA data frame with chr, start, end columns representing the union.",
+    "text": ": pd.DataFrame\n\nA data frame with chr, start, end columns representing the union.",
     "crumbs": [
       "Set operations",
       "interval_collapse"
@@ -246,7 +246,7 @@
     "href": "api/interval_diff.html",
     "title": "interval_diff",
     "section": "",
-    "text": "genominterv.interval_diff(query, annot)\nThis function computes the difference between two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using :any:interval_collapse.\n\n\n\nquery : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pandas.DataFrame\n\nA data frame with chr, start, end columns representing the difference.\n\n\n\n\n\ngenominterv.interval_union, genominterv.interval_intersect, genominterv.interval_collapse.",
+    "text": "genominterv.interval_diff(query, annot)\nThis function computes the difference between two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using :any:interval_collapse.\n\n\n\nquery : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pd.DataFrame\n\nA data frame with chr, start, end columns representing the difference.\n\n\n\n\n\ngenominterv.interval_union, genominterv.interval_intersect, genominterv.interval_collapse.",
     "crumbs": [
       "Set operations",
       "interval_diff"
@@ -257,7 +257,7 @@
     "href": "api/interval_diff.html#parameters",
     "title": "interval_diff",
     "section": "",
-    "text": "query : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.",
+    "text": "query : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.",
     "crumbs": [
       "Set operations",
       "interval_diff"
@@ -268,7 +268,7 @@
     "href": "api/interval_diff.html#returns",
     "title": "interval_diff",
     "section": "",
-    "text": ": pandas.DataFrame\n\nA data frame with chr, start, end columns representing the difference.",
+    "text": ": pd.DataFrame\n\nA data frame with chr, start, end columns representing the difference.",
     "crumbs": [
       "Set operations",
       "interval_diff"
@@ -418,35 +418,48 @@
     ]
   },
   {
-    "objectID": "pages/getting_started.html",
-    "href": "pages/getting_started.html",
-    "title": "Getting started",
+    "objectID": "pages/set_operations.html",
+    "href": "pages/set_operations.html",
+    "title": "Set operations on intervals",
     "section": "",
-    "text": "genomeinterv provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value x is in an interval (start, end) included in the inrval if start &lt;= x and x &lt; end. All functions take pandas.DataFrame as arguments. These data frames must include chrom, start, and end columns.\nSee the the library reference for detailed documentation of each function and decorator.",
+    "text": "The three functions, interval_diff, interval_intersect, and interval_union, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the interval_collapse function, which produces the union of genomic intervals in a single set genomic ofintervals.",
     "crumbs": [
-      "Getting started"
+      "Set operations",
+      "Set operations on intervals"
     ]
   },
   {
-    "objectID": "pages/decorators.html",
-    "href": "pages/decorators.html",
-    "title": "Decorators for intervals",
+    "objectID": "pages/interval_tests.html",
+    "href": "pages/interval_tests.html",
+    "title": "Interval tests",
     "section": "",
-    "text": "genominterv provides decorators for various tasks to reduce boilerplate code."
+    "text": "genomeinterv implements tests for a significant relationship between sets of intervals.",
+    "crumbs": [
+      "Mapping",
+      "Interval tests"
+    ]
   },
   {
-    "objectID": "pages/decorators.html#genomic-decorator",
-    "href": "pages/decorators.html#genomic-decorator",
-    "title": "Decorators for intervals",
-    "section": "Genomic decorator",
-    "text": "Genomic decorator\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns. Here is an example function that shifts intervals by 1000bp:\n@genomic\ndef inverval_shift(tuples):\n    return [(x+1000, y+1000) for (x, y) in tuples]\n\ndf = pandas.DataFrame()\n\nshifted = inverval_shift(df)"
+    "objectID": "pages/interval_tests.html#proximity",
+    "href": "pages/interval_tests.html#proximity",
+    "title": "Interval tests",
+    "section": "Proximity",
+    "text": "Proximity\nproximity_test computes tests if intervals in one set is significantly proximal to intervals in another set.\n\nannot = pd.DataFrame(dict(chrom='chr1', \n                          start=[38_000_000, 158_000_000, 278_000_000], \n                          end=[40_000_000, 160_000_000, 280_000_000]))\nquery = pd.DataFrame(dict(chrom='chr1', \n                          start=[41_000_000, 162_000_000, 281_000_000], \n                          end=[40_500_000, 161_000_000, 281_000_000]))\n\n\n\n\n\n\n\n\n\nFigure 1: Intervals\n\n\n\n\n\n\nfrom genominterv import proximity_test\n\nstat, pvalue = proximity_test(query, annot)\npvalue\n\n0.2022",
+    "crumbs": [
+      "Mapping",
+      "Interval tests"
+    ]
   },
   {
-    "objectID": "pages/decorators.html#bootstrap-decorator",
-    "href": "pages/decorators.html#bootstrap-decorator",
-    "title": "Decorators for intervals",
-    "section": "Bootstrap decorator",
-    "text": "Bootstrap decorator\nThe bootstrap decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the jaccard_stat statistic to make a jaccard_test function that produce a p-value for the significane of overlap between two sets.\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard(query, annot)\n\njaccard_stat, p_value = jaccard_test(intervals, other_intervals)"
+    "objectID": "pages/interval_tests.html#overlap",
+    "href": "pages/interval_tests.html#overlap",
+    "title": "Interval tests",
+    "section": "Overlap",
+    "text": "Overlap\njaccard_stat computes the Jaccard index statistic for two sets of genomic intervals.\nThis can be combined with the bootstrap decorator to produce a test for overlap. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.\n\nfrom genominterv import bootstrap, jaccard_test\n\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\nstat, p_value = jaccard_test(intervals, other_intervals)",
+    "crumbs": [
+      "Mapping",
+      "Interval tests"
+    ]
   },
   {
     "objectID": "examples/examples.html",
@@ -522,6 +535,28 @@
     "text": "genominterv\nBlah blah…"
   },
   {
+    "objectID": "pages/decorators.html",
+    "href": "pages/decorators.html",
+    "title": "Decorators for intervals",
+    "section": "",
+    "text": "genominterv provides decorators for various tasks to reduce boilerplate code.\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns.\nHere is an example function that shifts the interval coordinates by 1000bp:\nintervals = pd.DataFrame(dict(chrom=['chr1', 'chr2', 'chr2'], start=[10, 20, 30], end=[15, 25, 35]))\nintervals\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n10\n15\n\n\n1\nchr2\n20\n25\n\n\n2\nchr2\n30\n35\nCreate a function that shifts intervals three bases to the right:\nfrom genominterv import genomic\n\n@genomic\ndef shift_three(interv):\n    return [(start+3, end+3) for (start, end) in interv]\n\nshifted = shift_three(intervals)\nshifted\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n13\n18\nchr1\n\n\n1\n23\n28\nchr2\n\n\n2\n33\n38\nchr2\nFigure 1: Shifted intervals",
+    "crumbs": [
+      "Set operations",
+      "Decorators for intervals"
+    ]
+  },
+  {
+    "objectID": "pages/decorators.html#bootstrap-decorator",
+    "href": "pages/decorators.html#bootstrap-decorator",
+    "title": "Decorators for intervals",
+    "section": "Bootstrap decorator",
+    "text": "Bootstrap decorator\nThe bootstrap decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the jaccard_stat statistic to make a jaccard_test function that produce a p-value for the significane of overlap between two sets.\n\nannot = pd.DataFrame(dict(chrom=['chr1', 'chr2', 'chr3'], start=[30_000_000, 120_000_000, 120_000_000], \n                                        end=[60_000_000, 100_000_000, 150_000_000]))\nquery = pd.DataFrame(dict(chrom=['chr1', 'chr3'], start=[20_000_000, 110_000_000], \n                          end=[50_000_000, 160_000_000]))\n\n\n\n\n\n\n\n\n\nFigure 2: Intervals\n\n\n\n\n\n\nfrom genominterv import bootstrap, jaccard_stat\n\n@bootstrap('hg38', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\nstat, p_value = jaccard_test(query, annot)\nstat, p_value\n\n(0.5555555555555556, 0.016)",
+    "crumbs": [
+      "Set operations",
+      "Decorators for intervals"
+    ]
+  },
+  {
     "objectID": "pages/mapping.html",
     "href": "pages/mapping.html",
     "title": "Remapping intervals",
@@ -533,47 +568,13 @@
     ]
   },
   {
-    "objectID": "pages/set_operations.html",
-    "href": "pages/set_operations.html",
-    "title": "Set operations on intervals",
+    "objectID": "pages/getting_started.html",
+    "href": "pages/getting_started.html",
+    "title": "Getting started",
     "section": "",
-    "text": "The three functions, interval_diff, interval_intersect, and interval_union, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the interval_collapse function, which produces the union of genomic intervals in a single set genomic ofintervals.",
+    "text": "genomeinterv provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value x is in an interval (start, end) included in the inrval if start &lt;= x and x &lt; end. All functions take pandas.DataFrame as arguments. These data frames must include chrom, start, and end columns.\nSee the the library reference for detailed documentation of each function and decorator.",
     "crumbs": [
-      "Set operations",
-      "Set operations on intervals"
-    ]
-  },
-  {
-    "objectID": "pages/interval_tests.html",
-    "href": "pages/interval_tests.html",
-    "title": "Tests on intervals",
-    "section": "",
-    "text": "proximity_test computes tests if intervals in one set is significantly proximal to intervals in another set.",
-    "crumbs": [
-      "Mapping",
-      "Tests on intervals"
-    ]
-  },
-  {
-    "objectID": "pages/interval_tests.html#proximity",
-    "href": "pages/interval_tests.html#proximity",
-    "title": "Tests on intervals",
-    "section": "",
-    "text": "proximity_test computes tests if intervals in one set is significantly proximal to intervals in another set.",
-    "crumbs": [
-      "Mapping",
-      "Tests on intervals"
-    ]
-  },
-  {
-    "objectID": "pages/interval_tests.html#overlap",
-    "href": "pages/interval_tests.html#overlap",
-    "title": "Tests on intervals",
-    "section": "Overlap",
-    "text": "Overlap\njaccard_stat computes the Jaccard index statistic for two sets of genomic intervals.\nThis can be combined with the bootstrap decorator to produce a test for overlap. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\nstat, p_value = jaccard_test(intervals, other_intervals)\nThe decorator works on any function that takes two sets of intervals.",
-    "crumbs": [
-      "Mapping",
-      "Tests on intervals"
+      "Getting started"
     ]
   },
   {
@@ -614,7 +615,7 @@
     "href": "api/interval_intersect.html",
     "title": "interval_intersect",
     "section": "",
-    "text": "genominterv.interval_intersect(query, annot)\nThis function computes the intersection of two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using interval_collapse.\n\n\n\nquery : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pandas.DataFrame\n\nA data frame with chr, start, end columns representing the intersection.\n\n\n\n\n\ngenominterv.interval_diff, genominterv.interval_union, genominterv.interval_collapse.",
+    "text": "genominterv.interval_intersect(query, annot)\nThis function computes the intersection of two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using interval_collapse.\n\n\n\nquery : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pd.DataFrame\n\nA data frame with chr, start, end columns representing the intersection.\n\n\n\n\n\ngenominterv.interval_diff, genominterv.interval_union, genominterv.interval_collapse.",
     "crumbs": [
       "Set operations",
       "interval_intersect"
@@ -625,7 +626,7 @@
     "href": "api/interval_intersect.html#parameters",
     "title": "interval_intersect",
     "section": "",
-    "text": "query : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.",
+    "text": "query : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.",
     "crumbs": [
       "Set operations",
       "interval_intersect"
@@ -636,7 +637,7 @@
     "href": "api/interval_intersect.html#returns",
     "title": "interval_intersect",
     "section": "",
-    "text": ": pandas.DataFrame\n\nA data frame with chr, start, end columns representing the intersection.",
+    "text": ": pd.DataFrame\n\nA data frame with chr, start, end columns representing the intersection.",
     "crumbs": [
       "Set operations",
       "interval_intersect"
@@ -658,7 +659,7 @@
     "href": "api/interval_union.html",
     "title": "interval_union",
     "section": "",
-    "text": "genominterv.interval_union(query, annot)\nThis function computes the union of two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using interval_collapse.\n\n\n\nquery : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pandas.DataFrame\n\nA data frame with chr, start, end columns representing the union.\n\n\n\n\n\ngenominterv.interval_diff, genominterv.interval_intersect, genominterv.interval_collapse.",
+    "text": "genominterv.interval_union(query, annot)\nThis function computes the union of two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using interval_collapse.\n\n\n\nquery : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.\n\n\n\n\n\n\n : pd.DataFrame\n\nA data frame with chr, start, end columns representing the union.\n\n\n\n\n\ngenominterv.interval_diff, genominterv.interval_intersect, genominterv.interval_collapse.",
     "crumbs": [
       "Set operations",
       "interval_union"
@@ -669,7 +670,7 @@
     "href": "api/interval_union.html#parameters",
     "title": "interval_union",
     "section": "",
-    "text": "query : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.",
+    "text": "query : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.",
     "crumbs": [
       "Set operations",
       "interval_union"
@@ -680,7 +681,7 @@
     "href": "api/interval_union.html#returns",
     "title": "interval_union",
     "section": "",
-    "text": ": pandas.DataFrame\n\nA data frame with chr, start, end columns representing the union.",
+    "text": ": pd.DataFrame\n\nA data frame with chr, start, end columns representing the union.",
     "crumbs": [
       "Set operations",
       "interval_union"
@@ -786,7 +787,7 @@
     "href": "api/proximity_test.html",
     "title": "proximity_test",
     "section": "",
-    "text": "genominterv.proximity_test(\n    query\n    annot\n    samples=10000\n    npoints=1000\n    two_sided=False\n)\nTest for proximity of intervals to a set of annotations.\n\n\n\nquery : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.\n\nsamples : int = 10000\n\nNumber of bootstrap samples to use.\n\nnpoints : int = 1000\n\nNumber of points to use in the ECDF.\n\ntwo_sided : bool = False\n\nWhether to test for proximity in both directions.\n\n\n\n\n\n\n : namedtuple\n\nA named tuple with the test statistic and p-value.",
+    "text": "genominterv.proximity_test(\n    query\n    annot\n    samples=10000\n    npoints=1000\n    two_sided=False\n)\nTest for proximity of intervals to a set of annotations.\n\n\n\nquery : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.\n\nsamples : int = 10000\n\nNumber of bootstrap samples to use.\n\nnpoints : int = 1000\n\nNumber of points to use in the ECDF.\n\ntwo_sided : bool = False\n\nWhether to test for proximity in both directions.\n\n\n\n\n\n\n : namedtuple\n\nA named tuple with the test statistic and p-value.",
     "crumbs": [
       "Set operations",
       "proximity_test"
@@ -797,7 +798,7 @@
     "href": "api/proximity_test.html#parameters",
     "title": "proximity_test",
     "section": "",
-    "text": "query : pandas.DataFrame\n\nData frame with query intervals.\n\nannot : pandas.DataFrame\n\nData frame with annotation intervals.\n\nsamples : int = 10000\n\nNumber of bootstrap samples to use.\n\nnpoints : int = 1000\n\nNumber of points to use in the ECDF.\n\ntwo_sided : bool = False\n\nWhether to test for proximity in both directions.",
+    "text": "query : pd.DataFrame\n\nData frame with query intervals.\n\nannot : pd.DataFrame\n\nData frame with annotation intervals.\n\nsamples : int = 10000\n\nNumber of bootstrap samples to use.\n\nnpoints : int = 1000\n\nNumber of points to use in the ECDF.\n\ntwo_sided : bool = False\n\nWhether to test for proximity in both directions.",
     "crumbs": [
       "Set operations",
       "proximity_test"

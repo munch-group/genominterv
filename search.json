@@ -432,33 +432,21 @@
     "href": "pages/decorators.html",
     "title": "Decorators for intervals",
     "section": "",
-    "text": "genominterv provides decorators for various tasks to reduce boilerplate code.",
-    "crumbs": [
-      "Set operations",
-      "Decorators for intervals"
-    ]
+    "text": "genominterv provides decorators for various tasks to reduce boilerplate code."
   },
   {
     "objectID": "pages/decorators.html#genomic-decorator",
     "href": "pages/decorators.html#genomic-decorator",
     "title": "Decorators for intervals",
     "section": "Genomic decorator",
-    "text": "Genomic decorator\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns. Here is an example function that shifts intervals by 1000bp:\n@genomic\ndef inverval_shift(tuples):\n    return [(x+1000, y+1000) for (x, y) in tuples]\n\ndf = pandas.DataFrame()\n\nshifted = inverval_shift(df)",
-    "crumbs": [
-      "Set operations",
-      "Decorators for intervals"
-    ]
+    "text": "Genomic decorator\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns. Here is an example function that shifts intervals by 1000bp:\n@genomic\ndef inverval_shift(tuples):\n    return [(x+1000, y+1000) for (x, y) in tuples]\n\ndf = pandas.DataFrame()\n\nshifted = inverval_shift(df)"
   },
   {
     "objectID": "pages/decorators.html#bootstrap-decorator",
     "href": "pages/decorators.html#bootstrap-decorator",
     "title": "Decorators for intervals",
     "section": "Bootstrap decorator",
-    "text": "Bootstrap decorator\nThe bootstrap decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the jaccard_stat statistic to make a jaccard_test function that produce a p-value for the significane of overlap between two sets.\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard(query, annot)\n\njaccard_stat, p_value = jaccard_test(intervals, other_intervals)",
-    "crumbs": [
-      "Set operations",
-      "Decorators for intervals"
-    ]
+    "text": "Bootstrap decorator\nThe bootstrap decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the jaccard_stat statistic to make a jaccard_test function that produce a p-value for the significane of overlap between two sets.\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard(query, annot)\n\njaccard_stat, p_value = jaccard_test(intervals, other_intervals)"
   },
   {
     "objectID": "examples/examples.html",

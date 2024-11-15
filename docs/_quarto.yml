@@ -54,12 +54,12 @@ website:
         - pages/getting_started.qmd
         - section: "Set operations"
           contents:
-            - pages/set_operations.qmd
+            - pages/set_operations.ipynb
             - pages/decorators.ipynb
         - section: "Mapping"
           contents:
             - pages/interval_tests.ipynb
-            - pages/mapping.qmd  
+            - pages/mapping.ipynb
         - section: "Examples"
           contents:
             - examples/examples.ipynb            

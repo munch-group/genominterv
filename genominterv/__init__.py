@@ -767,7 +767,7 @@ def interval_permute(df, chromosome_sizes):
     return pd.concat(group_list)
 
 
-def bootstrap(chromosome_sizes: str | dict, samples: int=1000, smaller: bool=False, return_boot: bool=False):
+def bootstrap(chromosome_sizes: Union[str, dict], samples: int=1000, smaller: bool=False, return_boot: bool=False):
     """
     Parameterized decorator that turns a function producing a statistic into one that also
     produces a p-value from bootstrapping. The bootstrapping resamples the

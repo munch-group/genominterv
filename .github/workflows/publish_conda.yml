@@ -7,27 +7,14 @@ on:
 # workflow_dispatch:        # Un comment line if you also want to trigger action manually
 
 jobs:
-
-  # Define the job to run before your matrix job
-  get-python-versions:
-    runs-on: ubuntu-latest
-    outputs:
-      python-matrix: ${{ steps.get-python-versions-action.outputs.latest-python-versions }}
-    steps:
-    - uses: snok/latest-python-versions@v1
-      id: get-python-versions-action
-      with:
-        min-version: 3.7
-  
   conda_deployment_with_new_tag:
-    needs: [get-python-versions]
     name: Conda deployment of package for platform ${{ matrix.os }} with Python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         # os: [macOS-latest, ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        python-version: ${{ fromJson(needs.get-python-versions.outputs.python-matrix) }}
+        python-version: "^3.8"
 
     steps:
       - uses: actions/checkout@v3

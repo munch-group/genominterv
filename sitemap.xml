@@ -2,114 +2,114 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://munch-group.github.io/genominterv/api/diff.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/remap.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/index.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/unflatten.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/interval_distance.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/interval_collapse.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/interval_diff.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/genomic.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/bootstrap.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/collapse.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/union.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/pages/set_operations.html</loc>
-    <lastmod>2024-11-28T10:08:20.833Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.778Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/pages/interval_tests.html</loc>
-    <lastmod>2024-11-28T10:08:20.833Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.778Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/examples/examples.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.778Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/about.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/pages/decorators.html</loc>
-    <lastmod>2024-11-28T10:08:20.833Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.778Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/pages/mapping.html</loc>
-    <lastmod>2024-11-28T10:08:20.833Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.778Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/pages/getting_started.html</loc>
-    <lastmod>2024-11-28T10:08:20.833Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.778Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/jaccard_stat.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/interval_intersect.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/interval_union.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/bar.baz.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/flatten.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/remap_interval_data.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/proximity_test.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/interval_relative_distance.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/invert.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
   <url>
     <loc>https://munch-group.github.io/genominterv/api/foo.html</loc>
-    <lastmod>2024-11-28T10:08:20.829Z</lastmod>
+    <lastmod>2024-11-28T10:32:13.774Z</lastmod>
   </url>
 </urlset>

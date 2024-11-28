@@ -9,7 +9,7 @@ from statsmodels.distributions.empirical_distribution import ECDF
 from collections import namedtuple
 
 from collections.abc import Callable
-from typing import Any, TypeVar
+from typing import Any, TypeVar, List, Tuple, Dict, Union
 
 from genominterv.chrom_sizes import chrom_sizes
 
@@ -483,7 +483,7 @@ def interval_collapse(interv: pd.DataFrame) -> pd.DataFrame:
     return collapse(interv)
 
 
-def remap(query: tuple[int], annot: list[tuple], relative=False, include_prox_coord=False) -> list[tuple]:
+def remap(query: Tuple[int], annot: List[tuple], relative=False, include_prox_coord=False) -> List[tuple]:
     """
     Remap the coordinates of a single interval in `query` to the distance from
     the closet interval in `annot`. Returns empty set if annot is empty for
@@ -872,7 +872,7 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
     return TestResult(test_stat, p_value)
 
 
-def jaccard_stat(a: list[tuple], b:list[tuple]) -> float:
+def jaccard_stat(a: List[tuple], b:List[tuple]) -> float:
     """
     Compute Jaccard overlap test statistic.
 

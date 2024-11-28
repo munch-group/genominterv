@@ -14,9 +14,14 @@ jobs:
       matrix:
         # os: [macOS-latest, ubuntu-latest, windows-latest]
         os: [ubuntu-latest]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"] 
+        python-version: ${{ steps.get-python-versions.outputs.latest-python-versions }}
 
     steps:
+      - uses: snok/latest-python-versions@v1
+        id: get-python-versions
+        with:
+          min-version: 3.7
+
       - uses: actions/checkout@v3
       - name: Conda environment creation and activation
         uses: conda-incubator/setup-miniconda@v3

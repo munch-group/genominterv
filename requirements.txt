@@ -2,3 +2,4 @@ pandas
 numpy
 statsmodels
 python>=3.8
+_python_rc

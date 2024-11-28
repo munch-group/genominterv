@@ -207,7 +207,7 @@ def unflatten(list_of_endpoints):
           for i in range(0, len(list_of_endpoints) - 1, 2)]
 
 
-def merge(query: list, annot: list, op: Callable[[bool, bool], bool]) -> list:
+def merge(query: list, annot: list, op: Callable) -> list:
     """
     Merge two lists of sorted (start, end) intervals according to the boolean function op.
 

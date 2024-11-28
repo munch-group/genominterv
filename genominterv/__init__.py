@@ -483,7 +483,7 @@ def interval_collapse(interv: pd.DataFrame) -> pd.DataFrame:
     return collapse(interv)
 
 
-def remap(query: tuple[int|float], annot: list[tuple], relative=False, include_prox_coord=False) -> list[tuple]:
+def remap(query: tuple[int], annot: list[tuple], relative=False, include_prox_coord=False) -> list[tuple]:
     """
     Remap the coordinates of a single interval in `query` to the distance from
     the closet interval in `annot`. Returns empty set if annot is empty for

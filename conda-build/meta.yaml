@@ -23,6 +23,7 @@ requirements:
     - pandas
     - numpy
     - statsmodels
+    - matplotlib
 
 channels:    # write here the list of channels to look for your library dependencies
   # - uibcdf

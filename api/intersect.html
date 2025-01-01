@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>genomic – genominterv</title>
+<title>intersect – genominterv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/bootstrap.html" rel="next">
-<link href="../api/jaccard_stat.html" rel="prev">
+<link href="../api/collapse.html" rel="next">
+<link href="../api/invert.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/genomic.html">Decorators</a></li><li class="breadcrumb-item"><a href="../api/genomic.html">genomic</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/union.html">Interval set utilities</a></li><li class="breadcrumb-item"><a href="../api/intersect.html">intersect</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -263,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/genomic.html" class="sidebar-item-text sidebar-link active">
+  <a href="../api/genomic.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">genomic</span></a>
   </div>
 </li>
@@ -304,7 +304,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/intersect.html" class="sidebar-item-text sidebar-link">
+  <a href="../api/intersect.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">intersect</span></a>
   </div>
 </li>
@@ -340,30 +340,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/genomic.html">Decorators</a></li><li class="breadcrumb-item"><a href="../api/genomic.html">genomic</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/union.html">Interval set utilities</a></li><li class="breadcrumb-item"><a href="../api/intersect.html">intersect</a></li></ol></nav></header>
 
 
 
 
-<section id="genominterv.decorators.genomic" class="level1">
-<h1>genomic</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.decorators.genomic(func)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Decorator for converting a function operating on lists of (start, end) tuples to one that takes data frames with chrom, start, end columns and executes on each chromosome individually.</p>
+<section id="genominterv.interval_set_op.intersect" class="level1">
+<h1>intersect</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.interval_set_op.intersect(a, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Intersection intervals of two sorted lists of (start, end) intervals.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <dl>
-<dt><code><span class="parameter-name"><strong>func</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span></code></dt>
+<dt><code><span class="parameter-name"><strong>a</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span></code></dt>
 <dd>
-<p>Function accepting (start, end) tuples.</p>
+<p>List of intervals.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>b</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span></code></dt>
+<dd>
+<p>List of intervals.</p>
 </dd>
 </dl>
 </section>
 <section id="returns" class="level2 doc-section doc-section-returns">
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <dl>
-<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a></span></code></dt>
+<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span></code></dt>
 <dd>
-<p>A decorated function that takes data frames with chrom, start, end columns and executes on each chromosome individually.</p>
+<p>List of intervals.</p>
 </dd>
 </dl>
 
@@ -791,13 +795,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/jaccard_stat.html" class="pagination-link" aria-label="jaccard_stat">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">jaccard_stat</span>
+      <a href="../api/invert.html" class="pagination-link" aria-label="invert">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">invert</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../api/bootstrap.html" class="pagination-link" aria-label="bootstrap">
-        <span class="nav-page-text">bootstrap</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../api/collapse.html" class="pagination-link" aria-label="collapse">
+        <span class="nav-page-text">collapse</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

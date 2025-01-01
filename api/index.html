@@ -39,7 +39,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-0626ff4d7a71b55c8707dcae1d04a9b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bc163a3a22d509ec1bc4838f08992d42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c810d5943d07318663498dbd9b09dd12.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -141,6 +141,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../pages/set_operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Set operations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../pages/decorators.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decorators for intervals</span></a>
   </div>
@@ -160,6 +166,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../pages/interval_tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interval tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mapping</span></a>
   </div>
 </li>
       </ul>
@@ -203,21 +215,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#function-reference" id="toc-function-reference" class="nav-link active" data-scroll-target="#function-reference">Function reference</a>
-  <ul class="collapse">
-  <li><a href="#set-operations" id="toc-set-operations" class="nav-link" data-scroll-target="#set-operations">Set operations</a></li>
-  <li><a href="#mapping" id="toc-mapping" class="nav-link" data-scroll-target="#mapping">Mapping</a></li>
-  <li><a href="#decorators" id="toc-decorators" class="nav-link" data-scroll-target="#decorators">Decorators</a></li>
-  <li><a href="#interval-lists" id="toc-interval-lists" class="nav-link" data-scroll-target="#interval-lists">Interval lists</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/index.html">Library reference</a></li><li class="breadcrumb-item"><a href="../api/index.html">Function reference</a></li></ol></nav></header>
 
@@ -226,34 +224,30 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="function-reference" class="level1 doc doc-index">
 <h1 class="doc doc-index">Function reference</h1>
-<section id="set-operations" class="level2">
-<h2 class="anchored" data-anchor-id="set-operations">Set operations</h2>
+<section id="genomic-set-operations" class="level2">
+<h2 class="anchored" data-anchor-id="genomic-set-operations">Genomic set operations</h2>
 <p>Set operations on pandas.DataFrames with <code>chrom</code>, <code>start</code>, <code>end</code> columns</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><a href="../api/interval_diff.html#genominterv.interval_diff">interval_diff</a></td>
+<td><a href="../api/interval_diff.html#genominterv.intervals.interval_diff">interval_diff</a></td>
 <td>This function computes the difference between two sets of genomic intervals.</td>
 </tr>
 <tr class="even">
-<td><a href="../api/interval_union.html#genominterv.interval_union">interval_union</a></td>
+<td><a href="../api/interval_union.html#genominterv.intervals.interval_union">interval_union</a></td>
 <td>This function computes the union of two sets of genomic intervals. The genomic intervals</td>
 </tr>
 <tr class="odd">
-<td><a href="../api/interval_intersect.html#genominterv.interval_intersect">interval_intersect</a></td>
+<td><a href="../api/interval_intersect.html#genominterv.intervals.interval_intersect">interval_intersect</a></td>
 <td>This function computes the intersection of two sets of genomic intervals. The genomic intervals</td>
 </tr>
 <tr class="even">
-<td><a href="../api/interval_collapse.html#genominterv.interval_collapse">interval_collapse</a></td>
+<td><a href="../api/interval_collapse.html#genominterv.intervals.interval_collapse">interval_collapse</a></td>
 <td>This function computes the union of intervals in a single set.</td>
 </tr>
 <tr class="odd">
-<td><a href="../api/proximity_test.html#genominterv.proximity_test">proximity_test</a></td>
-<td>Test for proximity of intervals to a set of annotations.</td>
-</tr>
-<tr class="even">
-<td><a href="../api/jaccard_stat.html#genominterv.jaccard_stat">jaccard_stat</a></td>
-<td>Compute Jaccard overlap test statistic.</td>
+<td><a href="../api/interval_distance.html#genominterv.intervals.interval_distance">interval_distance</a></td>
+<td>Computes the distance from each query interval to the closest interval in</td>
 </tr>
 </tbody>
 </table>
@@ -264,20 +258,28 @@ ul.task-list li input[type="checkbox"] {
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><a href="../api/remap.html#genominterv.remap">remap</a></td>
-<td>Remap the coordinates of a single interval in <code>query</code> to the distance from</td>
-</tr>
-<tr class="even">
-<td><a href="../api/interval_distance.html#genominterv.interval_distance">interval_distance</a></td>
-<td>Computes the distance from each query interval to the closest interval in</td>
-</tr>
-<tr class="odd">
-<td><a href="../api/interval_relative_distance.html#genominterv.interval_relative_distance">interval_relative_distance</a></td>
+<td><a href="../api/interval_relative_distance.html#genominterv.intervals.interval_relative_distance">interval_relative_distance</a></td>
 <td>Computes the relative distance from each query interval to the closest interval in</td>
 </tr>
 <tr class="even">
-<td><a href="../api/remap_interval_data.html#genominterv.remap_interval_data">remap_interval_data</a></td>
+<td><a href="../api/remap_interval_data.html#genominterv.intervals.remap_interval_data">remap_interval_data</a></td>
 <td>Computes the distance from each query interval to the closest interval</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistics" class="level2">
+<h2 class="anchored" data-anchor-id="statistics">Statistics</h2>
+<p>Mapping intervals relative to other coordinates.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><a href="../api/proximity_test.html#genominterv.stats.proximity_test">proximity_test</a></td>
+<td>Test for proximity of intervals to a set of annotations.</td>
+</tr>
+<tr class="even">
+<td><a href="../api/jaccard_stat.html#genominterv.stats.jaccard_stat">jaccard_stat</a></td>
+<td>Compute Jaccard overlap test statistic.</td>
 </tr>
 </tbody>
 </table>
@@ -288,48 +290,52 @@ ul.task-list li input[type="checkbox"] {
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><a href="../api/genomic.html#genominterv.genomic">genomic</a></td>
+<td><a href="../api/genomic.html#genominterv.decorators.genomic">genomic</a></td>
 <td>Decorator for converting a function operating on lists of (start, end) tuples to one</td>
 </tr>
 <tr class="even">
-<td><a href="../api/bootstrap.html#genominterv.bootstrap">bootstrap</a></td>
+<td><a href="../api/bootstrap.html#genominterv.decorators.bootstrap">bootstrap</a></td>
 <td>Parameterized decorator that turns a function producing a statistic into one that also</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="interval-lists" class="level2">
-<h2 class="anchored" data-anchor-id="interval-lists">Interval lists</h2>
-<p>Standard set operations on sorted lists of (start, end) tuples.</p>
+<section id="interval-set-utilities" class="level2">
+<h2 class="anchored" data-anchor-id="interval-set-utilities">Interval set utilities</h2>
+<p>Set operations on sorted lists of (start, end) tuples.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><a href="../api/union.html#genominterv.union">union</a></td>
+<td><a href="../api/union.html#genominterv.interval_set_op.union">union</a></td>
 <td>Union intervals of two sorted lists of (start, end) intervals.</td>
 </tr>
 <tr class="even">
-<td><a href="../api/diff.html#genominterv.diff">diff</a></td>
+<td><a href="../api/diff.html#genominterv.interval_set_op.diff">diff</a></td>
 <td>Difference intervals of two sorted lists of (start, end) intervals.</td>
 </tr>
 <tr class="odd">
-<td><a href="../api/invert.html#genominterv.invert">invert</a></td>
+<td><a href="../api/invert.html#genominterv.interval_set_op.invert">invert</a></td>
 <td>Produces the complement of a list of sorted intervals</td>
 </tr>
 <tr class="even">
-<td><a href="../api/invert.html#genominterv.invert">invert</a></td>
-<td>Produces the complement of a list of sorted intervals</td>
+<td><a href="../api/intersect.html#genominterv.interval_set_op.intersect">intersect</a></td>
+<td>Intersection intervals of two sorted lists of (start, end) intervals.</td>
 </tr>
 <tr class="odd">
-<td><a href="../api/collapse.html#genominterv.collapse">collapse</a></td>
+<td><a href="../api/collapse.html#genominterv.interval_set_op.collapse">collapse</a></td>
 <td>Converts a list of sorted overlapping intervals to non-overlapping</td>
 </tr>
-<tr class="even">
-<td><a href="../api/flatten.html#genominterv.flatten">flatten</a></td>
-<td>Convert a list of sorted intervals to a list of endpoints.</td>
-</tr>
+</tbody>
+</table>
+</section>
+<section id="interval-mapping-utilities" class="level2">
+<h2 class="anchored" data-anchor-id="interval-mapping-utilities">Interval mapping utilities</h2>
+<p>Set operations on sorted lists of (start, end) tuples.</p>
+<table class="caption-top table">
+<tbody>
 <tr class="odd">
-<td><a href="../api/unflatten.html#genominterv.unflatten">unflatten</a></td>
-<td>Convert a list of sorted endpoints into a list of intervals.</td>
+<td><a href="../api/remap.html#genominterv.remapping.remap">remap</a></td>
+<td>Remap the coordinates of a single interval in <code>query</code> to the distance from</td>
 </tr>
 </tbody>
 </table>

@@ -1,6 +1,0 @@
-# bar.baz { #genominterv.bar.baz }
-
-```python
-genominterv.bar.baz()
-```
-

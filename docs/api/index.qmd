@@ -2,7 +2,8 @@
 
 ## Genomic set operations
 
-Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns
+Set operations on pandas.DataFrames with columns for chromosome, start, and end.
+
 
 | | |
 | --- | --- |
@@ -15,6 +16,7 @@ Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns
 ## Mapping
 
 Mapping intervals relative to other coordinates.
+
 
 | | |
 | --- | --- |
@@ -34,6 +36,7 @@ Mapping intervals relative to other coordinates.
 
 Utilities for user created genomic intervals and bootstrap tests.
 
+
 | | |
 | --- | --- |
 | [genomic](genomic.qmd#genominterv.decorators.genomic) | Decorator for converting a function operating on lists of (start, end) tuples to one |
@@ -42,6 +45,7 @@ Utilities for user created genomic intervals and bootstrap tests.
 ## Interval set utilities
 
 Set operations on sorted lists of (start, end) tuples.
+
 
 | | |
 | --- | --- |
@@ -54,6 +58,7 @@ Set operations on sorted lists of (start, end) tuples.
 ## Interval mapping utilities
 
 Set operations on sorted lists of (start, end) tuples.
+
 
 | | |
 | --- | --- |

@@ -1,10 +1,10 @@
 project:
   type: website
   output-dir: _build
-  resources:
-    - examples/single-page
-    - examples/pkgdown
-    - examples/auto-package
+  # resources:
+    # - examples/single-page
+    # - examples/pkgdown
+    # - examples/auto-package
     # - objects.txt
     # - objects-test.txt
 
@@ -23,12 +23,18 @@ interlinks:
   sources:
     python:
       url: https://docs.python.org/3/
-    pandas:
-      url: https://pandas.pydata.org/docs/
     griffe:
       url: https://mkdocstrings.github.io/griffe/
     numpy:
       url: https://numpy.org/doc/stable/
+    pandas:
+      url: https://pandas.pydata.org/docs/
+    matplotlib:
+      url: https://matplotlib.org/stable/
+    scipy:
+      url: https://docs.scipy.org/doc/scipy/
+    statsmodels:
+      url: https://www.statsmodels.org/stable/
     # quartodoc-test:
     #   url: https://machow.github.io/quartodoc
     #   inv: objects-test.txt
@@ -38,10 +44,8 @@ website:
   page-navigation: true
   navbar:
     left:
-      # - file: examples/
-      #   text: Examples
       - href: api/
-        text: Reference
+        text: API reference
     right:
       - icon: github
         href: https://github.com/munch-group/genominterv/
@@ -63,9 +67,8 @@ website:
         - section: "Examples"
           contents:
             - examples/examples.ipynb            
-        - section: "Library reference"
-          contents:
-            - api/index.qmd
+
+lightbox: true
 
 format:
   html:
@@ -73,17 +76,17 @@ format:
     css:
       - api/_styles-quartodoc.css
       - styles.css
+    toc: true
     # highlight-style: breeze 
-    highlight-style: github 
-    code-block-bg: true
-    # toc: true
+    # highlight-style: github 
+    # code-block-bg: true
     mermaid:
       theme: neutral 
 
 quartodoc:
+  package: genominterv
   style: pkgdown
   dir: api
-  package: genominterv
   render_interlinks: true
   options:
     signature_name: full
@@ -95,8 +98,9 @@ quartodoc:
 
   sections:
     - title: Genomic set operations
-      desc: "Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns"
       package: genominterv.intervals
+      desc: |
+        Set operations on pandas.DataFrames with columns for chromosome, start, and end.
       contents:
         - interval_diff     
         - interval_union   
@@ -105,25 +109,28 @@ quartodoc:
         - interval_distance
     - title: Mapping
       package: genominterv.intervals
-      desc: "Mapping intervals relative to other coordinates."
+      desc: |
+        Mapping intervals relative to other coordinates.
       contents:        
         - interval_relative_distance
         - remap_interval_data
     - title: Statistics
       package: genominterv.stats
-      desc: "Mapping intervals relative to other coordinates."
+      desc: Mapping intervals relative to other coordinates.
       contents:
         - proximity_test        
         - jaccard_stat
     - title: Decorators
-      desc: "Utilities for user created genomic intervals and bootstrap tests."
       package: genominterv.decorators
+      desc: |
+        Utilities for user created genomic intervals and bootstrap tests.
       contents:
         - genomic 
         - bootstrap
     - title: Interval set utilities
-      desc: "Set operations on sorted lists of (start, end) tuples."
       package: genominterv.interval_set_op
+      desc: |
+        Set operations on sorted lists of (start, end) tuples.
       contents:
         - union 
         - diff
@@ -131,7 +138,8 @@ quartodoc:
         - intersect
         - collapse
     - title: Interval mapping utilities
-      desc: "Set operations on sorted lists of (start, end) tuples."
       package: genominterv.remapping
+      desc: |
+        Set operations on sorted lists of (start, end) tuples.
       contents:
         - remap 

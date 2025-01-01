@@ -1,7 +1,7 @@
-# interval_intersect { #genominterv.interval_intersect }
+# interval_intersect { #genominterv.intervals.interval_intersect }
 
 ```python
-genominterv.interval_intersect(query, annot)
+genominterv.intervals.interval_intersect(query, annot)
 ```
 
 This function computes the intersection of two sets of genomic intervals. The genomic intervals
@@ -25,4 +25,4 @@ in each set must be non-overlapping. This can be achieved using interval_collaps
 
 ## See Also {.doc-section .doc-section-see-also}
 
-[](`genominterv.interval_diff`), [](`genominterv.interval_union`), [](`genominterv.interval_collapse`).
+[](`genominterv.intervals.interval_diff`), [](`genominterv.intervals.interval_union`), [](`genominterv.intervals.interval_collapse`).

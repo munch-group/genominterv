@@ -2,22 +2,20 @@
 # Project: genominterv
 # Version: 0.0.9999
 # The remainder of this file is compressed using zlib.
-genominterv.interval_diff py:function 1 api/interval_diff.html#genominterv.interval_diff -
-genominterv.interval_union py:function 1 api/interval_union.html#genominterv.interval_union -
-genominterv.interval_intersect py:function 1 api/interval_intersect.html#genominterv.interval_intersect -
-genominterv.interval_collapse py:function 1 api/interval_collapse.html#genominterv.interval_collapse -
-genominterv.proximity_test py:function 1 api/proximity_test.html#genominterv.proximity_test -
-genominterv.jaccard_stat py:function 1 api/jaccard_stat.html#genominterv.jaccard_stat -
-genominterv.remap py:function 1 api/remap.html#genominterv.remap -
-genominterv.interval_distance py:function 1 api/interval_distance.html#genominterv.interval_distance -
-genominterv.interval_relative_distance py:function 1 api/interval_relative_distance.html#genominterv.interval_relative_distance -
-genominterv.remap_interval_data py:function 1 api/remap_interval_data.html#genominterv.remap_interval_data -
-genominterv.genomic py:function 1 api/genomic.html#genominterv.genomic -
-genominterv.bootstrap py:function 1 api/bootstrap.html#genominterv.bootstrap -
-genominterv.union py:function 1 api/union.html#genominterv.union -
-genominterv.diff py:function 1 api/diff.html#genominterv.diff -
-genominterv.invert py:function 1 api/invert.html#genominterv.invert -
-genominterv.invert py:function 1 api/invert.html#genominterv.invert -
-genominterv.collapse py:function 1 api/collapse.html#genominterv.collapse -
-genominterv.flatten py:function 1 api/flatten.html#genominterv.flatten -
-genominterv.unflatten py:function 1 api/unflatten.html#genominterv.unflatten -
+genominterv.intervals.interval_diff py:function 1 api/interval_diff.html#genominterv.intervals.interval_diff -
+genominterv.intervals.interval_union py:function 1 api/interval_union.html#genominterv.intervals.interval_union -
+genominterv.intervals.interval_intersect py:function 1 api/interval_intersect.html#genominterv.intervals.interval_intersect -
+genominterv.intervals.interval_collapse py:function 1 api/interval_collapse.html#genominterv.intervals.interval_collapse -
+genominterv.intervals.interval_distance py:function 1 api/interval_distance.html#genominterv.intervals.interval_distance -
+genominterv.intervals.interval_relative_distance py:function 1 api/interval_relative_distance.html#genominterv.intervals.interval_relative_distance -
+genominterv.intervals.remap_interval_data py:function 1 api/remap_interval_data.html#genominterv.intervals.remap_interval_data -
+genominterv.stats.proximity_test py:function 1 api/proximity_test.html#genominterv.stats.proximity_test -
+genominterv.stats.jaccard_stat py:function 1 api/jaccard_stat.html#genominterv.stats.jaccard_stat -
+genominterv.decorators.genomic py:function 1 api/genomic.html#genominterv.decorators.genomic -
+genominterv.decorators.bootstrap py:function 1 api/bootstrap.html#genominterv.decorators.bootstrap -
+genominterv.interval_set_op.union py:function 1 api/union.html#genominterv.interval_set_op.union -
+genominterv.interval_set_op.diff py:function 1 api/diff.html#genominterv.interval_set_op.diff -
+genominterv.interval_set_op.invert py:function 1 api/invert.html#genominterv.interval_set_op.invert -
+genominterv.interval_set_op.intersect py:function 1 api/intersect.html#genominterv.interval_set_op.intersect -
+genominterv.interval_set_op.collapse py:function 1 api/collapse.html#genominterv.interval_set_op.collapse -
+genominterv.remapping.remap py:function 1 api/remap.html#genominterv.remapping.remap -

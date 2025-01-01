@@ -1,7 +1,7 @@
-# interval_union { #genominterv.interval_union }
+# interval_union { #genominterv.intervals.interval_union }
 
 ```python
-genominterv.interval_union(query, annot)
+genominterv.intervals.interval_union(query, annot)
 ```
 
 This function computes the union of two sets of genomic intervals. The genomic intervals
@@ -25,4 +25,4 @@ in each set must be non-overlapping. This can be achieved using interval_collaps
 
 ## See Also {.doc-section .doc-section-see-also}
 
-[](`genominterv.interval_diff`), [](`genominterv.interval_intersect`), [](`genominterv.interval_collapse`).
+[](`genominterv.intervals.interval_diff`), [](`genominterv.intervals.interval_intersect`), [](`genominterv.intervals.interval_collapse`).

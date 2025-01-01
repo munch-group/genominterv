@@ -1,7 +1,7 @@
-# collapse { #genominterv.collapse }
+# collapse { #genominterv.interval_set_op.collapse }
 
 ```python
-genominterv.collapse(a)
+genominterv.interval_set_op.collapse(a)
 ```
 
 Converts a list of sorted overlapping intervals to non-overlapping

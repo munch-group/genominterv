@@ -3941,6 +3941,7 @@ griffe.infer_docstring_style(**options) py:param 1 reference/api/docstrings/pars
 griffe.infer_docstring_style(default) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.infer_docstring_style(docstring) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.infer_docstring_style(method) py:param 1 reference/api/docstrings/parsers/#$ -
+griffe.infer_docstring_style(per_style_options) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.infer_docstring_style(style_order) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.inspect py:function 1 reference/api/agents/#$ -
 griffe.inspect(docstring_options) py:param 1 reference/api/agents/#$ -
@@ -4001,6 +4002,9 @@ griffe.load_pypi(force_inspection) py:param 1 reference/api/loaders/#$ -
 griffe.load_pypi(lines_collection) py:param 1 reference/api/loaders/#$ -
 griffe.load_pypi(modules_collection) py:param 1 reference/api/loaders/#$ -
 griffe.load_pypi(package) py:param 1 reference/api/loaders/#$ -
+griffe.load_pypi(resolve_aliases) py:param 1 reference/api/loaders/#$ -
+griffe.load_pypi(resolve_external) py:param 1 reference/api/loaders/#$ -
+griffe.load_pypi(resolve_implicit) py:param 1 reference/api/loaders/#$ -
 griffe.load_pypi(search_paths) py:param 1 reference/api/loaders/#$ -
 griffe.load_pypi(submodules) py:param 1 reference/api/loaders/#$ -
 griffe.load_pypi(version_spec) py:param 1 reference/api/loaders/#$ -
@@ -4023,6 +4027,7 @@ griffe.parse_auto(**options) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.parse_auto(default) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.parse_auto(docstring) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.parse_auto(method) py:param 1 reference/api/docstrings/parsers/#$ -
+griffe.parse_auto(per_style_options) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.parse_auto(style_order) py:param 1 reference/api/docstrings/parsers/#$ -
 griffe.parse_docstring_annotation py:function 1 reference/api/docstrings/parsers/#$ -
 griffe.parse_docstring_annotation(annotation) py:param 1 reference/api/docstrings/parsers/#$ -

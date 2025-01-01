@@ -1,10 +1,10 @@
-# diff { #genominterv.interval_set_op.diff }
+# intersect { #genominterv.interval_set_op.intersect }
 
 ```python
-genominterv.interval_set_op.diff(a, b)
+genominterv.interval_set_op.intersect(a, b)
 ```
 
-Difference intervals of two sorted lists of (start, end) intervals.
+Intersection intervals of two sorted lists of (start, end) intervals.
 
 ## Parameters {.doc-section .doc-section-parameters}
 

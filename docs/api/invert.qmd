@@ -1,7 +1,7 @@
-# invert { #genominterv.invert }
+# invert { #genominterv.interval_set_op.invert }
 
 ```python
-genominterv.invert(a, left, right)
+genominterv.interval_set_op.invert(a, left, right)
 ```
 
 Produces the complement of a list of sorted intervals 

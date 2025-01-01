@@ -1,11 +1,12 @@
-# proximity_test { #genominterv.proximity_test }
+# proximity_test { #genominterv.stats.proximity_test }
 
 ```python
-genominterv.proximity_test(
+genominterv.stats.proximity_test(
     query
     annot
     samples=10000
     npoints=1000
+    overlap_as_zero=False
     two_sided=False
 )
 ```

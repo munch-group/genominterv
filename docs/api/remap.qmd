@@ -1,7 +1,14 @@
-# remap { #genominterv.remap }
+# remap { #genominterv.remapping.remap }
 
 ```python
-genominterv.remap(query, annot, relative=False, include_prox_coord=False)
+genominterv.remapping.remap(
+    query
+    annot
+    relative=False
+    include_prox_coord=False
+    overlap_as_zero=False
+    span_as_zero=False
+)
 ```
 
 Remap the coordinates of a single interval in `query` to the distance from
@@ -11,12 +18,12 @@ are discarded.
 
 ## Parameters {.doc-section .doc-section-parameters}
 
-<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[tuple](`tuple`)\[[int](`int`) \| [float](`float`), [int](`int`) \| [float](`float`)\]]{.parameter-annotation}</code>
+<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[Tuple](`typing.Tuple`)\[[int](`int`)\]]{.parameter-annotation}</code>
 
 :   A tuple of (start, end) coordinates.
 
 ## Returns {.doc-section .doc-section-returns}
 
-<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[list](`list`)\[[tuple](`tuple`)\[[float](`float`), [float](`float`)\]\]]{.parameter-annotation}</code>
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[List](`typing.List`)\[[tuple](`tuple`)\]]{.parameter-annotation}</code>
 
 :   A list of tuples with (start, end) coordinates.

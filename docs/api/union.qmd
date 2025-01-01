@@ -1,7 +1,7 @@
-# union { #genominterv.union }
+# union { #genominterv.interval_set_op.union }
 
 ```python
-genominterv.union(a, b)
+genominterv.interval_set_op.union(a, b)
 ```
 
 Union intervals of two sorted lists of (start, end) intervals.

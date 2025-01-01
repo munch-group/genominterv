@@ -1,7 +1,7 @@
-# genomic { #genominterv.genomic }
+# genomic { #genominterv.decorators.genomic }
 
 ```python
-genominterv.genomic(func)
+genominterv.decorators.genomic(func)
 ```
 
 Decorator for converting a function operating on lists of (start, end) tuples to one

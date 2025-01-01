@@ -1,7 +1,7 @@
-# interval_collapse { #genominterv.interval_collapse }
+# interval_collapse { #genominterv.intervals.interval_collapse }
 
 ```python
-genominterv.interval_collapse(interv)
+genominterv.intervals.interval_collapse(interv)
 ```
 
 This function computes the union of intervals in a single set.
@@ -20,4 +20,4 @@ This function computes the union of intervals in a single set.
 
 ## See Also {.doc-section .doc-section-see-also}
 
-[](`genominterv.interval_diff`), [](`genominterv.interval_union`), [](`genominterv.interval_intersect`).
+[](`genominterv.intervals.interval_diff`), [](`genominterv.intervals.interval_union`), [](`genominterv.intervals.interval_intersect`).

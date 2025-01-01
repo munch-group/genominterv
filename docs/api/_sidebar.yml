@@ -7,15 +7,16 @@ website:
       - api/interval_union.qmd
       - api/interval_intersect.qmd
       - api/interval_collapse.qmd
-      - api/proximity_test.qmd
-      - api/jaccard_stat.qmd
-      section: Set operations
-    - contents:
-      - api/remap.qmd
       - api/interval_distance.qmd
+      section: Genomic set operations
+    - contents:
       - api/interval_relative_distance.qmd
       - api/remap_interval_data.qmd
       section: Mapping
+    - contents:
+      - api/proximity_test.qmd
+      - api/jaccard_stat.qmd
+      section: Statistics
     - contents:
       - api/genomic.qmd
       - api/bootstrap.qmd
@@ -24,10 +25,11 @@ website:
       - api/union.qmd
       - api/diff.qmd
       - api/invert.qmd
-      - api/invert.qmd
+      - api/intersect.qmd
       - api/collapse.qmd
-      - api/flatten.qmd
-      - api/unflatten.qmd
-      section: Interval lists
+      section: Interval set utilities
+    - contents:
+      - api/remap.qmd
+      section: Interval mapping utilities
     id: api
   - id: dummy-sidebar

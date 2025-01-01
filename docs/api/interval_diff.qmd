@@ -1,7 +1,7 @@
-# interval_diff { #genominterv.interval_diff }
+# interval_diff { #genominterv.intervals.interval_diff }
 
 ```python
-genominterv.interval_diff(query, annot)
+genominterv.intervals.interval_diff(query, annot)
 ```
 
 This function computes the difference between two sets of genomic intervals.
@@ -26,4 +26,4 @@ achieved using :any:interval_collapse.
 
 ## See Also {.doc-section .doc-section-see-also}
 
-[](`genominterv.interval_union`), [](`genominterv.interval_intersect`), [](`genominterv.interval_collapse`).
+[](`genominterv.intervals.interval_union`), [](`genominterv.intervals.interval_intersect`), [](`genominterv.intervals.interval_collapse`).

@@ -76,7 +76,9 @@ format:
     # highlight-style: breeze 
     highlight-style: github 
     code-block-bg: true
-    toc: true
+    # toc: true
+    mermaid:
+      theme: neutral 
 
 quartodoc:
   style: pkgdown
@@ -92,34 +94,44 @@ quartodoc:
   css: "api/_styles-quartodoc.css"
 
   sections:
-    - title: Set operations
+    - title: Genomic set operations
       desc: "Set operations on pandas.DataFrames with `chrom`, `start`, `end` columns"
+      package: genominterv.intervals
       contents:
         - interval_diff     
         - interval_union   
         - interval_intersect 
         - interval_collapse
-        - proximity_test        
-        - jaccard_stat
-    - title: Mapping
-      desc: "Mapping intervals relative to other coordinates."
-      contents:
-        - remap 
         - interval_distance
+    - title: Mapping
+      package: genominterv.intervals
+      desc: "Mapping intervals relative to other coordinates."
+      contents:        
         - interval_relative_distance
         - remap_interval_data
+    - title: Statistics
+      package: genominterv.stats
+      desc: "Mapping intervals relative to other coordinates."
+      contents:
+        - proximity_test        
+        - jaccard_stat
     - title: Decorators
       desc: "Utilities for user created genomic intervals and bootstrap tests."
+      package: genominterv.decorators
       contents:
         - genomic 
         - bootstrap
-    - title: Interval lists
-      desc: "Standard set operations on sorted lists of (start, end) tuples."
+    - title: Interval set utilities
+      desc: "Set operations on sorted lists of (start, end) tuples."
+      package: genominterv.interval_set_op
       contents:
         - union 
         - diff
         - invert
-        - invert
+        - intersect
         - collapse
-        - flatten
-        - unflatten
+    - title: Interval mapping utilities
+      desc: "Set operations on sorted lists of (start, end) tuples."
+      package: genominterv.remapping
+      contents:
+        - remap 

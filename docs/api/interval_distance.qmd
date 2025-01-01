@@ -1,7 +1,7 @@
-# interval_distance { #genominterv.interval_distance }
+# interval_distance { #genominterv.intervals.interval_distance }
 
 ```python
-genominterv.interval_distance(query, annot)
+genominterv.intervals.interval_distance(query, annot)
 ```
 
 Computes the distance from each query interval to the closest interval in
@@ -27,4 +27,4 @@ from ``query`` that overlap intervals in ``annot`` are discarded.
 
 ## See Also {.doc-section .doc-section-see-also}
 
-If you want to retain the original columns in `query`, use [](`~genominterv.remap_interval_data`).
+If you want to retain the original columns in `query`, use [](`~genominterv.intervals.remap_interval_data`).

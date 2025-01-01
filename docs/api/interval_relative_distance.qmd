@@ -1,7 +1,7 @@
-# interval_relative_distance { #genominterv.interval_relative_distance }
+# interval_relative_distance { #genominterv.intervals.interval_relative_distance }
 
 ```python
-genominterv.interval_relative_distance(query, annot)
+genominterv.intervals.interval_relative_distance(query, annot)
 ```
 
 Computes the relative distance from each query interval to the closest interval in
@@ -27,5 +27,5 @@ from `query` that overlap intervals in `annot` are discarded.
 
 ## See Also {.doc-section .doc-section-see-also}
 
-Same as [](`~genominterv.interval_distance`), but computes the *relative* distance.
+Same as [](`~genominterv.intervals.interval_distance`), but computes the *relative* distance.
 I.e. distances between 0 and 0.5.

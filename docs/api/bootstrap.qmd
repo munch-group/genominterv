@@ -1,7 +1,7 @@
-# bootstrap { #genominterv.bootstrap }
+# bootstrap { #genominterv.decorators.bootstrap }
 
 ```python
-genominterv.bootstrap(
+genominterv.decorators.bootstrap(
     chromosome_sizes
     samples=1000
     smaller=False
@@ -11,12 +11,12 @@ genominterv.bootstrap(
 
 Parameterized decorator that turns a function producing a statistic into one that also
 produces a p-value from bootstrapping. The bootstrapping resamples the
-intervals of the second argument for each chromosome independently. Only
+intervals of the first argument for each chromosome independently. Only
 required argument to bootstrap is the name of the genome assembly used.
 
 ## Parameters {.doc-section .doc-section-parameters}
 
-<code>[**chromosome_sizes**]{.parameter-name} [:]{.parameter-annotation-sep} [[str](`str`) \| [dict](`dict`)]{.parameter-annotation}</code>
+<code>[**chromosome_sizes**]{.parameter-name} [:]{.parameter-annotation-sep} [[Union](`typing.Union`)\[[str](`str`), [dict](`dict`)\]]{.parameter-annotation}</code>
 
 :   Name of a genome assembly or a dictionary mapping chromosomes to their lengths.
 

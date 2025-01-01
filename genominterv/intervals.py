@@ -181,7 +181,8 @@ def interval_collapse(interv: pd.DataFrame) -> pd.DataFrame:
 
 
 @genomic
-def interval_distance(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
+def interval_distance(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=False,
+                      overlap_as_zero:bool=False, span_as_zero:bool=False) -> pd.DataFrame:
     """
     Computes the distance from each query interval to the closest interval in
     annot. If a query interval overlaps the midpoint between two annot intervals
@@ -194,6 +195,13 @@ def interval_distance(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
         Data frame with query intervals.
     annot : 
         Data frame with annotation intervals.        
+    relative : 
+        Return relative distance (0-1) instead of absolute distance, by default False.
+    overlap_as_zero : 
+        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
+        This does not apply to query segments embedded in or spanning on or more annotation segments.
+    span_as_zero : 
+        Set distance to zero if a query segment spans a single annotation segment, by default False.   
 
     Returns
     -------
@@ -204,39 +212,12 @@ def interval_distance(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
     --------
     If you want to retain the original columns in `query`, use [](`~genominterv.intervals.remap_interval_data`).
     """
-    return list(chain.from_iterable(remap(q, annot) for q in query))
+    return list(chain.from_iterable(
+        remap(q, annot, overlap_as_zero=overlap_as_zero, span_as_zero=span_as_zero, relative=relative) for q in query))
 
 
-@genomic
-def interval_relative_distance(query, annot):
-    """
-    Computes the relative distance from each query interval to the closest interval in
-    annot. If a query interval overlaps the midpoint between two annot intervals
-    it is split into two intervals proximal to each annot interval. Intervals
-    from `query` that overlap intervals in `annot` are discarded.
-
-    Parameters
-    ----------
-    query : 
-        Data frame with query intervals.
-    annot : 
-        Data frame with annotation intervals.        
-
-    Returns
-    -------
-    :
-        A data frame with remapped intervals.
-
-    See Also
-    --------
-    Same as [](`~genominterv.intervals.interval_distance`), but computes the *relative* distance.
-    I.e. distances between 0 and 0.5.
-    """
-
-    return list(chain.from_iterable(remap(q, annot, relative=True) for q in query))
-
-
-def remap_interval_data(query, annot):
+def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=False,
+                      overlap_as_zero:bool=False, span_as_zero:bool=False) -> pd.DataFrame:
     """
     Computes the distance from each query interval to the closest interval
     in annot. Original coordinates are preserved as `orig_start` and
@@ -251,6 +232,13 @@ def remap_interval_data(query, annot):
         Data frame with query intervals.
     annot : 
         Data frame with annotation intervals.        
+    relative : 
+        Return relative distance (0-1) instead of absolute distance, by default False.
+    overlap_as_zero : 
+        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
+        This does not apply to query segments embedded in or spanning on or more annotation segments.
+    span_as_zero : 
+        Set distance to zero if a query segment spans a single annotation segment, by default False.   
 
     Returns
     -------
@@ -276,7 +264,10 @@ def remap_interval_data(query, annot):
             # start, end = (row['start'], row['end'])
         for row in group.itertuples(index=False):            
             start, end = row.start, row.end
-            for remapped_start, remapped_end, start_prox, end_prox in remap((start, end), annot_tups, include_prox_coord=True):
+            for remapped_start, remapped_end, start_prox, end_prox in remap(
+                    (start, end), annot_tups, include_prox_coord=True,
+                    overlap_as_zero=overlap_as_zero, span_as_zero=span_as_zero, relative=relative
+                    ):
                 remapped.append((remapped_start, remapped_end, start_prox, end_prox) + tuple(row))
 
         df = pd.DataFrame().from_records(remapped, 

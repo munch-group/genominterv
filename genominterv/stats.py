@@ -9,7 +9,7 @@ from collections import namedtuple
 from collections.abc import Callable
 from typing import Any, TypeVar, List, Tuple, Dict, Union
 
-from .intervals import interval_relative_distance, interval_intersect, interval_union
+from .intervals import interval_distance, interval_intersect, interval_union
 
 
 def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000, npoints: int=1000, overlap_as_zero=False, two_sided: bool=False) -> namedtuple:
@@ -35,20 +35,7 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
         A named tuple with the test statistic and p-value.
     """
 
-    # annot = interval_collapse(annot)
-
-    # if overlap_as_zero:
-    #     overlapping_query_idx = []
-    #     for i, q in enumerate(query):
-    #         for a in annot:
-    #             if q[0] < a[1] and q[1] > a[0]:
-    #                 overlapping_query_idx.append(i)
-    #                 break
-
-    # query = interval_diff(query, annot)
-    # remapped_df = interval_relative_distance(query, annot, overlap_as_zero=overlap_as_zero)
-
-    remapped_df = interval_relative_distance(query, annot)
+    remapped_df = interval_distance(query, annot, relative=True, overlap_as_zero=overlap_as_zero)
     distances = abs(remapped_df.start)
 
     def _stat(distances, npoints):

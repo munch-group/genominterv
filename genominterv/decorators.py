@@ -17,7 +17,7 @@ def by_chrom(func: Callable) -> Callable:
     many chromosomes.
     """
     @wraps(func)
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
 
         # make a local copy with reset indexes
         data_frames = [df.reset_index() for df in args]
@@ -42,7 +42,7 @@ def by_chrom(func: Callable) -> Callable:
             func_args = list()
             for i, df in enumerate(data_frames):
                 func_args.append(df.loc[idx[i][chrom]])
-            _df = func(*func_args)
+            _df = func(*func_args, **kwargs)
             if _df.index.size > 0:
                 results.append(_df)
         if len(results):
@@ -62,7 +62,7 @@ def with_chrom(func: Callable) -> Callable:
     that takes a pd.DataFrame with chrom, start, end columns. Also sorts intervals.
     """
     @wraps(func)
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
         chrom_set = set()
         tps_list = list()
         for df in args:            
@@ -71,7 +71,7 @@ def with_chrom(func: Callable) -> Callable:
             tps_list.append(tps)
         assert len(chrom_set) == 1
         chrom = chrom_set.pop()
-        res_df = pd.DataFrame.from_records(func(*tps_list), columns = ['start', 'end'])
+        res_df = pd.DataFrame.from_records(func(*tps_list, **kwargs), columns = ['start', 'end'])
         res_df['chrom'] = chrom
         return res_df
     return wrapper

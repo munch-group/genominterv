@@ -43,7 +43,18 @@ def remap(query: Tuple[int], annot: List[tuple], relative=False, include_prox_co
     Parameters
     ----------
     query : 
-        A tuple of (start, end) coordinates.
+        Query interval. A tuple of (start, end) coordinates.
+    annot : 
+        Data frame with annotation intervals. A list of tuples with (start, end) coordinates.
+    relative : 
+        Return relative distance (0-1) instead of absolute distance, by default False.
+    include_prox_coord : 
+        Include coordinates of the closest annotation segment, by default False.
+    overlap_as_zero : 
+        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
+        This does not apply to query segments embedded in or spanning on or more annotation segments.
+    span_as_zero : 
+        Set distance to zero if a query segment spans a single annotation segment, by default False.        
 
     Returns
     -------

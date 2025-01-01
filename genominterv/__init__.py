@@ -4,7 +4,6 @@ from .intervals import (
             interval_intersect,
             interval_collapse,
             interval_distance,
-            interval_relative_distance,
             remap_interval_data,
 )
 from . import stats

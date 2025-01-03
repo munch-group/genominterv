@@ -14,7 +14,7 @@ from .intervals import interval_intersect, interval_union
 
 
 def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=100000, 
-                   npoints: int=1000, overlap_as_zero=False, two_sided: bool=False) -> namedtuple:
+                   npoints: int=1000, overlap_as_zero:bool=False, span_as_zero:bool=False, two_sided: bool=False) -> namedtuple:
     """
     Test for proximity of intervals to a set of annotations.
 
@@ -30,14 +30,21 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=100000
         Number of points to use in the ECDF.
     two_sided :
         Whether to test for proximity in both directions.
-        
+    overlap_as_zero : 
+        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
+        This does not apply to query segments embedded in or spanning on or more annotation segments.
+    span_as_zero : 
+        Set distance to zero if a query segment spans a single annotation segment, by default False.        
+
     Returns
     -------
     : 
         A named tuple with the test statistic and p-value.
     """
 
-    remapped_df = interval_distance(query, annot, overlap_as_zero=overlap_as_zero)
+    remapped_df = interval_distance(query, annot, 
+                                    overlap_as_zero=overlap_as_zero,
+                                    span_as_zero=span_as_zero)
     distances = abs(remapped_df.start)
 
     def _stat(distances, npoints):

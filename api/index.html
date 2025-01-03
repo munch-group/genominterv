@@ -163,18 +163,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">interval_collapse</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_distance</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Mapping</span></a>
+ <span class="menu-text">Remapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -182,8 +176,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_relative_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_relative_distance</span></a>
+  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">interval_distance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -311,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#function-reference" id="toc-function-reference" class="nav-link active" data-scroll-target="#function-reference">Function reference</a>
   <ul class="collapse">
   <li><a href="#genomic-set-operations" id="toc-genomic-set-operations" class="nav-link" data-scroll-target="#genomic-set-operations">Genomic set operations</a></li>
-  <li><a href="#mapping" id="toc-mapping" class="nav-link" data-scroll-target="#mapping">Mapping</a></li>
+  <li><a href="#remapping" id="toc-remapping" class="nav-link" data-scroll-target="#remapping">Remapping</a></li>
   <li><a href="#statistics" id="toc-statistics" class="nav-link" data-scroll-target="#statistics">Statistics</a></li>
   <li><a href="#decorators" id="toc-decorators" class="nav-link" data-scroll-target="#decorators">Decorators</a></li>
   <li><a href="#interval-set-utilities" id="toc-interval-set-utilities" class="nav-link" data-scroll-target="#interval-set-utilities">Interval set utilities</a></li>
@@ -334,39 +328,35 @@ ul.task-list li input[type="checkbox"] {
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><a href="../api/interval_diff.html#genominterv.intervals.interval_diff">interval_diff</a></td>
+<td><a href="../api/interval_diff.html#genominterv.interval_diff">interval_diff</a></td>
 <td>This function computes the difference between two sets of genomic intervals.</td>
 </tr>
 <tr class="even">
-<td><a href="../api/interval_union.html#genominterv.intervals.interval_union">interval_union</a></td>
+<td><a href="../api/interval_union.html#genominterv.interval_union">interval_union</a></td>
 <td>This function computes the union of two sets of genomic intervals. The genomic intervals</td>
 </tr>
 <tr class="odd">
-<td><a href="../api/interval_intersect.html#genominterv.intervals.interval_intersect">interval_intersect</a></td>
+<td><a href="../api/interval_intersect.html#genominterv.interval_intersect">interval_intersect</a></td>
 <td>This function computes the intersection of two sets of genomic intervals. The genomic intervals</td>
 </tr>
 <tr class="even">
-<td><a href="../api/interval_collapse.html#genominterv.intervals.interval_collapse">interval_collapse</a></td>
+<td><a href="../api/interval_collapse.html#genominterv.interval_collapse">interval_collapse</a></td>
 <td>This function computes the union of intervals in a single set.</td>
-</tr>
-<tr class="odd">
-<td><a href="../api/interval_distance.html#genominterv.intervals.interval_distance">interval_distance</a></td>
-<td>Computes the distance from each query interval to the closest interval in</td>
 </tr>
 </tbody>
 </table>
 </section>
-<section id="mapping" class="level2">
-<h2 class="anchored" data-anchor-id="mapping">Mapping</h2>
+<section id="remapping" class="level2">
+<h2 class="anchored" data-anchor-id="remapping">Remapping</h2>
 <p>Mapping intervals relative to other coordinates.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
-<td><a href="../api/interval_relative_distance.html#genominterv.intervals.interval_relative_distance">interval_relative_distance</a></td>
-<td>Computes the relative distance from each query interval to the closest interval in</td>
+<td><a href="../api/interval_distance.html#genominterv.remapping.interval_distance">interval_distance</a></td>
+<td>Computes the distance from each query interval to the closest interval in</td>
 </tr>
 <tr class="even">
-<td><a href="../api/remap_interval_data.html#genominterv.intervals.remap_interval_data">remap_interval_data</a></td>
+<td><a href="../api/remap_interval_data.html#genominterv.remapping.remap_interval_data">remap_interval_data</a></td>
 <td>Computes the distance from each query interval to the closest interval</td>
 </tr>
 </tbody>

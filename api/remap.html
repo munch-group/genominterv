@@ -197,18 +197,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">interval_collapse</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_distance</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Mapping</span></a>
+ <span class="menu-text">Remapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -216,8 +210,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_relative_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_relative_distance</span></a>
+  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">interval_distance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -372,7 +366,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl>
 <dt><code><span class="parameter-name"><strong>query</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/typing.html#typing.Tuple">Tuple</a>[<a href="https://docs.python.org/3/library/functions.html#int">int</a>]</span></code></dt>
 <dd>
-<p>A tuple of (start, end) coordinates.</p>
+<p>Query interval. A tuple of (start, end) coordinates.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>annot</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><a href="https://docs.python.org/3/library/typing.html#typing.List">List</a>[<a href="https://docs.python.org/3/library/stdtypes.html#tuple">tuple</a>]</span></code></dt>
+<dd>
+<p>Data frame with annotation intervals. A list of tuples with (start, end) coordinates.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>relative</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">False</span></code></dt>
+<dd>
+<p>Return relative distance (0-1) instead of absolute distance, by default False.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>include_prox_coord</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">False</span></code></dt>
+<dd>
+<p>Include coordinates of the closest annotation segment, by default False.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>overlap_as_zero</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">False</span></code></dt>
+<dd>
+<p>Set distance to zero if one end of a query segment overlaps an annotation segment, by default False. This does not apply to query segments embedded in or spanning on or more annotation segments.</p>
+</dd>
+<dt><code><span class="parameter-name"><strong>span_as_zero</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span> <span class="parameter-default-sep">=</span> <span class="parameter-default">False</span></code></dt>
+<dd>
+<p>Set distance to zero if a query segment spans a single annotation segment, by default False.</p>
 </dd>
 </dl>
 </section>

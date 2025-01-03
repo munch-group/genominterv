@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>interval_relative_distance – genominterv</title>
+<title>Mapping – genominterv</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,15 +57,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../api/remap_interval_data.html" rel="next">
-<link href="../api/interval_distance.html" rel="prev">
+<link href="../examples/examples.html" rel="next">
+<link href="../pages/interval_tests.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../api/_styles-quartodoc.css">
@@ -147,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/interval_relative_distance.html">Mapping</a></li><li class="breadcrumb-item"><a href="../api/interval_relative_distance.html">interval_relative_distance</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Remapping</a></li><li class="breadcrumb-item"><a href="../pages/remapping.html">Mapping</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -161,14 +164,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Function reference</span></a>
+  <a href="../pages/getting_started.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting started</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Genomic set operations</span></a>
+ <span class="menu-text">Set operations</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -176,32 +179,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_diff</span></a>
+  <a href="../pages/set_operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Set operations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_union.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_union</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/interval_intersect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_intersect</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/interval_collapse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_collapse</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_distance</span></a>
+  <a href="../pages/decorators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decorators for intervals</span></a>
   </div>
 </li>
       </ul>
@@ -209,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Mapping</span></a>
+ <span class="menu-text">Remapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -217,14 +202,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_relative_distance.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">interval_relative_distance</span></a>
+  <a href="../pages/interval_tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interval tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/remap_interval_data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">remap_interval_data</span></a>
+  <a href="../pages/remapping.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Mapping</span></a>
   </div>
 </li>
       </ul>
@@ -232,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Statistics</span></a>
+ <span class="menu-text">Examples</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -240,95 +225,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/proximity_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">proximity_test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/jaccard_stat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">jaccard_stat</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Decorators</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/genomic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">genomic</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/bootstrap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">bootstrap</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Interval set utilities</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/union.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">union</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/diff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">diff</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/invert.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">invert</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/intersect.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">intersect</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/collapse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">collapse</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
- <span class="menu-text">Interval mapping utilities</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/remap.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">remap</span></a>
+  <a href="../examples/examples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Jupyter notebook</span></a>
   </div>
 </li>
       </ul>
@@ -343,53 +241,351 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#genominterv.intervals.interval_relative_distance" id="toc-genominterv.intervals.interval_relative_distance" class="nav-link active" data-scroll-target="#genominterv.intervals.interval_relative_distance">interval_relative_distance</a>
-  <ul class="collapse">
-  <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
-  <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
-  <li><a href="#see-also" id="toc-see-also" class="nav-link" data-scroll-target="#see-also">See Also</a></li>
-  </ul></li>
+  <li><a href="#remapping-functions" id="toc-remapping-functions" class="nav-link active" data-scroll-target="#remapping-functions">Remapping functions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../api/interval_relative_distance.html">Mapping</a></li><li class="breadcrumb-item"><a href="../api/interval_relative_distance.html">interval_relative_distance</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Remapping</a></li><li class="breadcrumb-item"><a href="../pages/remapping.html">Mapping</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Mapping</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="genominterv.intervals.interval_relative_distance" class="level1">
-<h1>interval_relative_distance</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.intervals.interval_relative_distance(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Computes the relative distance from each query interval to the closest interval in annot. If a query interval overlaps the midpoint between two annot intervals it is split into two intervals proximal to each annot interval. Intervals from <code>query</code> that overlap intervals in <code>annot</code> are discarded.</p>
-<section id="parameters" class="level2 doc-section doc-section-parameters">
-<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
-<dl>
-<dt><code><span class="parameter-name"><strong>query</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span></code></dt>
-<dd>
-<p>Data frame with query intervals.</p>
-</dd>
-<dt><code><span class="parameter-name"><strong>annot</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span></code></dt>
-<dd>
-<p>Data frame with annotation intervals.</p>
-</dd>
-</dl>
-</section>
-<section id="returns" class="level2 doc-section doc-section-returns">
-<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
-<dl>
-<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"></span></code></dt>
-<dd>
-<p>A data frame with remapped intervals.</p>
-</dd>
-</dl>
-</section>
-<section id="see-also" class="level2 doc-section doc-section-see-also">
-<h2 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See Also</h2>
-<p>Same as <a href="../api/interval_distance.html#genominterv.intervals.interval_distance"><code>interval_distance</code></a>, but computes the <em>relative</em> distance. I.e. distances between 0 and 0.5.</p>
+    
+  
+    
+  </div>
+  
 
 
-</section>
+</header>
+
+
+<p>The function <a href="../api/interval_distance.html#genominterv.remapping.interval_distance"><code>interval_distance</code></a> converts coordinates of one set of genomic intervals into distances to the closest interval in a second set.</p>
+<section id="remapping-functions" class="level2">
+<h2 class="anchored" data-anchor-id="remapping-functions">Remapping functions</h2>
+<p>The function <code>remap</code> converts coordinates a single interval into distance to the closest interval in a second set:</p>
+<div id="cell-5" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> remap</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>single_interval <span class="op">=</span> (<span class="dv">300</span>, <span class="dv">400</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>other_intervals <span class="op">=</span> [(<span class="dv">0</span>, <span class="dv">100</span>), (<span class="dv">1000</span>, <span class="dv">1100</span>)]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>remap(single_interval, other_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>[(200, 300)]</code></pre>
+</div>
+</div>
+<p>Same but retaining info about which annotation the interval is proximal to:</p>
+<div id="cell-7" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>remap((<span class="dv">300</span>, <span class="dv">400</span>), [(<span class="dv">0</span>, <span class="dv">100</span>), (<span class="dv">1000</span>, <span class="dv">1100</span>)], include_prox_coord<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[(200, 300, 0, 100)]</code></pre>
+</div>
+</div>
+<p>The function <code>interval_distance</code> converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. Using <code>relative=True</code> returns distances relative to the span between the two flanking annotation intervals.</p>
+<div id="cell-9" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chrX'</span>, start<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">20</span>], end<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">25</span>]))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>annot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">chrom</th>
+<th data-quarto-table-cell-role="th">start</th>
+<th data-quarto-table-cell-role="th">end</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>chrX</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>chrX</td>
+<td>20</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chrX'</span>, start<span class="op">=</span>[<span class="dv">3</span>, <span class="dv">5</span>], end<span class="op">=</span>[<span class="dv">15</span>, <span class="dv">7</span>], some_data<span class="op">=</span>[<span class="st">'foo'</span>, <span class="st">'bar'</span>], other_data<span class="op">=</span>[<span class="st">'A'</span>, <span class="st">'B'</span>]))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">chrom</th>
+<th data-quarto-table-cell-role="th">start</th>
+<th data-quarto-table-cell-role="th">end</th>
+<th data-quarto-table-cell-role="th">some_data</th>
+<th data-quarto-table-cell-role="th">other_data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>chrX</td>
+<td>3</td>
+<td>15</td>
+<td>foo</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>chrX</td>
+<td>5</td>
+<td>7</td>
+<td>bar</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> interval_distance</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>interval_distance(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">start</th>
+<th data-quarto-table-cell-role="th">end</th>
+<th data-quarto-table-cell-role="th">chrom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>9.0</td>
+<td>chrX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-5</td>
+<td>-9.0</td>
+<td>chrX</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>5.0</td>
+<td>chrX</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> interval_distance</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> genominterv</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(genominterv.<span class="va">__file__</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>interval_distance(query, annot, relative<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/Users/kmt/genominterv/genominterv/__init__.py</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">start</th>
+<th data-quarto-table-cell-role="th">end</th>
+<th data-quarto-table-cell-role="th">chrom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.055556</td>
+<td>0.500000</td>
+<td>chrX</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.277778</td>
+<td>-0.500000</td>
+<td>chrX</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.166667</td>
+<td>0.277778</td>
+<td>chrX</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The most useful function for most applications is <code>remap_interval_data</code>, which does the remapping while preserving all the information in the query data frame. It also reports the start and end coordinates before remapping (ends with <code>*_orig</code>) and the coordinates of the most proximal segment in the annotation set (<code>*_prox</code>).</p>
+<div id="cell-14" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> remap_interval_data</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>remap_interval_data(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">start</th>
+<th data-quarto-table-cell-role="th">end</th>
+<th data-quarto-table-cell-role="th">start_prox</th>
+<th data-quarto-table-cell-role="th">end_prox</th>
+<th data-quarto-table-cell-role="th">chrom</th>
+<th data-quarto-table-cell-role="th">start_orig</th>
+<th data-quarto-table-cell-role="th">end_orig</th>
+<th data-quarto-table-cell-role="th">some_data</th>
+<th data-quarto-table-cell-role="th">other_data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>9.0</td>
+<td>1</td>
+<td>2</td>
+<td>chrX</td>
+<td>3</td>
+<td>15</td>
+<td>foo</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-5</td>
+<td>-9.0</td>
+<td>20</td>
+<td>25</td>
+<td>chrX</td>
+<td>3</td>
+<td>15</td>
+<td>foo</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>5.0</td>
+<td>1</td>
+<td>2</td>
+<td>chrX</td>
+<td>5</td>
+<td>7</td>
+<td>bar</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-15" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>remap_interval_data(query, annot, relative<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">start</th>
+<th data-quarto-table-cell-role="th">end</th>
+<th data-quarto-table-cell-role="th">start_prox</th>
+<th data-quarto-table-cell-role="th">end_prox</th>
+<th data-quarto-table-cell-role="th">chrom</th>
+<th data-quarto-table-cell-role="th">start_orig</th>
+<th data-quarto-table-cell-role="th">end_orig</th>
+<th data-quarto-table-cell-role="th">some_data</th>
+<th data-quarto-table-cell-role="th">other_data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.055556</td>
+<td>0.500000</td>
+<td>1</td>
+<td>2</td>
+<td>chrX</td>
+<td>3</td>
+<td>15</td>
+<td>foo</td>
+<td>A</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-0.277778</td>
+<td>-0.500000</td>
+<td>20</td>
+<td>25</td>
+<td>chrX</td>
+<td>3</td>
+<td>15</td>
+<td>foo</td>
+<td>A</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.166667</td>
+<td>0.277778</td>
+<td>1</td>
+<td>2</td>
+<td>chrX</td>
+<td>5</td>
+<td>7</td>
+<td>bar</td>
+<td>B</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -812,13 +1008,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../api/interval_distance.html" class="pagination-link" aria-label="interval_distance">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">interval_distance</span>
+      <a href="../pages/interval_tests.html" class="pagination-link" aria-label="Interval tests">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Interval tests</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../api/remap_interval_data.html" class="pagination-link" aria-label="remap_interval_data">
-        <span class="nav-page-text">remap_interval_data</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../examples/examples.html" class="pagination-link" aria-label="Jupyter notebook">
+        <span class="nav-page-text">Jupyter notebook</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

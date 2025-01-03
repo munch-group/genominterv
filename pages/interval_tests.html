@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/mapping.html" rel="next">
+<link href="../pages/remapping.html" rel="next">
 <link href="../pages/decorators.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Mapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Interval tests</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Remapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Interval tests</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Mapping</span></a>
+ <span class="menu-text">Remapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -208,7 +208,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/mapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/remapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Mapping</span></a>
   </div>
 </li>
@@ -249,7 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Mapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Interval tests</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Remapping</a></li><li class="breadcrumb-item"><a href="../pages/interval_tests.html">Interval tests</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Interval tests</h1>
 </div>
@@ -274,11 +274,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="../api/proximity_test.html#genominterv.stats.proximity_test"><code>proximity_test</code></a> computes tests if intervals in one set is significantly proximal to intervals in another set.</p>
 <div id="cell-4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">38_000_000</span>, <span class="dv">158_000_000</span>, <span class="dv">238_000_000</span>], </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_000_000</span>, <span class="dv">160_000_000</span>, <span class="dv">240_000_000</span>]))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">38_000_000</span>, <span class="dv">158_000_000</span>, <span class="dv">175_000_000</span>], </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_000_000</span>, <span class="dv">160_000_000</span>, <span class="dv">178_000_000</span>]))</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">162_000_000</span>, <span class="dv">241_000_000</span>], </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">161_000_000</span>, <span class="dv">241_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">162_000_000</span>, <span class="dv">170_000_000</span>], </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">161_000_000</span>, <span class="dv">173_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-fig-proximity" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
@@ -300,7 +300,7 @@ Figure&nbsp;1: Intervals
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>stat, pvalue <span class="op">=</span> proximity_test(query, annot)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>0.0</code></pre>
+<pre><code>1.0</code></pre>
 </div>
 </div>
 </section>
@@ -330,18 +330,18 @@ Figure&nbsp;2: Intervals
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="7">
+<div id="cell-10" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.decorators <span class="im">import</span> bootstrap</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.stats <span class="im">import</span> jaccard_stat</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, samples<span class="op">=</span><span class="dv">10000</span>)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(q, a):</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard_stat(q, a)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(query, annot)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>stat, p_value </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>(0.15384615384615385, 0.037)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>(0.15384615384615385, 0.0281)</code></pre>
 </div>
 </div>
 
@@ -773,7 +773,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/mapping.html" class="pagination-link" aria-label="Mapping">
+      <a href="../pages/remapping.html" class="pagination-link" aria-label="Mapping">
         <span class="nav-page-text">Mapping</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

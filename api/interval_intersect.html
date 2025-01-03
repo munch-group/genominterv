@@ -198,18 +198,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">interval_collapse</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_distance</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Mapping</span></a>
+ <span class="menu-text">Remapping</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -217,8 +211,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../api/interval_relative_distance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">interval_relative_distance</span></a>
+  <a href="../api/interval_distance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">interval_distance</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -343,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#genominterv.intervals.interval_intersect" id="toc-genominterv.intervals.interval_intersect" class="nav-link active" data-scroll-target="#genominterv.intervals.interval_intersect">interval_intersect</a>
+  <li><a href="#genominterv.interval_intersect" id="toc-genominterv.interval_intersect" class="nav-link active" data-scroll-target="#genominterv.interval_intersect">interval_intersect</a>
   <ul class="collapse">
   <li><a href="#parameters" id="toc-parameters" class="nav-link" data-scroll-target="#parameters">Parameters</a></li>
   <li><a href="#returns" id="toc-returns" class="nav-link" data-scroll-target="#returns">Returns</a></li>
@@ -358,18 +352,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="genominterv.intervals.interval_intersect" class="level1">
+<section id="genominterv.interval_intersect" class="level1">
 <h1>interval_intersect</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.intervals.interval_intersect(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>genominterv.interval_intersect(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This function computes the intersection of two sets of genomic intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using interval_collapse.</p>
 <section id="parameters" class="level2 doc-section doc-section-parameters">
 <h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
 <dl>
-<dt><code><span class="parameter-name"><strong>query</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pd</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"><strong>query</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
 <dd>
 <p>Data frame with query intervals.</p>
 </dd>
-<dt><code><span class="parameter-name"><strong>annot</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pd</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"><strong>annot</strong></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
 <dd>
 <p>Data frame with annotation intervals.</p>
 </dd>
@@ -378,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="returns" class="level2 doc-section doc-section-returns">
 <h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
 <dl>
-<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pd</code>.<code>DataFrame</code></span></code></dt>
+<dt><code><span class="parameter-name"></span> <span class="parameter-annotation-sep">:</span> <span class="parameter-annotation"><code>pandas</code>.<code>DataFrame</code></span></code></dt>
 <dd>
 <p>A data frame with chr, start, end columns representing the intersection.</p>
 </dd>
@@ -386,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="see-also" class="level2 doc-section doc-section-see-also">
 <h2 class="doc-section doc-section-see-also anchored" data-anchor-id="see-also">See Also</h2>
-<p><a href="../api/interval_diff.html#genominterv.intervals.interval_diff"><code>genominterv.intervals.interval_diff</code></a>, <a href="../api/interval_union.html#genominterv.intervals.interval_union"><code>genominterv.intervals.interval_union</code></a>, <a href="../api/interval_collapse.html#genominterv.intervals.interval_collapse"><code>genominterv.intervals.interval_collapse</code></a>.</p>
+<p><a href="../api/interval_diff.html#genominterv.interval_diff"><code>genominterv.intervals.interval_diff</code></a>, <a href="../api/interval_union.html#genominterv.interval_union"><code>genominterv.intervals.interval_union</code></a>, <a href="../api/interval_collapse.html#genominterv.interval_collapse"><code>genominterv.intervals.interval_collapse</code></a>.</p>
 
 
 </section>

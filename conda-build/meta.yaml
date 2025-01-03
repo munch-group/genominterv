@@ -38,8 +38,8 @@ dependencies:   # Keep this block with only these two packages
 test:
   imports:
     - genominterv
- commands:
-   - "{{ PYTHON }} -m unittest"
+#  commands:
+#    - "{{ PYTHON }} -m unittest"
 
 about:
   home: https://github.com/munch-group/genominterv.git

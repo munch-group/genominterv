@@ -1,6 +1,6 @@
 import unittest
 
-from genominterv.intervals import remap
+from genominterv.remapping import remap
 
 class TestRemapping(unittest.TestCase):
 

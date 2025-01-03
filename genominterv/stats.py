@@ -9,10 +9,12 @@ from collections import namedtuple
 from collections.abc import Callable
 from typing import Any, TypeVar, List, Tuple, Dict, Union
 
-from .intervals import interval_distance, interval_intersect, interval_union
+from .remapping import interval_distance
+from .intervals import interval_intersect, interval_union
 
 
-def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000, npoints: int=1000, overlap_as_zero=False, two_sided: bool=False) -> namedtuple:
+def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=100000, 
+                   npoints: int=1000, overlap_as_zero=False, two_sided: bool=False) -> namedtuple:
     """
     Test for proximity of intervals to a set of annotations.
 
@@ -35,7 +37,7 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
         A named tuple with the test statistic and p-value.
     """
 
-    remapped_df = interval_distance(query, annot, relative=True, overlap_as_zero=overlap_as_zero)
+    remapped_df = interval_distance(query, annot, overlap_as_zero=overlap_as_zero)
     distances = abs(remapped_df.start)
 
     def _stat(distances, npoints):

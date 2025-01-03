@@ -4,7 +4,7 @@
 genominterv.stats.proximity_test(
     query
     annot
-    samples=10000
+    samples=100000
     npoints=1000
     overlap_as_zero=False
     two_sided=False
@@ -23,7 +23,7 @@ Test for proximity of intervals to a set of annotations.
 
 :   Data frame with annotation intervals.
 
-<code>[**samples**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [10000]{.parameter-default}</code>
+<code>[**samples**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [100000]{.parameter-default}</code>
 
 :   Number of bootstrap samples to use.
 

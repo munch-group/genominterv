@@ -60,10 +60,10 @@ website:
           contents:
             - pages/set_operations.ipynb
             - pages/decorators.ipynb
-        - section: "Mapping"
+        - section: "Remapping"
           contents:
             - pages/interval_tests.ipynb
-            - pages/mapping.ipynb
+            - pages/remapping.ipynb
         - section: "Examples"
           contents:
             - examples/examples.ipynb            
@@ -98,7 +98,7 @@ quartodoc:
 
   sections:
     - title: Genomic set operations
-      package: genominterv.intervals
+      package: genominterv
       desc: |
         Set operations on pandas.DataFrames with columns for chromosome, start, and end.
       contents:
@@ -106,13 +106,12 @@ quartodoc:
         - interval_union   
         - interval_intersect 
         - interval_collapse
-        - interval_distance
-    - title: Mapping
-      package: genominterv.intervals
+    - title: Remapping
+      package: genominterv.remapping
       desc: |
         Mapping intervals relative to other coordinates.
       contents:        
-        - interval_relative_distance
+        - interval_distance
         - remap_interval_data
     - title: Statistics
       package: genominterv.stats

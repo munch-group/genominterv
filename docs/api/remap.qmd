@@ -20,7 +20,27 @@ are discarded.
 
 <code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[Tuple](`typing.Tuple`)\[[int](`int`)\]]{.parameter-annotation}</code>
 
-:   A tuple of (start, end) coordinates.
+:   Query interval. A tuple of (start, end) coordinates.
+
+<code>[**annot**]{.parameter-name} [:]{.parameter-annotation-sep} [[List](`typing.List`)\[[tuple](`tuple`)\]]{.parameter-annotation}</code>
+
+:   Data frame with annotation intervals. A list of tuples with (start, end) coordinates.
+
+<code>[**relative**]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Return relative distance (0-1) instead of absolute distance, by default False.
+
+<code>[**include_prox_coord**]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Include coordinates of the closest annotation segment, by default False.
+
+<code>[**overlap_as_zero**]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Set distance to zero if one end of a query segment overlaps an annotation segment, by default False. This does not apply to query segments embedded in or spanning on or more annotation segments.
+
+<code>[**span_as_zero**]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Set distance to zero if a query segment spans a single annotation segment, by default False.
 
 ## Returns {.doc-section .doc-section-returns}
 

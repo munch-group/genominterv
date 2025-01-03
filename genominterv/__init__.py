@@ -3,8 +3,6 @@ from .intervals import (
             interval_union,
             interval_intersect,
             interval_collapse,
-            interval_distance,
-            remap_interval_data,
 )
 from . import stats
 from . import decorators

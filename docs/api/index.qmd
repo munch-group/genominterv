@@ -7,21 +7,20 @@ Set operations on pandas.DataFrames with columns for chromosome, start, and end.
 
 | | |
 | --- | --- |
-| [interval_diff](interval_diff.qmd#genominterv.intervals.interval_diff) | This function computes the difference between two sets of genomic intervals. |
-| [interval_union](interval_union.qmd#genominterv.intervals.interval_union) | This function computes the union of two sets of genomic intervals. The genomic intervals |
-| [interval_intersect](interval_intersect.qmd#genominterv.intervals.interval_intersect) | This function computes the intersection of two sets of genomic intervals. The genomic intervals |
-| [interval_collapse](interval_collapse.qmd#genominterv.intervals.interval_collapse) | This function computes the union of intervals in a single set. |
-| [interval_distance](interval_distance.qmd#genominterv.intervals.interval_distance) | Computes the distance from each query interval to the closest interval in |
+| [interval_diff](interval_diff.qmd#genominterv.interval_diff) | This function computes the difference between two sets of genomic intervals. |
+| [interval_union](interval_union.qmd#genominterv.interval_union) | This function computes the union of two sets of genomic intervals. The genomic intervals |
+| [interval_intersect](interval_intersect.qmd#genominterv.interval_intersect) | This function computes the intersection of two sets of genomic intervals. The genomic intervals |
+| [interval_collapse](interval_collapse.qmd#genominterv.interval_collapse) | This function computes the union of intervals in a single set. |
 
-## Mapping
+## Remapping
 
 Mapping intervals relative to other coordinates.
 
 
 | | |
 | --- | --- |
-| [interval_relative_distance](interval_relative_distance.qmd#genominterv.intervals.interval_relative_distance) | Computes the relative distance from each query interval to the closest interval in |
-| [remap_interval_data](remap_interval_data.qmd#genominterv.intervals.remap_interval_data) | Computes the distance from each query interval to the closest interval |
+| [interval_distance](interval_distance.qmd#genominterv.remapping.interval_distance) | Computes the distance from each query interval to the closest interval in |
+| [remap_interval_data](remap_interval_data.qmd#genominterv.remapping.remap_interval_data) | Computes the distance from each query interval to the closest interval |
 
 ## Statistics
 

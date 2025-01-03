@@ -5743,7 +5743,7 @@ dbm.sqlite3 py:module 0 library/dbm.html#module-$ -
 dbm.sqlite3.open py:function 1 library/dbm.html#$ -
 dbm.whichdb py:function 1 library/dbm.html#$ -
 decimal py:module 0 library/decimal.html#module-$ -
-decimal.BasicContext py:class 1 library/decimal.html#$ -
+decimal.BasicContext py:data 1 library/decimal.html#$ -
 decimal.Clamped py:class 1 library/decimal.html#$ -
 decimal.Context py:class 1 library/decimal.html#$ -
 decimal.Context.Etiny py:method 1 library/decimal.html#$ -
@@ -5867,9 +5867,9 @@ decimal.Decimal.to_integral py:method 1 library/decimal.html#$ -
 decimal.Decimal.to_integral_exact py:method 1 library/decimal.html#$ -
 decimal.Decimal.to_integral_value py:method 1 library/decimal.html#$ -
 decimal.DecimalException py:class 1 library/decimal.html#$ -
-decimal.DefaultContext py:class 1 library/decimal.html#$ -
+decimal.DefaultContext py:data 1 library/decimal.html#$ -
 decimal.DivisionByZero py:class 1 library/decimal.html#$ -
-decimal.ExtendedContext py:class 1 library/decimal.html#$ -
+decimal.ExtendedContext py:data 1 library/decimal.html#$ -
 decimal.FloatOperation py:class 1 library/decimal.html#$ -
 decimal.HAVE_CONTEXTVAR py:data 1 library/decimal.html#$ -
 decimal.HAVE_THREADS py:data 1 library/decimal.html#$ -

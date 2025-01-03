@@ -1,7 +1,13 @@
-# interval_distance { #genominterv.intervals.interval_distance }
+# interval_distance { #genominterv.remapping.interval_distance }
 
 ```python
-genominterv.intervals.interval_distance(query, annot)
+genominterv.remapping.interval_distance(
+    query
+    annot
+    relative=False
+    overlap_as_zero=False
+    span_as_zero=False
+)
 ```
 
 Computes the distance from each query interval to the closest interval in
@@ -11,20 +17,32 @@ from ``query`` that overlap intervals in ``annot`` are discarded.
 
 ## Parameters {.doc-section .doc-section-parameters}
 
-<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[pd](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
 
 :   Data frame with query intervals.
 
-<code>[**annot**]{.parameter-name} [:]{.parameter-annotation-sep} [[pd](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+<code>[**annot**]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
 
 :   Data frame with annotation intervals.
 
+<code>[**relative**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Return relative distance (0-1) instead of absolute distance, by default False.
+
+<code>[**overlap_as_zero**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Set distance to zero if one end of a query segment overlaps an annotation segment, by default False. This does not apply to query segments embedded in or spanning on or more annotation segments.
+
+<code>[**span_as_zero**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Set distance to zero if a query segment spans a single annotation segment, by default False.
+
 ## Returns {.doc-section .doc-section-returns}
 
-<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[pd](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
+<code>[]{.parameter-name} [:]{.parameter-annotation-sep} [[pandas](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
 
 :   A data frame with remapped intervals.
 
 ## See Also {.doc-section .doc-section-see-also}
 
-If you want to retain the original columns in `query`, use [](`~genominterv.intervals.remap_interval_data`).
+If you want to retain the original columns in `query`, use [](`~genominterv.remapping.remap_interval_data`).

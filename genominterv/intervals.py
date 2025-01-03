@@ -1,14 +1,10 @@
 import pandas as pd
 import numpy as np
-
-import sys
-from itertools import chain
+import pandas
 import matplotlib.pyplot as plt
-
 from collections.abc import Callable
 from typing import Any, TypeVar, List, Tuple, Dict, Union
 
-from .remapping import *
 from .interval_set_op import union, intersect, diff, collapse
 from .decorators import genomic
 
@@ -31,10 +27,10 @@ def _plot_intervals(query=None, annot=None, **kwargs):
         labels.append(label)
         df['label'] = label
         df_list.append(df)
-    bigdf = pd.concat(df_list)
+    bigdf = pandas.concat(df_list)
 
-    bigdf['chrom'] = pd.Categorical(bigdf['chrom'], bigdf['chrom'].unique())
-    bigdf['label'] = pd.Categorical(bigdf['label'], bigdf['label'].unique())
+    bigdf['chrom'] = pandas.Categorical(bigdf['chrom'], bigdf['chrom'].unique())
+    bigdf['label'] = pandas.Categorical(bigdf['label'], bigdf['label'].unique())
 
     gr = bigdf.groupby('chrom', observed=False)
 
@@ -78,7 +74,7 @@ def _plot_intervals(query=None, annot=None, **kwargs):
 
 
 @genomic
-def interval_diff(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
+def interval_diff(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
     """
     This function computes the difference between two sets of genomic intervals.
     The genomic intervals in each set must be non-overlapping. This can be
@@ -106,7 +102,7 @@ def interval_diff(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
 
 
 @genomic
-def interval_union(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
+def interval_union(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
     """
     This function computes the union of two sets of genomic intervals. The genomic intervals
     in each set must be non-overlapping. This can be achieved using interval_collapse.
@@ -132,7 +128,7 @@ def interval_union(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
 
 
 @genomic
-def interval_intersect(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame:
+def interval_intersect(query: pandas.DataFrame, annot: pandas.DataFrame) -> pandas.DataFrame:
     """
     This function computes the intersection of two sets of genomic intervals. The genomic intervals
     in each set must be non-overlapping. This can be achieved using interval_collapse.
@@ -158,7 +154,7 @@ def interval_intersect(query: pd.DataFrame, annot: pd.DataFrame) -> pd.DataFrame
 
 
 @genomic
-def interval_collapse(interv: pd.DataFrame) -> pd.DataFrame:
+def interval_collapse(interv: pandas.DataFrame) -> pandas.DataFrame:
     """
     This function computes the union of intervals in a single set.
 
@@ -178,121 +174,6 @@ def interval_collapse(interv: pd.DataFrame) -> pd.DataFrame:
     """
 
     return collapse(interv)
-
-
-@genomic
-def interval_distance(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=False,
-                      overlap_as_zero:bool=False, span_as_zero:bool=False) -> pd.DataFrame:
-    """
-    Computes the distance from each query interval to the closest interval in
-    annot. If a query interval overlaps the midpoint between two annot intervals
-    it is split into two intervals proximal to each annot interval.    Intervals
-    from ``query`` that overlap intervals in ``annot`` are discarded.
-
-    Parameters
-    ----------
-    query : 
-        Data frame with query intervals.
-    annot : 
-        Data frame with annotation intervals.        
-    relative : 
-        Return relative distance (0-1) instead of absolute distance, by default False.
-    overlap_as_zero : 
-        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
-        This does not apply to query segments embedded in or spanning on or more annotation segments.
-    span_as_zero : 
-        Set distance to zero if a query segment spans a single annotation segment, by default False.   
-
-    Returns
-    -------
-    :
-        A data frame with remapped intervals.
-
-    See Also
-    --------
-    If you want to retain the original columns in `query`, use [](`~genominterv.intervals.remap_interval_data`).
-    """
-    return list(chain.from_iterable(
-        remap(q, annot, overlap_as_zero=overlap_as_zero, span_as_zero=span_as_zero, relative=relative) for q in query))
-
-
-def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=False,
-                      overlap_as_zero:bool=False, span_as_zero:bool=False) -> pd.DataFrame:
-    """
-    Computes the distance from each query interval to the closest interval
-    in annot. Original coordinates are preserved as `orig_start` and
-    `orig_end` columns. If a query interval overlaps the midpoint between two
-    annot intervals it is split into two intervals proximal to each
-    annot interval, thus contributing two rows to the returned data frame.
-    Intervals from `query` that overlap intervals in `annot` are discarded.
-
-    Parameters
-    ----------
-    query : 
-        Data frame with query intervals.
-    annot : 
-        Data frame with annotation intervals.        
-    relative : 
-        Return relative distance (0-1) instead of absolute distance, by default False.
-    overlap_as_zero : 
-        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
-        This does not apply to query segments embedded in or spanning on or more annotation segments.
-    span_as_zero : 
-        Set distance to zero if a query segment spans a single annotation segment, by default False.   
-
-    Returns
-    -------
-    :
-        A data frame with remapped intervals.
-
-    See Also
-    --------
-    If you do not want to retain the original columns in `query`, use [](`~genominterv.intervals.interval_distance`).
-    """
-
-    annot_grouped = annot.groupby('chrom')
-
-    df_list = list()
-    column_names = tuple(query.columns.values)
-    for chrom, group in query.groupby('chrom'):
-
-        chrom_annot = annot_grouped.get_group(chrom)
-        annot_tups = [tuple(t) for t in chrom_annot[['start', 'end']].itertuples(index=False)]
-
-        remapped = list()
-        # for index, row in group.iterrows():            
-            # start, end = (row['start'], row['end'])
-        for row in group.itertuples(index=False):            
-            start, end = row.start, row.end
-            for remapped_start, remapped_end, start_prox, end_prox in remap(
-                    (start, end), annot_tups, include_prox_coord=True,
-                    overlap_as_zero=overlap_as_zero, span_as_zero=span_as_zero, relative=relative
-                    ):
-                remapped.append((remapped_start, remapped_end, start_prox, end_prox) + tuple(row))
-
-        df = pd.DataFrame().from_records(remapped, 
-                columns=('start_remap', 'end_remap', 'start_prox', 'end_prox') + column_names)
-            # df = pd.DataFrame().from_records(remapped, columns=['idx', 'start_remap', 'end_remap']).set_index('idx')
-            # df = pd.merge(group, df, right_index=True, left_index=True)
-
-        df_list.append(df)
-
-    df = (pd.concat(df_list)
-            .reset_index(drop=True)
-            .rename(columns={'start': 'start_orig',
-                            'end': 'end_orig'})
-            .rename(columns={'start_remap': 'start',
-                            'end_remap': 'end'})
-            )
-
-    df['start_orig'] = df['start_orig'].astype('Int64')
-    df['end_orig'] = df['end_orig'].astype('Int64')
-    df['start_prox'] = df['start_prox'].astype('Int64')
-    df['end_prox'] = df['end_prox'].astype('Int64')
-
-    return df
-
-
 
 # def ovl_interval_data(query, annot):
 
@@ -325,14 +206,14 @@ def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=
 #         query_df_list.append(query_group.iloc[idx_list])
 #         annot_df_list.append(annot_group.loc[annot_idx_list, ['start', 'end']])
 
-#     query_data_overlap = (pd.concat(query_df_list)
+#     query_data_overlap = (pandas.concat(query_df_list)
 #                             .reset_index(drop=True)
 #                          )
-#     annot_intervals = (pd.concat(annot_df_list)
+#     annot_intervals = (pandas.concat(annot_df_list)
 #                         .reset_index(drop=True)
 #                         .rename(columns={'start': 'ovl_start', 'end': 'ovl_end'})
 #                         )
-#     return pd.concat([query_data_overlap, annot_intervals], axis=1)
+#     return pandas.concat([query_data_overlap, annot_intervals], axis=1)
 
 
 
@@ -372,17 +253,17 @@ def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=
 
     # assert 0
 
-    # query = pd.DataFrame(dict(chrom='X', start=[3, 5], end=[15, 7], extra=['foo', 'bar']))
+    # query = pandas.DataFrame(dict(chrom='X', start=[3, 5], end=[15, 7], extra=['foo', 'bar']))
     # print(query)
-    # annot = pd.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
+    # annot = pandas.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
     # print(annot)
     # print(remap_interval_data(query, annot))
 
     # assert 0
 
-    # query = pd.DataFrame(dict(chrom='X', start=[3, 5], end=[22, 7], extra=['foo', 'bar']))
+    # query = pandas.DataFrame(dict(chrom='X', start=[3, 5], end=[22, 7], extra=['foo', 'bar']))
     # print(query)
-    # annot = pd.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
+    # annot = pandas.DataFrame(dict(chrom='X', start=[1, 20], end=[2, 25]))
     # print(annot)
 
     # print(ovl_interval_data(query, annot))
@@ -391,12 +272,12 @@ def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=
 
     # # annotation
     # tp = [('chr1', 1, 3), ('chr1', 4, 10), ('chr1', 25, 30), ('chr1', 20, 27), ('chr2', 1, 10), ('chr2', 1, 3)]
-    # annot = pd.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
+    # annot = pandas.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
     # print("annot\n", annot)
 
     # # query
     # tp = [('chr1', 8, 22), ('chr8', 14, 15)]
-    # query = pd.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
+    # query = pandas.DataFrame.from_records(tp, columns=['chrom', 'start', 'end'])
     # print("query\n", query)
 
     # annot_collapsed = interval_collapse(annot)
@@ -415,8 +296,8 @@ def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=
     # # ##################################################################
 
     # print('jaccard:')
-    # annot = pd.DataFrame({'chrom': 'chr1', 'start': range(0, 1000000, 1000), 'end': range(100, 1000100, 1000)})
-    # query = pd.DataFrame({'chrom': 'chr1', 'start': range(50, 1000050, 1000), 'end': range(150, 1000150, 1000)})
+    # annot = pandas.DataFrame({'chrom': 'chr1', 'start': range(0, 1000000, 1000), 'end': range(100, 1000100, 1000)})
+    # query = pandas.DataFrame({'chrom': 'chr1', 'start': range(50, 1000050, 1000), 'end': range(150, 1000150, 1000)})
 
     # print(annot)
     # print(query)
@@ -424,9 +305,9 @@ def remap_interval_data(query: pd.DataFrame, annot: pd.DataFrame, relative:bool=
     # # print(interval_jaccard(query, annot, samples=10, chromosome_sizes={'chr1': 1500000, 'chr2': 1500000}))
 
 
-    # annot = pd.DataFrame({'chrom': 'chr1', 'start': [500, 2000], 'end': [1000, 2500]})
-    # query = pd.concat([pd.DataFrame({'chrom': 'chr1', 'start': [1100, 1800], 'end': [1200, 1900]}),
-    #                        pd.DataFrame({'chrom': 'chr2', 'start': [1100, 1800], 'end': [1200, 1900]})
+    # annot = pandas.DataFrame({'chrom': 'chr1', 'start': [500, 2000], 'end': [1000, 2500]})
+    # query = pandas.concat([pandas.DataFrame({'chrom': 'chr1', 'start': [1100, 1800], 'end': [1200, 1900]}),
+    #                        pandas.DataFrame({'chrom': 'chr2', 'start': [1100, 1800], 'end': [1200, 1900]})
     #                        ])
 
     # print(annot)

@@ -137,7 +137,7 @@ def _interval_permute(df, chromosome_sizes):
     return pd.concat(group_list)
 
 
-def bootstrap(chromosome_sizes: Union[str, dict], samples: int=1000, smaller: bool=False, return_boot: bool=False):
+def bootstrap(chromosome_sizes: Union[str, dict], samples:int=10000, smaller:bool=False, return_boot:bool=False, cores:int=1):
     """
     Parameterized decorator that turns a function producing a statistic into one that also
     produces a p-value from bootstrapping. The bootstrapping resamples the
@@ -154,6 +154,8 @@ def bootstrap(chromosome_sizes: Union[str, dict], samples: int=1000, smaller: bo
         Whether to test for significantly small values of the statistic rather than large ones.
     return_boot :
         Whether to return the bootstrap samples too.
+    cores :
+        Number of CPU cores to use for computation, by default 1.
         
     Returns
     -------
@@ -171,10 +173,24 @@ def bootstrap(chromosome_sizes: Union[str, dict], samples: int=1000, smaller: bo
 
             stat = func(query, annot, **kwargs)
 
+            # if cores > 1:
+            #     from multiprocessing import Pool
+            #     def _fun(query, annot, kwargs):
+            #         perm = _interval_permute(query, chromosome_sizes)
+            #         return func(perm, annot, **kwargs)
+            #     with Pool(5) as pool:
+            #         gen = pool.imap_unordered(_fun, ((query, annot, kwargs) for _ in range(samples)), chunksize=100)
+            #     boot = list(gen)
+            # else:
+            #     boot = list()
+            #     for i in range(samples):
+            #         perm = _interval_permute(query, chromosome_sizes)
+            #         boot.append(func(perm, annot, **kwargs))
             boot = list()
             for i in range(samples):
                 perm = _interval_permute(query, chromosome_sizes)
                 boot.append(func(perm, annot, **kwargs))
+                    
             boot.sort()
             if smaller:
                 p_value = bisect.bisect_left(boot, stat) / len(boot)

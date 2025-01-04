@@ -3,9 +3,10 @@
 ```python
 genominterv.decorators.bootstrap(
     chromosome_sizes
-    samples=1000
+    samples=100000
     smaller=False
     return_boot=False
+    cores=1
 )
 ```
 
@@ -20,7 +21,7 @@ required argument to bootstrap is the name of the genome assembly used.
 
 :   Name of a genome assembly or a dictionary mapping chromosomes to their lengths.
 
-<code>[**samples**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [1000]{.parameter-default}</code>
+<code>[**samples**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [100000]{.parameter-default}</code>
 
 :   Number of bootstrap samples to use.
 
@@ -31,6 +32,10 @@ required argument to bootstrap is the name of the genome assembly used.
 <code>[**return_boot**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
 
 :   Whether to return the bootstrap samples too.
+
+<code>[**cores**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [1]{.parameter-default}</code>
+
+:   Number of CPU cores to use for computation, by default 1.
 
 ## Returns {.doc-section .doc-section-returns}
 

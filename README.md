@@ -5,3 +5,14 @@
 Description...
 
 ![example event parameter](https://github.com/munch-group/genominterv/actions/workflows/quarto-publish.yml/badge.svg?event=push)
+
+
+Devel requres 
+
+quarto
+quartodoc 
+nbconvert
+
+
+./docs-run-pages.sh
+./docs-build-render.sh

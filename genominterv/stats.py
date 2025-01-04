@@ -14,7 +14,9 @@ from .intervals import interval_intersect, interval_union
 
 
 def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000, 
-                   npoints: int=1000, overlap_as_zero:bool=False, span_as_zero:bool=False, two_sided: bool=False) -> namedtuple:
+                   npoints: int=1000, overlap_as_zero:bool=False,
+                   span_as_zero:bool=False, two_sided:bool=False, 
+                   cores=1) -> namedtuple:
     """
     Test for proximity of intervals to a set of annotations.
 
@@ -31,10 +33,13 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
     two_sided :
         Whether to test for proximity in both directions.
     overlap_as_zero : 
-        Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
-        This does not apply to query segments embedded in or spanning on or more annotation segments.
+        Set distance to zero if one end of a query segment overlaps an 
+        annotation segment, by default False.
+        This does not apply to query segments embedded in or spanning one
+        or more annotation segments.
     span_as_zero : 
-        Set distance to zero if a query segment spans a single annotation segment, by default False.        
+        Set distance to zero if a query segment spans a single annotation 
+        segment, by default False.        
 
     Returns
     -------
@@ -46,7 +51,7 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
                                     relative=True,
                                     overlap_as_zero=overlap_as_zero,
                                     span_as_zero=span_as_zero)
-    distances = abs(remapped_df.start) # FIXME: use midpoint instead for more power
+    distances = abs(remapped_df.start) 
 
     def _stat(distances, npoints):
         obs_ecdf = ECDF(distances)
@@ -56,16 +61,40 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
 
     test_stat = _stat(distances, npoints)
 
-    null_distr = list()
-    for i in range(samples):
-        sampled_distances = np.random.uniform(0, 0.5, len(distances))
-        # we compute absolute values for the null distribution
-        null_distr.append(_stat(sampled_distances, npoints))
+
+    try:
+        from multiprocess import Pool
+        multi = True
+    except ImportError:
+        multi = True
+
+    # compute absolute values for the null distribution
+    if cores > 1 and multi:
+        
+        def _fun(_):
+            sampled_distances = np.random.uniform(0, 0.5, len(distances))
+            # we compute absolute values for the null distribution
+            return _stat(sampled_distances, npoints)
+        
+        with Pool(5) as pool:
+            gen = pool.map(_fun, range(samples))
+        null_distr = list(gen)
+    else:
+        if cores > 1:
+            print("multiprocess library is required for multiprocessing:",
+                  "    conda install conda-forge::multiprocess",
+                  file=sys.stderr)
+        null_distr = list()
+        for i in range(samples):
+            sampled_distances = np.random.uniform(0, 0.5, len(distances))
+            null_distr.append(_stat(sampled_distances, npoints))    
     
     if two_sided:
-        p_value = (len(null_distr) - bisect.bisect_left(list(map(abs, null_distr)), abs(test_stat))) / len(null_distr)
+        p_value = (len(null_distr) - bisect.bisect_left(
+            list(map(abs, null_distr)), abs(test_stat))) / len(null_distr)
     else:
-        p_value = (len(null_distr) - bisect.bisect_left(null_distr, test_stat)) / len(null_distr)
+        p_value = (len(null_distr) - bisect.bisect_left(
+            null_distr, test_stat)) / len(null_distr)
     
     TestResult = namedtuple('TestResult', ['statistic', 'pvalue'])
     return TestResult(test_stat, p_value)
@@ -93,3 +122,5 @@ def jaccard_stat(a: List[tuple], b:List[tuple]) -> float:
 
     return sum(inter.end - inter.start) / sum(union.end - union.start)
 
+
+# def roc_test(a: List[tuple], b:List[tuple]) -> float:

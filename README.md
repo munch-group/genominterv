@@ -14,5 +14,8 @@ quartodoc
 nbconvert
 
 
-./docs-run-pages.sh
+./test.sh
+./docs-run-notebooks.sh
 ./docs-build-render.sh
+
+

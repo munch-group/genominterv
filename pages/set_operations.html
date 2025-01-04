@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The three functions, <a href="../api/interval_diff.html#genominterv.interval_diff"><code>interval_diff</code></a>, <a href="../api/interval_intersect.html#genominterv.interval_intersect"><code>interval_intersect</code></a>, and <a href="../api/interval_union.html#genominterv.interval_union"><code>interval_union</code></a>, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the <a href="../api/interval_collapse.html#genominterv.interval_collapse"><code>interval_collapse</code></a> function, which produces the union of genomic intervals in a single set genomic of intervals.</p>
 <section id="collapse-overlapping-intervals-in-a-list" class="level2">
 <h2 class="anchored" data-anchor-id="collapse-overlapping-intervals-in-a-list">Collapse overlapping intervals in a list</h2>
-<div id="cell-4" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:57.320467Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:57.320304Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:57.326952Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:57.326714Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>intervals <span class="op">=</span> [(<span class="st">'chr1'</span>, <span class="dv">1</span>, <span class="dv">3</span>), (<span class="st">'chr1'</span>, <span class="dv">4</span>, <span class="dv">6</span>), (<span class="st">'chr1'</span>, <span class="dv">5</span>, <span class="dv">10</span>), (<span class="st">'chr1'</span>, <span class="dv">25</span>, <span class="dv">30</span>), </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>             (<span class="st">'chr1'</span>, <span class="dv">20</span>, <span class="dv">27</span>), (<span class="st">'chr2'</span>, <span class="dv">1</span>, <span class="dv">10</span>), (<span class="st">'chr2'</span>, <span class="dv">1</span>, <span class="dv">3</span>)]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame.from_records(intervals, columns<span class="op">=</span>[<span class="st">'chrom'</span>, <span class="st">'start'</span>, <span class="st">'end'</span>])</span>
@@ -343,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:57.349562Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:57.349414Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.096663Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.096380Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv <span class="im">import</span> interval_collapse</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>annot_collapsed <span class="op">=</span> interval_collapse(annot)</span>
@@ -392,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-fig-collapse" class="cell" data-execution_count="4">
+<div id="cell-fig-collapse" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.098372Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.098222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.224834Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.223058Z&quot;}" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <div id="fig-collapse" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -409,7 +409,7 @@ Figure&nbsp;1: Collapsed intervals
 </section>
 <section id="non-overlap" class="level2">
 <h2 class="anchored" data-anchor-id="non-overlap">Non-overlap</h2>
-<div id="cell-8" class="cell" data-execution_count="5">
+<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.233467Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.233344Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.256683Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.250813Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> annot_collapsed</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>intervals <span class="op">=</span> [(<span class="st">'chr1'</span>, <span class="dv">8</span>, <span class="dv">22</span>), (<span class="st">'chr2'</span>, <span class="dv">14</span>, <span class="dv">15</span>)]</span>
@@ -447,7 +447,7 @@ Figure&nbsp;1: Collapsed intervals
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="6">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.277210Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.277094Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.304935Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.299595Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.intervals <span class="im">import</span> interval_diff</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>non_ovl_query <span class="op">=</span> interval_diff(query, annot)</span>
@@ -484,7 +484,7 @@ Figure&nbsp;1: Collapsed intervals
 </div>
 </div>
 </div>
-<div id="cell-fig-nonoverlap" class="cell" data-execution_count="7">
+<div id="cell-fig-nonoverlap" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.323273Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.321336Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.495733Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.495488Z&quot;}" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div id="fig-nonoverlap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -501,12 +501,12 @@ Figure&nbsp;2: Non-overlapping intervals
 </section>
 <section id="intersection" class="level2">
 <h2 class="anchored" data-anchor-id="intersection">Intersection</h2>
-<div id="cell-12" class="cell" data-execution_count="12">
+<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.497336Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.497227Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.502252Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.502037Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv <span class="im">import</span> interval_intersect</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>intersection <span class="op">=</span> interval_intersect(query, annot)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>intersection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -538,7 +538,7 @@ Figure&nbsp;2: Non-overlapping intervals
 </div>
 </div>
 </div>
-<div id="cell-fig-intersect" class="cell" data-execution_count="14">
+<div id="cell-fig-intersect" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.503664Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.503577Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.616104Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.615870Z&quot;}" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <div id="fig-intersect" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -555,12 +555,12 @@ Figure&nbsp;3: Intersection of intervals
 </section>
 <section id="union" class="level2">
 <h2 class="anchored" data-anchor-id="union">Union</h2>
-<div id="cell-15" class="cell" data-execution_count="15">
+<div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.617821Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.617689Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.624550Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.624244Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv <span class="im">import</span> interval_union</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>union <span class="op">=</span> interval_union(query, annot)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>union</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -604,7 +604,7 @@ Figure&nbsp;3: Intersection of intervals
 </div>
 </div>
 </div>
-<div id="cell-fig-union" class="cell" data-execution_count="16">
+<div id="cell-fig-union" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:58.626013Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:58.625891Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:58.738813Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:58.738564Z&quot;}" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div id="fig-union" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

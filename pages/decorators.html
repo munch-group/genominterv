@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -273,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>genominterv</strong> provides decorators for various tasks to reduce boilerplate code.</p>
 <p>To make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of <code>(start, end)</code> tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include <code>chrom</code>, <code>start</code>, and <code>end</code> columns.</p>
 <p>Here is an example function that shifts the interval coordinates by 1000bp:</p>
-<div id="cell-5" class="cell" data-execution_count="2">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:20:56.287550Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:20:56.287372Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:20:56.293421Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:20:56.293201Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>intervals <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span>[<span class="st">'chr1'</span>, <span class="st">'chr2'</span>, <span class="st">'chr2'</span>], start<span class="op">=</span>[<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>], end<span class="op">=</span>[<span class="dv">15</span>, <span class="dv">25</span>, <span class="dv">35</span>]))</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>intervals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -315,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Create a function that shifts intervals three bases to the right:</p>
-<div id="cell-7" class="cell" data-execution_count="3">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:20:56.314665Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:20:56.314541Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:20:56.319907Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:20:56.319646Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.decorators <span class="im">import</span> genomic</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">@genomic</span></span>
@@ -365,13 +365,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="bootstrap-decorator" class="level2">
 <h2 class="anchored" data-anchor-id="bootstrap-decorator">Bootstrap decorator</h2>
 <p>The bootstrap decorator turns a function producing a statistic into one that also produces a p-value. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the <a href="../api/jaccard_stat.html#genominterv.stats.jaccard_stat"><code>jaccard_stat</code></a> statistic to make a <code>jaccard_test</code> function that produce a p-value for the significane of overlap between two sets.</p>
-<div id="cell-9" class="cell" data-execution_count="4">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:20:56.321493Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:20:56.321406Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:20:56.323497Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:20:56.323285Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span>[<span class="st">'chr1'</span>, <span class="st">'chr2'</span>, <span class="st">'chr3'</span>], start<span class="op">=</span>[<span class="dv">30_000_000</span>, <span class="dv">120_000_000</span>, <span class="dv">120_000_000</span>], </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                        end<span class="op">=</span>[<span class="dv">60_000_000</span>, <span class="dv">100_000_000</span>, <span class="dv">150_000_000</span>]))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span>[<span class="st">'chr1'</span>, <span class="st">'chr3'</span>], start<span class="op">=</span>[<span class="dv">20_000_000</span>, <span class="dv">110_000_000</span>], </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">50_000_000</span>, <span class="dv">160_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="5">
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:20:56.324837Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:20:56.324734Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:00.269927Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:00.269644Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.decorators <span class="im">import</span> bootstrap</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.stats <span class="im">import</span> jaccard_stat</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -382,11 +382,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(query, annot)</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>stat, p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>(0.5555555555555556, 0.014)</code></pre>
+<pre><code>(0.5555555555555556, 0.017)</code></pre>
 </div>
 </div>
 <p>The bootstrapping shuffles and repositions the intervals of the query argument for each chromosome independently.</p>
-<div id="cell-fig-intervals" class="cell" data-execution_count="6">
+<div id="cell-fig-intervals" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:00.272085Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:00.271796Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:00.330924Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:00.329257Z&quot;}" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div id="fig-intervals" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -401,7 +401,7 @@ Figure&nbsp;1: Example of intervals
 </div>
 </div>
 <p>For the above set of intervals, the first ten bootstraps could be the ones shown below:</p>
-<div id="cell-fig-boots" class="cell" data-execution_count="7">
+<div id="cell-fig-boots" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:00.335187Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:00.334871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:00.768046Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:00.767775Z&quot;}" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div id="fig-boots" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">

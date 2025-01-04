@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-c75bcb89907db7808f0349b764a1a524.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="remapping-functions" class="level2">
 <h2 class="anchored" data-anchor-id="remapping-functions">Remapping functions</h2>
 <p>The function <code>remap</code> converts coordinates a single interval into distance to the closest interval in a second set:</p>
-<div id="cell-5" class="cell" data-execution_count="2">
+<div id="cell-5" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:52.920470Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:52.920309Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.706821Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.706561Z&quot;}" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> remap</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>single_interval <span class="op">=</span> (<span class="dv">300</span>, <span class="dv">400</span>)</span>
@@ -286,14 +286,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Same but retaining info about which annotation the interval is proximal to:</p>
-<div id="cell-7" class="cell" data-execution_count="3">
+<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.728169Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.727962Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.730277Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.730038Z&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>remap((<span class="dv">300</span>, <span class="dv">400</span>), [(<span class="dv">0</span>, <span class="dv">100</span>), (<span class="dv">1000</span>, <span class="dv">1100</span>)], include_prox_coord<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>[(200, 300, 0, 100)]</code></pre>
 </div>
 </div>
 <p>The function <code>interval_distance</code> converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. Using <code>relative=True</code> returns distances relative to the span between the two flanking annotation intervals.</p>
-<div id="cell-9" class="cell" data-execution_count="4">
+<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.731682Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.731585Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.736940Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.736716Z&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chrX'</span>, start<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">20</span>], end<span class="op">=</span>[<span class="dv">2</span>, <span class="dv">25</span>]))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>annot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -328,7 +328,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="5">
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.738292Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.738193Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.741663Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.741403Z&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chrX'</span>, start<span class="op">=</span>[<span class="dv">3</span>, <span class="dv">5</span>], end<span class="op">=</span>[<span class="dv">15</span>, <span class="dv">7</span>], some_data<span class="op">=</span>[<span class="st">'foo'</span>, <span class="st">'bar'</span>], other_data<span class="op">=</span>[<span class="st">'A'</span>, <span class="st">'B'</span>]))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>query</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -369,7 +369,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="6">
+<div id="cell-11" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.742934Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.742858Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.747500Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.747290Z&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> interval_distance</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>interval_distance(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="7">
+<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.748947Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.748865Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.753350Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.753142Z&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> interval_distance</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> genominterv</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(genominterv.<span class="va">__file__</span>)</span>
@@ -458,7 +458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The most useful function for most applications is <code>remap_interval_data</code>, which does the remapping while preserving all the information in the query data frame. It also reports the start and end coordinates before remapping (ends with <code>*_orig</code>) and the coordinates of the most proximal segment in the annotation set (<code>*_prox</code>).</p>
-<div id="cell-14" class="cell" data-execution_count="8">
+<div id="cell-14" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.754671Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.754588Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.760592Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.760354Z&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.remapping <span class="im">import</span> remap_interval_data</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>remap_interval_data(query, annot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
@@ -523,7 +523,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="9">
+<div id="cell-15" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.761982Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.761904Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:53.767497Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:53.767277Z&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>remap_interval_data(query, annot, relative<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <div>
@@ -587,7 +587,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="81">
+<p>Make random and non-random dummy data and plot the relative distances between interval midpoints and the closest annotation interval.</p>
+<div id="cell-17" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:53.768825Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:53.768742Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:54.059712Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:54.054925Z&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1000</span></span>
@@ -618,7 +619,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="84">
+<p>The same but removing the sign since the distribution is symmetric:</p>
+<div id="cell-19" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:54.073158Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:54.069038Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:54.250977Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:54.250708Z&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(df1, x<span class="op">=</span><span class="st">'absmid'</span>, bins<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">20</span>))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>sns.histplot(df2, x<span class="op">=</span><span class="st">'absmid'</span>, bins<span class="op">=</span>np.linspace(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -629,7 +631,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="86">
+<div id="cell-20" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:54.252601Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:54.252473Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:54.325584Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:54.325323Z&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">'dist'</span>] <span class="op">=</span> <span class="st">'uniform'</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'dist'</span>] <span class="op">=</span> <span class="st">'closer'</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([df1, df2])</span>
@@ -642,7 +644,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="69">
+<div id="cell-21" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:54.327254Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:54.327135Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:54.452151Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:54.451864Z&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dummy data</span></span>

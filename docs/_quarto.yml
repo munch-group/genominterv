@@ -117,7 +117,7 @@ quartodoc:
       package: genominterv.stats
       desc: Mapping intervals relative to other coordinates.
       contents:
-        - proximity_test        
+        - proximity_stat        
         - jaccard_stat
     - title: Decorators
       package: genominterv.decorators

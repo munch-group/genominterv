@@ -28,8 +28,8 @@ Mapping intervals relative to other coordinates.
 
 | | |
 | --- | --- |
-| [proximity_test](proximity_test.qmd#genominterv.stats.proximity_test) | Test for proximity of intervals to a set of annotations. |
-| [jaccard_stat](jaccard_stat.qmd#genominterv.stats.jaccard_stat) | Compute Jaccard overlap test statistic. |
+| [proximity_stat](proximity_stat.qmd#genominterv.stats.proximity_stat) | Proximity test statistic. Computes the distance between query segment and the  |
+| [jaccard_stat](jaccard_stat.qmd#genominterv.stats.jaccard_stat) | Jaccard overlap test statistic. |
 
 ## Decorators
 

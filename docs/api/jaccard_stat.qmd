@@ -1,20 +1,20 @@
 # jaccard_stat { #genominterv.stats.jaccard_stat }
 
 ```python
-genominterv.stats.jaccard_stat(a, b)
+genominterv.stats.jaccard_stat(query, annot)
 ```
 
-Compute Jaccard overlap test statistic.
+Jaccard overlap test statistic.
 
 ## Parameters {.doc-section .doc-section-parameters}
 
-<code>[**a**]{.parameter-name} [:]{.parameter-annotation-sep} [[List](`typing.List`)\[[tuple](`tuple`)\]]{.parameter-annotation}</code>
+<code>[**query**]{.parameter-name} [:]{.parameter-annotation-sep} [[pd](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
 
-:   List of tuples with (start, end) coordinates.
+:   pandas.DataFrame with query interval coordinates as start and end columns.
 
-<code>[**a**]{.parameter-name} [:]{.parameter-annotation-sep} [[List](`typing.List`)\[[tuple](`tuple`)\]]{.parameter-annotation}</code>
+<code>[**annot**]{.parameter-name} [:]{.parameter-annotation-sep} [[pd](`pandas`).[DataFrame](`pandas.DataFrame`)]{.parameter-annotation}</code>
 
-:   List of tuples with (start, end) coordinates.
+:   pandas.DataFrame with annotation interval coordinates as start and end columns.
 
 ## Returns {.doc-section .doc-section-returns}
 

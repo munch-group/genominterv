@@ -5,6 +5,7 @@ genominterv.remapping.remap_interval_data(
     query
     annot
     relative=False
+    include_prox_coord=False
     overlap_as_zero=False
     span_as_zero=False
 )
@@ -30,6 +31,10 @@ Intervals from `query` that overlap intervals in `annot` are discarded.
 <code>[**relative**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
 
 :   Return relative distance (0-1) instead of absolute distance, by default False.
+
+<code>[**include_prox_coord**]{.parameter-name} [:]{.parameter-annotation-sep} []{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
+
+:   Include coordinates of the closest annotation segment, by default False.
 
 <code>[**overlap_as_zero**]{.parameter-name} [:]{.parameter-annotation-sep} [[bool](`bool`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [False]{.parameter-default}</code>
 

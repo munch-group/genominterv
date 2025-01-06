@@ -13,7 +13,7 @@ website:
       - api/remap_interval_data.qmd
       section: Remapping
     - contents:
-      - api/proximity_test.qmd
+      - api/proximity_stat.qmd
       - api/jaccard_stat.qmd
       section: Statistics
     - contents:

@@ -6,7 +6,7 @@ genominterv.decorators.bootstrap(
     samples=100000
     smaller=False
     return_boot=False
-    cores=1
+    cores=None
 )
 ```
 
@@ -33,9 +33,9 @@ required argument to bootstrap is the name of the genome assembly used.
 
 :   Whether to return the bootstrap samples too.
 
-<code>[**cores**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [1]{.parameter-default}</code>
+<code>[**cores**]{.parameter-name} [:]{.parameter-annotation-sep} [[int](`int`)]{.parameter-annotation} [ = ]{.parameter-default-sep} [None]{.parameter-default}</code>
 
-:   Number of CPU cores to use for computation, by default 1.
+:   Number of CPU cores to use for computation, by default all available cores.
 
 ## Returns {.doc-section .doc-section-returns}
 

@@ -12,7 +12,7 @@ genominterv.interval_collapse py:function 1 api/interval_collapse.html#genominte
 genominterv.intervals.interval_collapse py:function 1 api/interval_collapse.html#genominterv.interval_collapse genominterv.interval_collapse
 genominterv.remapping.interval_distance py:function 1 api/interval_distance.html#genominterv.remapping.interval_distance -
 genominterv.remapping.remap_interval_data py:function 1 api/remap_interval_data.html#genominterv.remapping.remap_interval_data -
-genominterv.stats.proximity_test py:function 1 api/proximity_test.html#genominterv.stats.proximity_test -
+genominterv.stats.proximity_stat py:function 1 api/proximity_stat.html#genominterv.stats.proximity_stat -
 genominterv.stats.jaccard_stat py:function 1 api/jaccard_stat.html#genominterv.stats.jaccard_stat -
 genominterv.decorators.genomic py:function 1 api/genomic.html#genominterv.decorators.genomic -
 genominterv.decorators.bootstrap py:function 1 api/bootstrap.html#genominterv.decorators.bootstrap -

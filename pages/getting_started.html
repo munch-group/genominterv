@@ -226,6 +226,19 @@ ul.task-list li input[type="checkbox"] {
 <!-- 
 The [foo function](`genominterv.interval_diff`) does ... [](`genominterv.interval_diff`) does ... [](`~genominterv.interval_diff`) does ...
  -->
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The proximity_test is broken. Do not use for the time being.</p>
+</div>
+</div>
 <p><em>genomeinterv</em> provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value <code>x</code> is in an interval <code>(start, end)</code> included in the inrval if <code>start &lt;= x and x &lt; end</code>. All functions take pandas.DataFrame as arguments. These data frames must include <code>chrom</code>, <code>start</code>, and <code>end</code> columns.</p>
 <p>asdf</p>
 <p>See the <a href="../api/">the library reference</a> for detailed documentation of each function and decorator.</p>

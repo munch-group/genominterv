@@ -241,8 +241,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#proximity" id="toc-proximity" class="nav-link active" data-scroll-target="#proximity">Proximity</a></li>
-  <li><a href="#overlap" id="toc-overlap" class="nav-link" data-scroll-target="#overlap">Overlap</a></li>
+  <li><a href="#overlap" id="toc-overlap" class="nav-link active" data-scroll-target="#overlap">Overlap</a></li>
+  <li><a href="#proximity" id="toc-proximity" class="nav-link" data-scroll-target="#proximity">Proximity</a></li>
   </ul>
 </nav>
     </div>
@@ -269,85 +269,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><strong>genomeinterv</strong> implements tests for a significant relationship between sets of intervals.</p>
-<section id="proximity" class="level2">
-<h2 class="anchored" data-anchor-id="proximity">Proximity</h2>
-<p><a href="../api/proximity_test.html#genominterv.stats.proximity_test"><code>proximity_test</code></a> computes tests if intervals in one set is significantly proximal to intervals in another set.</p>
-<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:03.706871Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:03.706679Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:03.709069Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:03.708850Z&quot;}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">38_000_000</span>, <span class="dv">100_000_000</span>, <span class="dv">175_000_000</span>], </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_000_000</span>, <span class="dv">103_000_000</span>, <span class="dv">178_000_000</span>]))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">105_000_000</span>, <span class="dv">170_000_000</span>], </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">106_000_000</span>, <span class="dv">173_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-fig-proximity" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:03.710640Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:03.710522Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.532454Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.511276Z&quot;}" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div id="fig-proximity" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-proximity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="interval_tests_files/figure-html/fig-proximity-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Intervals"><img src="interval_tests_files/figure-html/fig-proximity-output-1.svg" class="img-fluid figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-proximity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Intervals
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>With the <code>multiprocess</code> library installed:</p>
-<pre><code>conda install conda-forge::multiprocess</code></pre>
-<p>you can run the permutation test on all the cores you have:</p>
-<div id="cell-7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.550096Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.549593Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.809427Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.809097Z&quot;}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.stats <span class="im">import</span> proximity_test</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>stat, pvalue <span class="op">=</span> proximity_test(query, annot, cores<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>0.0</code></pre>
-</div>
-</div>
-</section>
 <section id="overlap" class="level2">
 <h2 class="anchored" data-anchor-id="overlap">Overlap</h2>
 <p><a href="../api/jaccard_stat.html#genominterv.stats.jaccard_stat"><code>jaccard_stat</code></a> computes the <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccard index</a> statistic for two sets of genomic intervals.</p>
 <p>This can be combined with the <a href="../api/bootstrap.html#genominterv.decorators.bootstrap"><code>bootstrap</code></a> decorator to produce a test for overlap. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.</p>
-<div id="cell-9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.811698Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.811310Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.814397Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.814190Z&quot;}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">18_000_000</span>, <span class="dv">58_000_000</span>, <span class="dv">138_000_000</span>], </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">20_000_000</span>, <span class="dv">60_000_000</span>, <span class="dv">140_000_000</span>]))</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">59_000_000</span>, <span class="dv">241_000_000</span>], </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">61_000_000</span>, <span class="dv">241_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.811698Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.811310Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.814397Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.814190Z&quot;}" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">18_000_000</span>, <span class="dv">58_000_000</span>, <span class="dv">138_000_000</span>], </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">20_000_000</span>, <span class="dv">60_000_000</span>, <span class="dv">140_000_000</span>]))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">59_000_000</span>, <span class="dv">241_000_000</span>], </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">61_000_000</span>, <span class="dv">241_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-fig-overlap" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.815785Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.815702Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.894247Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.893503Z&quot;}" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div id="fig-overlap" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-overlap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="interval_tests_files/figure-html/fig-overlap-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Intervals"><img src="interval_tests_files/figure-html/fig-overlap-output-1.svg" class="img-fluid figure-img"></a>
+<a href="interval_tests_files/figure-html/fig-overlap-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Intervals"><img src="interval_tests_files/figure-html/fig-overlap-output-1.svg" class="img-fluid figure-img"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-overlap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Intervals
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.901238Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.900822Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:49.817563Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:49.817134Z&quot;}" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.decorators <span class="im">import</span> bootstrap</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.stats <span class="im">import</span> jaccard_stat</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, cores<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(q, a):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard_stat(q, a)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(query, annot)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>stat, p_value </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>(0.15384615384615385, 0.03012)</code></pre>
+</div>
+</div>
+</section>
+<section id="proximity" class="level2">
+<h2 class="anchored" data-anchor-id="proximity">Proximity</h2>
+<p><code>proximity_stat</code> computes the distances between each query segment and the closest annotation segment divided by the distance between the two annotations on each side of the query. The test statistic is the mean of these 0-0.5 distances.</p>
+<p>This can be combined with the <a href="../api/bootstrap.html#genominterv.decorators.bootstrap"><code>bootstrap</code></a> decorator to produce a test. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.</p>
+<div id="cell-8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:03.706871Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:03.706679Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:03.709069Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:03.708850Z&quot;}" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>annot <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">38_000_000</span>, <span class="dv">100_000_000</span>, <span class="dv">175_000_000</span>], </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_000_000</span>, <span class="dv">103_000_000</span>, <span class="dv">178_000_000</span>]))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> pd.DataFrame(<span class="bu">dict</span>(chrom<span class="op">=</span><span class="st">'chr1'</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                          start<span class="op">=</span>[<span class="dv">41_000_000</span>, <span class="dv">105_000_000</span>, <span class="dv">170_000_000</span>], </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                          end<span class="op">=</span>[<span class="dv">40_500_000</span>, <span class="dv">106_000_000</span>, <span class="dv">173_000_000</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-fig-proximity" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:03.710640Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:03.710522Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.532454Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.511276Z&quot;}" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<div id="fig-proximity" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-proximity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="interval_tests_files/figure-html/fig-proximity-output-1.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Intervals"><img src="interval_tests_files/figure-html/fig-proximity-output-1.svg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-proximity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Intervals
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>With the <code>multiprocess</code> library installed:</p>
-<pre><code>conda install conda-forge::multiprocess</code></pre>
-<p>you can run the bootstrapping on all the cores you have:</p>
-<div id="cell-12" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.901238Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.900822Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:49.817563Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:49.817134Z&quot;}" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.decorators <span class="im">import</span> bootstrap</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.stats <span class="im">import</span> jaccard_stat</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg19'</span>, cores<span class="op">=</span><span class="dv">8</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jaccard_test(q, a):</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jaccard_stat(q, a)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>stat, p_value <span class="op">=</span> jaccard_test(query, annot)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>stat, p_value </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>(0.15384615384615385, 0.03012)</code></pre>
+<div id="cell-10" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2025-01-04T11:21:04.550096Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-01-04T11:21:04.549593Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-01-04T11:21:04.809427Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-01-04T11:21:04.809097Z&quot;}" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.decorators <span class="im">import</span> bootstrap</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> genominterv.stats <span class="im">import</span> proximity_stat</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">@bootstrap</span>(<span class="st">'hg38'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> proximity_test(q, a):</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Tests if the mean relative distance of query segments to the</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">    closest annotation is smaller than expected.</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> proximity_stat(q, a)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>stat, pvalue <span class="op">=</span> proximity_test(query, annot)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>pvalue</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>0.0</code></pre>
 </div>
 </div>
 

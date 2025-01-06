@@ -406,23 +406,23 @@
   {
     "objectID": "pages/decorators.html",
     "href": "pages/decorators.html",
-    "title": "Decorators for intervals",
+    "title": "Decorators",
     "section": "",
     "text": "genominterv provides decorators for various tasks to reduce boilerplate code.\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns.\nHere is an example function that shifts the interval coordinates by 1000bp:\nintervals = pd.DataFrame(dict(chrom=['chr1', 'chr2', 'chr2'], start=[10, 20, 30], end=[15, 25, 35]))\nintervals\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n10\n15\n\n\n1\nchr2\n20\n25\n\n\n2\nchr2\n30\n35\nCreate a function that shifts intervals three bases to the right:\nfrom genominterv.decorators import genomic\n\n@genomic\ndef shift_three(interv):\n    return [(start+3, end+3) for (start, end) in interv]\n\nshifted = shift_three(intervals)\nshifted\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n13\n18\nchr1\n\n\n1\n23\n28\nchr2\n\n\n2\n33\n38\nchr2",
     "crumbs": [
       "Utilities",
-      "Decorators for intervals"
+      "Decorators"
     ]
   },
   {
     "objectID": "pages/decorators.html#bootstrap-decorator",
     "href": "pages/decorators.html#bootstrap-decorator",
-    "title": "Decorators for intervals",
+    "title": "Decorators",
     "section": "Bootstrap decorator",
     "text": "Bootstrap decorator\nThe bootstrap decorator turns a function producing a statistic into one that also produces a p-value. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the jaccard_stat statistic to make a jaccard_test function that produce a p-value for the significane of overlap between two sets.\n\nannot = pd.DataFrame(dict(chrom=['chr1', 'chr2', 'chr3'], start=[30_000_000, 120_000_000, 120_000_000], \n                                        end=[60_000_000, 100_000_000, 150_000_000]))\nquery = pd.DataFrame(dict(chrom=['chr1', 'chr3'], start=[20_000_000, 110_000_000], \n                          end=[50_000_000, 160_000_000]))\n\n\nfrom genominterv.decorators import bootstrap\nfrom genominterv.stats import jaccard_stat\n\n@bootstrap('hg38', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\nstat, p_value = jaccard_test(query, annot)\nstat, p_value\n\n(0.5555555555555556, 0.017)\n\n\nThe bootstrapping shuffles and repositions the intervals of the query argument for each chromosome independently.\n\n\n\n\n\n\n\n\nFigure 1: Example of intervals\n\n\n\n\n\nFor the above set of intervals, the first ten bootstraps could be the ones shown below:\n\n\n\n\n\n\n\n\nFigure 2: Ten bootstraps",
     "crumbs": [
       "Utilities",
-      "Decorators for intervals"
+      "Decorators"
     ]
   },
   {

@@ -4,66 +4,42 @@
     "href": "examples/examples.html",
     "title": "Jupyter notebook",
     "section": "",
-    "text": "genomeinterv provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value x is in an interval (start, end) included in the inrval if start &lt;= x and x &lt; end. All functions take pandas.DataFrames as arguments. These data frames must include chrom, start, and end columns.\nSee the library reference for detailed documentation of each function and decorator.\nimport genominterv\nimport pandas as pd",
-    "crumbs": [
-      "Examples",
-      "Jupyter notebook"
-    ]
+    "text": "genomeinterv provides support for working with intervals on genomes. A genomic interval is specified as a chromosome, start, and end. It is half-open so that a value x is in an interval (start, end) included in the inrval if start &lt;= x and x &lt; end. All functions take pandas.DataFrames as arguments. These data frames must include chrom, start, and end columns.\nSee the library reference for detailed documentation of each function and decorator.\nimport genominterv\nimport pandas as pd"
   },
   {
     "objectID": "examples/examples.html#set-operations",
     "href": "examples/examples.html#set-operations",
     "title": "Jupyter notebook",
     "section": "Set operations",
-    "text": "Set operations\nThe three functions interval_diff, interval_intersect, and interval_union do the standard difference, intersection and union set operations on two sets of genomic intervals.\nThe intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using function interval_collapse, which produces the union of genomic intervals in a single set genomic of intervals.\nTry it out on two sets of intervals: annot and query:\n\nintervals = [('chr1', 1, 3), ('chr1', 4, 6), ('chr1', 5, 10), ('chr1', 25, 30), ('chr1', 20, 27), ('chr2', 1, 10), ('chr2', 1, 3)]\nannot = pd.DataFrame.from_records(intervals, columns=['chrom', 'start', 'end'])\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n1\n3\n\n\n1\nchr1\n4\n6\n\n\n2\nchr1\n5\n10\n\n\n3\nchr1\n25\n30\n\n\n4\nchr1\n20\n27\n\n\n5\nchr2\n1\n10\n\n\n6\nchr2\n1\n3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Intervals\n\n\n\n\n\n\nintervals = [('chr1', 8, 22), ('chr2', 14, 15)]\nquery = pd.DataFrame.from_records(intervals, columns=['chrom', 'start', 'end'])\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n8\n22\n\n\n1\nchr2\n14\n15\n\n\n\n\n\n\n\n\nfrom genominterv import interval_collapse\n\nannot_collapsed = interval_collapse(annot)\nannot_collapsed\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1\n3\nchr1\n\n\n1\n1\n4\n10\nchr1\n\n\n2\n2\n20\n30\nchr1\n\n\n3\n0\n1\n10\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Collapsed intervals\n\n\n\n\n\n\nannot = annot_collapsed\n\n\nfrom genominterv import interval_diff\n\nnon_ovl_query = interval_diff(query, annot)\nnon_ovl_query\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n10\n20\nchr1\n\n\n1\n0\n14\n15\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Non-overlapping intervals\n\n\n\n\n\n\nfrom genominterv import interval_intersect\n\nintersection = interval_intersect(query, annot)\nintersection\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n8\n10\nchr1\n\n\n1\n1\n20\n22\nchr1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Intersection of intervals\n\n\n\n\n\n\nfrom genominterv import interval_union\n\nunion = interval_union(query, annot)\nunion\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1\n3\nchr1\n\n\n1\n1\n4\n30\nchr1\n\n\n2\n0\n1\n10\nchr2\n\n\n3\n1\n14\n15\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Union of intervals\n\n\n\n\n\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns.\nHere is an example function that shifts the interval coordinates by 1000bp:\n\nintervals = pd.DataFrame(dict(chrom='chrX', start=[1, 20], end=[2, 25]))\nintervals\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchrX\n1\n2\n\n\n1\nchrX\n20\n25\n\n\n\n\n\n\n\n\nfrom genominterv import genomic\n\n@genomic\ndef inverval_shift(interv):\n    return [(start+1000, end+1000) for (start, end) in interv]\n\nshifted = inverval_shift(intervals)\nshifted\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1001\n1002\nchrX\n\n\n1\n1\n1020\n1025\nchrX",
-    "crumbs": [
-      "Examples",
-      "Jupyter notebook"
-    ]
+    "text": "Set operations\nThe three functions interval_diff, interval_intersect, and interval_union do the standard difference, intersection and union set operations on two sets of genomic intervals.\nThe intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using function interval_collapse, which produces the union of genomic intervals in a single set genomic of intervals.\nTry it out on two sets of intervals: annot and query:\n\nintervals = [('chr1', 1, 3), ('chr1', 4, 6), ('chr1', 5, 10), ('chr1', 25, 30), ('chr1', 20, 27), ('chr2', 1, 10), ('chr2', 1, 3)]\nannot = pd.DataFrame.from_records(intervals, columns=['chrom', 'start', 'end'])\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n1\n3\n\n\n1\nchr1\n4\n6\n\n\n2\nchr1\n5\n10\n\n\n3\nchr1\n25\n30\n\n\n4\nchr1\n20\n27\n\n\n5\nchr2\n1\n10\n\n\n6\nchr2\n1\n3\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Intervals\n\n\n\n\n\n\nintervals = [('chr1', 8, 22), ('chr2', 14, 15)]\nquery = pd.DataFrame.from_records(intervals, columns=['chrom', 'start', 'end'])\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n8\n22\n\n\n1\nchr2\n14\n15\n\n\n\n\n\n\n\n\nfrom genominterv import interval_collapse\n\nannot_collapsed = interval_collapse(annot)\nannot_collapsed\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1\n3\nchr1\n\n\n1\n1\n4\n10\nchr1\n\n\n2\n2\n20\n30\nchr1\n\n\n3\n0\n1\n10\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Collapsed intervals\n\n\n\n\n\n\nannot = annot_collapsed\n\n\nfrom genominterv import interval_diff\n\nnon_ovl_query = interval_diff(query, annot)\nnon_ovl_query\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n10\n20\nchr1\n\n\n1\n0\n14\n15\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Non-overlapping intervals\n\n\n\n\n\n\nfrom genominterv import interval_intersect\n\nintersection = interval_intersect(query, annot)\nintersection\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n8\n10\nchr1\n\n\n1\n1\n20\n22\nchr1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Intersection of intervals\n\n\n\n\n\n\nfrom genominterv import interval_union\n\nunion = interval_union(query, annot)\nunion\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1\n3\nchr1\n\n\n1\n1\n4\n30\nchr1\n\n\n2\n0\n1\n10\nchr2\n\n\n3\n1\n14\n15\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 5: Union of intervals\n\n\n\n\n\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns.\nHere is an example function that shifts the interval coordinates by 1000bp:\n\nintervals = pd.DataFrame(dict(chrom='chrX', start=[1, 20], end=[2, 25]))\nintervals\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchrX\n1\n2\n\n\n1\nchrX\n20\n25\n\n\n\n\n\n\n\n\nfrom genominterv import genomic\n\n@genomic\ndef inverval_shift(interv):\n    return [(start+1000, end+1000) for (start, end) in interv]\n\nshifted = inverval_shift(intervals)\nshifted\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1001\n1002\nchrX\n\n\n1\n1\n1020\n1025\nchrX"
   },
   {
     "objectID": "examples/examples.html#remapping-functions",
     "href": "examples/examples.html#remapping-functions",
     "title": "Jupyter notebook",
     "section": "Remapping functions",
-    "text": "Remapping functions\nThe function remap converts coordinates a single interval into distance to the closest interval in a second set:\n\nsingle_interval = (300, 400)\nother_intervals = [(0, 100), (1000, 1100)]\n\ngenominterv.remap(single_interval, other_intervals)\n\n[(200, 300)]\n\n\nSame but retaining info about which annotation the interval is proximal to:\n\ngenominterv.remap((300, 400), [(0, 100), (1000, 1100)], include_prox_coord=True)\n\n[(200, 300, 0, 100)]\n\n\nThe function interval_distance converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. interval_relative_distance does the same but returns relative distances.\n\nannot = pd.DataFrame(dict(chrom='chrX', start=[1, 20], end=[2, 25]))\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchrX\n1\n2\n\n\n1\nchrX\n20\n25\n\n\n\n\n\n\n\n\nquery = pd.DataFrame(dict(chrom='chrX', start=[3, 5], end=[15, 7], some_data=['foo', 'bar'], other_data=['A', 'B']))\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\nother_data\n\n\n\n\n0\nchrX\n3\n15\nfoo\nA\n\n\n1\nchrX\n5\n7\nbar\nB\n\n\n\n\n\n\n\n\nfrom genominterv import interval_distance\n\ninterval_distance(query, annot)\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1\n9\nchrX\n\n\n1\n1\n-5\n-9\nchrX\n\n\n2\n2\n3\n5\nchrX\n\n\n\n\n\n\n\n\nfrom genominterv import interval_relative_distance\n\ninterval_relative_distance(query, annot)\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n0.055556\n0.500000\nchrX\n\n\n1\n1\n-0.277778\n-0.500000\nchrX\n\n\n2\n2\n0.166667\n0.277778\nchrX\n\n\n\n\n\n\n\nThe most useful function for most applications is remap_interval_data, which does the remapping while preserving all the information in the query data frame. It also reports the start and end coordinates before remapping (ends with *_orig) and the coordinates of the most proximal segment in the annotation set (*_prox).\n\nfrom genominterv import remap_interval_data\n\nremap_interval_data(query, annot)\n\n\n\n\n\n\n\n\nstart\nend\nstart_prox\nend_prox\nchrom\nstart_orig\nend_orig\nsome_data\nother_data\n\n\n\n\n0\n1\n9\n1\n2\nchrX\n3\n15\nfoo\nA\n\n\n1\n-5\n-9\n20\n25\nchrX\n3\n15\nfoo\nA\n\n\n2\n3\n5\n1\n2\nchrX\n5\n7\nbar\nB",
-    "crumbs": [
-      "Examples",
-      "Jupyter notebook"
-    ]
+    "text": "Remapping functions\nThe function remap converts coordinates a single interval into distance to the closest interval in a second set:\n\nsingle_interval = (300, 400)\nother_intervals = [(0, 100), (1000, 1100)]\n\ngenominterv.remap(single_interval, other_intervals)\n\n[(200, 300)]\n\n\nSame but retaining info about which annotation the interval is proximal to:\n\ngenominterv.remap((300, 400), [(0, 100), (1000, 1100)], include_prox_coord=True)\n\n[(200, 300, 0, 100)]\n\n\nThe function interval_distance converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. interval_relative_distance does the same but returns relative distances.\n\nannot = pd.DataFrame(dict(chrom='chrX', start=[1, 20], end=[2, 25]))\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchrX\n1\n2\n\n\n1\nchrX\n20\n25\n\n\n\n\n\n\n\n\nquery = pd.DataFrame(dict(chrom='chrX', start=[3, 5], end=[15, 7], some_data=['foo', 'bar'], other_data=['A', 'B']))\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\nother_data\n\n\n\n\n0\nchrX\n3\n15\nfoo\nA\n\n\n1\nchrX\n5\n7\nbar\nB\n\n\n\n\n\n\n\n\nfrom genominterv import interval_distance\n\ninterval_distance(query, annot)\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n1\n9\nchrX\n\n\n1\n1\n-5\n-9\nchrX\n\n\n2\n2\n3\n5\nchrX\n\n\n\n\n\n\n\n\nfrom genominterv import interval_relative_distance\n\ninterval_relative_distance(query, annot)\n\n\n\n\n\n\n\n\nindex\nstart\nend\nchrom\n\n\n\n\n0\n0\n0.055556\n0.500000\nchrX\n\n\n1\n1\n-0.277778\n-0.500000\nchrX\n\n\n2\n2\n0.166667\n0.277778\nchrX\n\n\n\n\n\n\n\nThe most useful function for most applications is remap_interval_data, which does the remapping while preserving all the information in the query data frame. It also reports the start and end coordinates before remapping (ends with *_orig) and the coordinates of the most proximal segment in the annotation set (*_prox).\n\nfrom genominterv import remap_interval_data\n\nremap_interval_data(query, annot)\n\n\n\n\n\n\n\n\nstart\nend\nstart_prox\nend_prox\nchrom\nstart_orig\nend_orig\nsome_data\nother_data\n\n\n\n\n0\n1\n9\n1\n2\nchrX\n3\n15\nfoo\nA\n\n\n1\n-5\n-9\n20\n25\nchrX\n3\n15\nfoo\nA\n\n\n2\n3\n5\n1\n2\nchrX\n5\n7\nbar\nB"
   },
   {
     "objectID": "examples/examples.html#ready-made-tests",
     "href": "examples/examples.html#ready-made-tests",
     "title": "Jupyter notebook",
     "section": "Ready-made tests",
-    "text": "Ready-made tests\nproximity_test computes tests if intervals in one set is significantly proximal to intervals in another set.\n\nfrom genominterv import proximity_test\n\nannot = pd.DataFrame(dict(chrom='chr1',\n                          start=list(range(1, 1000, 100)),\n                          end=list(range(20, 1020, 100))))\nquery = pd.DataFrame(dict(chrom='chr1',\n                          start=list(range(1, 1000, 10)),\n                          end=list(range(10, 1010, 10))))\n\nThe annotation intervals cannot overlap each other or any of the query intervals:\n\nannot_collapsed = interval_collapse(annot)\nnon_ovl_query = interval_diff(query, annot_collapsed)\n\n\nproximity_test(non_ovl_query, annot_collapsed)\n\nTestResult(statistic=-0.02112359550561797, pvalue=0.6351)",
-    "crumbs": [
-      "Examples",
-      "Jupyter notebook"
-    ]
+    "text": "Ready-made tests\nproximity_test computes tests if intervals in one set is significantly proximal to intervals in another set.\n\nfrom genominterv import proximity_test\n\nannot = pd.DataFrame(dict(chrom='chr1',\n                          start=list(range(1, 1000, 100)),\n                          end=list(range(20, 1020, 100))))\nquery = pd.DataFrame(dict(chrom='chr1',\n                          start=list(range(1, 1000, 10)),\n                          end=list(range(10, 1010, 10))))\n\nThe annotation intervals cannot overlap each other or any of the query intervals:\n\nannot_collapsed = interval_collapse(annot)\nnon_ovl_query = interval_diff(query, annot_collapsed)\n\n\nproximity_test(non_ovl_query, annot_collapsed)\n\nTestResult(statistic=-0.02112359550561797, pvalue=0.6351)"
   },
   {
     "objectID": "examples/examples.html#two-set-statistics",
     "href": "examples/examples.html#two-set-statistics",
     "title": "Jupyter notebook",
     "section": "Two-set statistics",
-    "text": "Two-set statistics\nThe module also provides two statistics for relations between sets: jaccard computes the Jaccard index statistic for two sets of genomic intervals.\n\nannot = pd.DataFrame(dict(chrom='chrX', start=[2, 9, 20], end=[4, 14, 25], some_data=['foo', 'bar', 'baz']))\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\n\n\n\n\n0\nchrX\n2\n4\nfoo\n\n\n1\nchrX\n9\n14\nbar\n\n\n2\nchrX\n20\n25\nbaz\n\n\n\n\n\n\n\n\nquery = pd.DataFrame(dict(chrom='chrX', start=[3, 7], end=[5, 10], some_data=['foo', 'bar'], other_data=['A', 'B']))\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\nother_data\n\n\n\n\n0\nchrX\n3\n5\nfoo\nA\n\n\n1\nchrX\n7\n10\nbar\nB\n\n\n\n\n\n\n\n\nfrom genominterv import jaccard_stat\n\njaccard_stat(query, annot)\n\n0.13333333333333333",
-    "crumbs": [
-      "Examples",
-      "Jupyter notebook"
-    ]
+    "text": "Two-set statistics\nThe module also provides two statistics for relations between sets: jaccard computes the Jaccard index statistic for two sets of genomic intervals.\n\nannot = pd.DataFrame(dict(chrom='chrX', start=[2, 9, 20], end=[4, 14, 25], some_data=['foo', 'bar', 'baz']))\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\n\n\n\n\n0\nchrX\n2\n4\nfoo\n\n\n1\nchrX\n9\n14\nbar\n\n\n2\nchrX\n20\n25\nbaz\n\n\n\n\n\n\n\n\nquery = pd.DataFrame(dict(chrom='chrX', start=[3, 7], end=[5, 10], some_data=['foo', 'bar'], other_data=['A', 'B']))\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\nother_data\n\n\n\n\n0\nchrX\n3\n5\nfoo\nA\n\n\n1\nchrX\n7\n10\nbar\nB\n\n\n\n\n\n\n\n\nfrom genominterv import jaccard_stat\n\njaccard_stat(query, annot)\n\n0.13333333333333333"
   },
   {
     "objectID": "examples/examples.html#bootstrap-decorator",
     "href": "examples/examples.html#bootstrap-decorator",
     "title": "Jupyter notebook",
     "section": "Bootstrap decorator",
-    "text": "Bootstrap decorator\nThe module provides a bootstrap decorator that turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals.\nThis example does this for the provided jaccard satistic:\n\nfrom genominterv import bootstrap\n\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\njaccard_stat, p_value = jaccard_test(query, annot)",
-    "crumbs": [
-      "Examples",
-      "Jupyter notebook"
-    ]
+    "text": "Bootstrap decorator\nThe module provides a bootstrap decorator that turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals.\nThis example does this for the provided jaccard satistic:\n\nfrom genominterv import bootstrap\n\n@bootstrap('hg19', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\njaccard_stat, p_value = jaccard_test(query, annot)"
   },
   {
     "objectID": "api/interval_intersect.html",
@@ -369,7 +345,7 @@
     "section": "",
     "text": "genomeinterv implements tests for a significant relationship between sets of intervals.",
     "crumbs": [
-      "Remapping",
+      "Tests",
       "Interval tests"
     ]
   },
@@ -380,7 +356,7 @@
     "section": "Overlap",
     "text": "Overlap\njaccard_stat computes the Jaccard index statistic for two sets of genomic intervals.\nThis can be combined with the bootstrap decorator to produce a test for overlap. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.\n\nannot = pd.DataFrame(dict(chrom='chr1', \n                          start=[18_000_000, 58_000_000, 138_000_000], \n                          end=[20_000_000, 60_000_000, 140_000_000]))\nquery = pd.DataFrame(dict(chrom='chr1', \n                          start=[41_000_000, 59_000_000, 241_000_000], \n                          end=[40_500_000, 61_000_000, 241_000_000]))\n\n\n\n\n\n\n\n\n\nFigure 1: Intervals\n\n\n\n\n\n\nfrom genominterv.decorators import bootstrap\nfrom genominterv.stats import jaccard_stat\n\n@bootstrap('hg19', cores=8)\ndef jaccard_test(q, a):\n    return jaccard_stat(q, a)\n\nstat, p_value = jaccard_test(query, annot)\nstat, p_value \n\n(0.15384615384615385, 0.03012)",
     "crumbs": [
-      "Remapping",
+      "Tests",
       "Interval tests"
     ]
   },
@@ -391,30 +367,30 @@
     "section": "Proximity",
     "text": "Proximity\nproximity_stat computes the distances between each query segment and the closest annotation segment divided by the distance between the two annotations on each side of the query. The test statistic is the mean of these 0-0.5 distances.\nThis can be combined with the bootstrap decorator to produce a test. The decorator turns a function producing a statistic into one that also produces a p-value. The bootstrapping resamples the intervals of the second argument for each chromosome independently. Only required argument to bootstrap is the name of the chromosome assembly used.\n\nannot = pd.DataFrame(dict(chrom='chr1', \n                          start=[38_000_000, 100_000_000, 175_000_000], \n                          end=[40_000_000, 103_000_000, 178_000_000]))\nquery = pd.DataFrame(dict(chrom='chr1', \n                          start=[41_000_000, 105_000_000, 170_000_000], \n                          end=[40_500_000, 106_000_000, 173_000_000]))\n\n\n\n\n\n\n\n\n\nFigure 2: Intervals\n\n\n\n\n\n\nfrom genominterv.decorators import bootstrap\nfrom genominterv.stats import proximity_stat\n\n@bootstrap('hg38')\ndef proximity_test(q, a):\n    \"\"\"\n    Tests if the mean relative distance of query segments to the\n    closest annotation is smaller than expected.\n    \"\"\"\n    return proximity_stat(q, a)\n\nstat, pvalue = proximity_test(query, annot)\npvalue\n\n0.0",
     "crumbs": [
-      "Remapping",
+      "Tests",
       "Interval tests"
     ]
   },
   {
     "objectID": "pages/remapping.html",
     "href": "pages/remapping.html",
-    "title": "Mapping",
+    "title": "Remapping",
     "section": "",
     "text": "The function interval_distance converts coordinates of one set of genomic intervals into distances to the closest interval in a second set.",
     "crumbs": [
-      "Remapping",
-      "Mapping"
+      "Manipulation",
+      "Remapping"
     ]
   },
   {
     "objectID": "pages/remapping.html#remapping-functions",
     "href": "pages/remapping.html#remapping-functions",
-    "title": "Mapping",
+    "title": "Remapping",
     "section": "Remapping functions",
     "text": "Remapping functions\nThe function remap converts coordinates a single interval into distance to the closest interval in a second set:\n\nfrom genominterv.remapping import remap\n\nsingle_interval = (300, 400)\nother_intervals = [(0, 100), (1000, 1100)]\n\nremap(single_interval, other_intervals)\n\n[(200, 300)]\n\n\nSame but retaining info about which annotation the interval is proximal to:\n\nremap((300, 400), [(0, 100), (1000, 1100)], include_prox_coord=True)\n\n[(200, 300, 0, 100)]\n\n\nThe function interval_distance converts coordinates of one set of genomic intervals into distances to the closest interval in a second set. Using relative=True returns distances relative to the span between the two flanking annotation intervals.\n\nannot = pd.DataFrame(dict(chrom='chrX', start=[1, 20], end=[2, 25]))\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchrX\n1\n2\n\n\n1\nchrX\n20\n25\n\n\n\n\n\n\n\n\nquery = pd.DataFrame(dict(chrom='chrX', start=[3, 5], end=[15, 7], some_data=['foo', 'bar'], other_data=['A', 'B']))\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\nsome_data\nother_data\n\n\n\n\n0\nchrX\n3\n15\nfoo\nA\n\n\n1\nchrX\n5\n7\nbar\nB\n\n\n\n\n\n\n\n\nfrom genominterv.remapping import interval_distance\n\ninterval_distance(query, annot)\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n1\n9.0\nchrX\n\n\n1\n-5\n-9.0\nchrX\n\n\n2\n3\n5.0\nchrX\n\n\n\n\n\n\n\n\nfrom genominterv.remapping import interval_distance\nimport genominterv\nprint(genominterv.__file__)\ninterval_distance(query, annot, relative=True)\n\n/Users/kmt/genominterv/genominterv/__init__.py\n\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n0.055556\n0.500000\nchrX\n\n\n1\n-0.277778\n-0.500000\nchrX\n\n\n2\n0.166667\n0.277778\nchrX\n\n\n\n\n\n\n\nThe most useful function for most applications is remap_interval_data, which does the remapping while preserving all the information in the query data frame. It also reports the start and end coordinates before remapping (ends with *_orig) and the coordinates of the most proximal segment in the annotation set (*_prox).\n\nfrom genominterv.remapping import remap_interval_data\nremap_interval_data(query, annot)\n\n\n\n\n\n\n\n\nstart\nend\nstart_prox\nend_prox\nchrom\nstart_orig\nend_orig\nsome_data\nother_data\n\n\n\n\n0\n1\n9.0\n1\n2\nchrX\n3\n15\nfoo\nA\n\n\n1\n-5\n-9.0\n20\n25\nchrX\n3\n15\nfoo\nA\n\n\n2\n3\n5.0\n1\n2\nchrX\n5\n7\nbar\nB\n\n\n\n\n\n\n\n\nremap_interval_data(query, annot, relative=True)\n\n\n\n\n\n\n\n\nstart\nend\nstart_prox\nend_prox\nchrom\nstart_orig\nend_orig\nsome_data\nother_data\n\n\n\n\n0\n0.055556\n0.500000\n1\n2\nchrX\n3\n15\nfoo\nA\n\n\n1\n-0.277778\n-0.500000\n20\n25\nchrX\n3\n15\nfoo\nA\n\n\n2\n0.166667\n0.277778\n1\n2\nchrX\n5\n7\nbar\nB\n\n\n\n\n\n\n\nMake random and non-random dummy data and plot the relative distances between interval midpoints and the closest annotation interval.\n\nimport seaborn as sns\n\nn = 1000\na = np.sort(np.random.randint(1, 10_000_000, size=n))\nannot = pd.DataFrame(dict(chrom='chrX', start=a, end=a+10))\nq = np.sort(np.random.randint(1, 10_000_000, size=n))\nquery = pd.DataFrame(dict(chrom='chrX', start=q, end=q+10))\ndf1 = remap_interval_data(query, annot, relative=True)\ndf1['mid'] = (df1.start + df1.end) / 2\ndf1['absmid'] = df1.mid.abs()\n\n# dummy data\na = np.sort(np.random.randint(1, 10_000_000, size=n))\nannot = pd.DataFrame(dict(chrom='chrX', start=a, end=a+10))\nq = a + np.random.randint(-1000, 1000, size=n)\nquery = pd.DataFrame(dict(chrom='chrX', start=q, end=q+10))\ndf2 = remap_interval_data(query, annot, relative=True)\ndf2['mid'] = (df2.start + df2.end) / 2\ndf2['absmid'] = df2.mid.abs()\n\n\nsns.histplot(df1, x='start', bins=np.linspace(-0.5, 0.5, 20))\nsns.histplot(df2, x='start', bins=np.linspace(-0.5, 0.5, 20))\n\n\n\n\n\n\n\n\n\nsns.histplot(df1, x='mid', bins=np.linspace(-0.5, 0.5, 20))\nsns.histplot(df2, x='mid', bins=np.linspace(-0.5, 0.5, 20))\n\n\n\n\n\n\n\n\nThe same but removing the sign since the distribution is symmetric:\n\nsns.histplot(df1, x='absmid', bins=np.linspace(0, 0.5, 20))\nsns.histplot(df2, x='absmid', bins=np.linspace(0, 0.5, 20))\n\n\n\n\n\n\n\n\n\ndf1['dist'] = 'uniform'\ndf2['dist'] = 'closer'\ndf = pd.concat([df1, df2])\nsns.barplot(df, y='absmid', x='dist', hue='dist')\n\n\n\n\n\n\n\n\n\nimport seaborn as sns\n\n# dummy data\nn = 1000\na = np.sort(np.random.randint(1, 10_000_000, size=n))\nannot = pd.DataFrame(dict(chrom='chrX', start=a, end=a+10))\nq = a + np.random.randint(-1000, 1000, size=n)\nquery = pd.DataFrame(dict(chrom='chrX', start=q, end=q+10))\ndf = remap_interval_data(query, annot, relative=True)\n\n\ndf['mid'] = (df.start + df.end) / 2\nsns.histplot(df, x='mid', bins=np.linspace(-0.5, 0.5, 20))",
     "crumbs": [
-      "Remapping",
-      "Mapping"
+      "Manipulation",
+      "Remapping"
     ]
   },
   {
@@ -434,7 +410,7 @@
     "section": "",
     "text": "genominterv provides decorators for various tasks to reduce boilerplate code.\nTo make it easy to create other interval functions that work across chromosomes, the module provides a genomic decorator that can be applied to functions that operate lists of (start, end) tuples. Applying the decorator changes the signature of a function to make it operate on DataFrames that include chrom, start, and end columns.\nHere is an example function that shifts the interval coordinates by 1000bp:\nintervals = pd.DataFrame(dict(chrom=['chr1', 'chr2', 'chr2'], start=[10, 20, 30], end=[15, 25, 35]))\nintervals\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n10\n15\n\n\n1\nchr2\n20\n25\n\n\n2\nchr2\n30\n35\nCreate a function that shifts intervals three bases to the right:\nfrom genominterv.decorators import genomic\n\n@genomic\ndef shift_three(interv):\n    return [(start+3, end+3) for (start, end) in interv]\n\nshifted = shift_three(intervals)\nshifted\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n13\n18\nchr1\n\n\n1\n23\n28\nchr2\n\n\n2\n33\n38\nchr2",
     "crumbs": [
-      "Set operations",
+      "Utilities",
       "Decorators for intervals"
     ]
   },
@@ -445,7 +421,7 @@
     "section": "Bootstrap decorator",
     "text": "Bootstrap decorator\nThe bootstrap decorator turns a function producing a statistic into one that also produces a p-value. Only required argument to bootstrap is the name of the chromosome assembly used. The decorator works on any function that takes two sets of intervals. Here it is used with the jaccard_stat statistic to make a jaccard_test function that produce a p-value for the significane of overlap between two sets.\n\nannot = pd.DataFrame(dict(chrom=['chr1', 'chr2', 'chr3'], start=[30_000_000, 120_000_000, 120_000_000], \n                                        end=[60_000_000, 100_000_000, 150_000_000]))\nquery = pd.DataFrame(dict(chrom=['chr1', 'chr3'], start=[20_000_000, 110_000_000], \n                          end=[50_000_000, 160_000_000]))\n\n\nfrom genominterv.decorators import bootstrap\nfrom genominterv.stats import jaccard_stat\n\n@bootstrap('hg38', samples=1000)\ndef jaccard_test(query, annot):\n    return jaccard_stat(query, annot)\n\nstat, p_value = jaccard_test(query, annot)\nstat, p_value\n\n(0.5555555555555556, 0.017)\n\n\nThe bootstrapping shuffles and repositions the intervals of the query argument for each chromosome independently.\n\n\n\n\n\n\n\n\nFigure 1: Example of intervals\n\n\n\n\n\nFor the above set of intervals, the first ten bootstraps could be the ones shown below:\n\n\n\n\n\n\n\n\nFigure 2: Ten bootstraps",
     "crumbs": [
-      "Set operations",
+      "Utilities",
       "Decorators for intervals"
     ]
   },
@@ -456,7 +432,7 @@
     "section": "",
     "text": "The three functions, interval_diff, interval_intersect, and interval_union, do the standard difference, intersection and union set operations on two sets of genomic intervals. The intervals returned from all three functions are collapsed to produce non-overlapping intervals. The genomic intervals in each set must be non-overlapping. This can be achieved using the interval_collapse function, which produces the union of genomic intervals in a single set genomic of intervals.",
     "crumbs": [
-      "Set operations",
+      "Manipulation",
       "Set operations"
     ]
   },
@@ -467,7 +443,7 @@
     "section": "Collapse overlapping intervals in a list",
     "text": "Collapse overlapping intervals in a list\n\nintervals = [('chr1', 1, 3), ('chr1', 4, 6), ('chr1', 5, 10), ('chr1', 25, 30), \n             ('chr1', 20, 27), ('chr2', 1, 10), ('chr2', 1, 3)]\nannot = pd.DataFrame.from_records(intervals, columns=['chrom', 'start', 'end'])\nannot\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n1\n3\n\n\n1\nchr1\n4\n6\n\n\n2\nchr1\n5\n10\n\n\n3\nchr1\n25\n30\n\n\n4\nchr1\n20\n27\n\n\n5\nchr2\n1\n10\n\n\n6\nchr2\n1\n3\n\n\n\n\n\n\n\n\nfrom genominterv import interval_collapse\n\nannot_collapsed = interval_collapse(annot)\nannot_collapsed\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n1\n3\nchr1\n\n\n1\n4\n10\nchr1\n\n\n2\n20\n30\nchr1\n\n\n3\n1\n10\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1: Collapsed intervals",
     "crumbs": [
-      "Set operations",
+      "Manipulation",
       "Set operations"
     ]
   },
@@ -478,7 +454,7 @@
     "section": "Non-overlap",
     "text": "Non-overlap\n\nannot = annot_collapsed\n\nintervals = [('chr1', 8, 22), ('chr2', 14, 15)]\nquery = pd.DataFrame.from_records(intervals, columns=['chrom', 'start', 'end'])\nquery\n\n\n\n\n\n\n\n\nchrom\nstart\nend\n\n\n\n\n0\nchr1\n8\n22\n\n\n1\nchr2\n14\n15\n\n\n\n\n\n\n\n\nfrom genominterv.intervals import interval_diff\n\nnon_ovl_query = interval_diff(query, annot)\nnon_ovl_query\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n10\n20\nchr1\n\n\n1\n14\n15\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 2: Non-overlapping intervals",
     "crumbs": [
-      "Set operations",
+      "Manipulation",
       "Set operations"
     ]
   },
@@ -489,7 +465,7 @@
     "section": "Intersection",
     "text": "Intersection\n\nfrom genominterv import interval_intersect\n\nintersection = interval_intersect(query, annot)\nintersection\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n8\n10\nchr1\n\n\n1\n20\n22\nchr1\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 3: Intersection of intervals",
     "crumbs": [
-      "Set operations",
+      "Manipulation",
       "Set operations"
     ]
   },
@@ -500,7 +476,7 @@
     "section": "Union",
     "text": "Union\n\nfrom genominterv import interval_union\n\nunion = interval_union(query, annot)\nunion\n\n\n\n\n\n\n\n\nstart\nend\nchrom\n\n\n\n\n0\n1\n3\nchr1\n\n\n1\n4\n30\nchr1\n\n\n2\n1\n10\nchr2\n\n\n3\n14\n15\nchr2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 4: Union of intervals",
     "crumbs": [
-      "Set operations",
+      "Manipulation",
       "Set operations"
     ]
   },

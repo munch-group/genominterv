@@ -24,6 +24,7 @@ requirements:
     - numpy
     - statsmodels
     - matplotlib
+    - multiprocess
 
 channels:    # write here the list of channels to look for your library dependencies
   # - uibcdf

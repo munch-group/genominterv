@@ -11,7 +11,7 @@ from typing import Any, TypeVar, List, Tuple, Dict, Union
 
 from .remapping import interval_distance
 from .intervals import interval_intersect, interval_union
-
+from .remapping import remap_interval_data
 
 def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000, 
                    npoints: int=1000, two_sided:bool=False, cores:int=1,
@@ -109,16 +109,37 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
         return TestResult(test_stat, p_value)
 
 
-def jaccard_stat(a: List[tuple], b:List[tuple]) -> float:
+def proximity_stat(query:pd.DataFrame, annot:pd.DataFrame):
     """
-    Compute Jaccard overlap test statistic.
+    Proximity test statistic. Computes the distance between query segment and the 
+    closest annotation segment relative to the distance between the two annotations 
+    flanking the query (distances 0-0.5). The test statistic is the mean of these.
 
     Parameters
     ----------
-    a :
-        List of tuples with (start, end) coordinates.
-    a :
-        List of tuples with (start, end) coordinates.
+    query :
+        pandas.DataFrame with query interval coordinates as start and end columns.
+    annot :
+        pandas.DataFrame with annotation interval coordinates as start and end columns.
+        
+    Returns
+    -------
+    : 
+        The proximity test statistic.
+    """   
+    return 0.5 - remap_interval_data(query, annot, relative=True).start.abs().mean()
+
+
+def jaccard_stat(query:pd.DataFrame, annot:pd.DataFrame) -> float:
+    """
+    Jaccard overlap test statistic.
+
+    Parameters
+    ----------
+    query :
+        pandas.DataFrame with query interval coordinates as start and end columns.
+    annot :
+        pandas.DataFrame with annotation interval coordinates as start and end columns.
         
     Returns
     -------
@@ -126,8 +147,8 @@ def jaccard_stat(a: List[tuple], b:List[tuple]) -> float:
         The Jaccard test statistic.
     """    
 
-    inter = interval_intersect(a, b)
-    union = interval_union(a, b)
+    inter = interval_intersect(query, annot)
+    union = interval_union(query, annot)
 
     return sum(inter.end - inter.start) / sum(union.end - union.start)
 

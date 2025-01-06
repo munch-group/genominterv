@@ -56,17 +56,16 @@ website:
       align: left
       contents:
         - pages/getting_started.qmd
-        - section: "Set operations"
+        - section: "Manipulation"
           contents:
             - pages/set_operations.ipynb
-            - pages/decorators.ipynb
-        - section: "Remapping"
+            - pages/remapping.ipynb
+        - section: "Tests"
           contents:
             - pages/interval_tests.ipynb
-            - pages/remapping.ipynb
-        - section: "Examples"
+        - section: "Utilities"
           contents:
-            - examples/examples.ipynb            
+            - pages/decorators.ipynb
 
 lightbox: true
 

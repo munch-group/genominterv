@@ -39,7 +39,7 @@ dependencies:   # Keep this block with only these two packages
 test:
   imports:
     - genominterv
- commands:
+  commands:
     - "{{ PYTHON }} -m unittest"
 
 about:

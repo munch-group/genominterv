@@ -183,7 +183,7 @@ def bootstrap(chromosome_sizes: Union[str, dict], samples:int=100000, smaller:bo
                 def _fun(query, annot, kwargs):
                     perm = _interval_permute(query, chromosome_sizes)
                     return func(perm, annot, **kwargs)
-                with Pool(5) as pool:
+                with Pool(cores) as pool:
                     gen = pool.starmap(_fun, ((query, annot, kwargs) for _ in range(samples)))
                 boot = list(gen)
             else:

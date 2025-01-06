@@ -14,9 +14,9 @@ from .intervals import interval_intersect, interval_union
 
 
 def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000, 
-                   npoints: int=1000, overlap_as_zero:bool=False,
-                   span_as_zero:bool=False, two_sided:bool=False, 
-                   cores=1) -> namedtuple:
+                   npoints: int=1000, two_sided:bool=False, cores:int=1,
+                   overlap_as_zero:bool=False, span_as_zero:bool=False, 
+                   return_boot:bool=False) -> namedtuple:
     """
     Test for proximity of intervals to a set of annotations.
 
@@ -32,6 +32,8 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
         Number of points to use in the ECDF.
     two_sided :
         Whether to test for proximity in both directions.
+    cores : 
+        Number of cores to use, by default 1.
     overlap_as_zero : 
         Set distance to zero if one end of a query segment overlaps an 
         annotation segment, by default False.
@@ -40,6 +42,8 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
     span_as_zero : 
         Set distance to zero if a query segment spans a single annotation 
         segment, by default False.        
+    return_boot : 
+        Also return a list of the bootstrap statistics, by default False.
 
     Returns
     -------
@@ -52,10 +56,11 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
                                     overlap_as_zero=overlap_as_zero,
                                     span_as_zero=span_as_zero)
     distances = abs(remapped_df.start) 
-
+    # distances = np.linspace(0, 0.5, num=npoints)
+    
     def _stat(distances, npoints):
         obs_ecdf = ECDF(distances)
-        points = np.linspace(0, 0.5, num=npoints)    
+        points = np.linspace(0, 0.5, num=npoints)  
         test_stat = sum(obs_ecdf(points) - 2 * points) * 2 / npoints
         return test_stat
 
@@ -70,13 +75,12 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
 
     # compute absolute values for the null distribution
     if cores > 1 and multi:
-        
         def _fun(_):
             sampled_distances = np.random.uniform(0, 0.5, len(distances))
             # we compute absolute values for the null distribution
             return _stat(sampled_distances, npoints)
         
-        with Pool(5) as pool:
+        with Pool(cores) as pool:
             gen = pool.map(_fun, range(samples))
         null_distr = list(gen)
     else:
@@ -90,14 +94,19 @@ def proximity_test(query: pd.DataFrame, annot: pd.DataFrame, samples: int=10000,
             null_distr.append(_stat(sampled_distances, npoints))    
     
     if two_sided:
-        p_value = (len(null_distr) - bisect.bisect_left(
-            list(map(abs, null_distr)), abs(test_stat))) / len(null_distr)
+        assert 0, "two_sided NOT IMPLEMENTED YET"
+        # p_value = (len(null_distr) - bisect.bisect_left(
+        #     list(map(abs, null_distr)), abs(test_stat))) / len(null_distr)
     else:
         p_value = (len(null_distr) - bisect.bisect_left(
             null_distr, test_stat)) / len(null_distr)
-    
-    TestResult = namedtuple('TestResult', ['statistic', 'pvalue'])
-    return TestResult(test_stat, p_value)
+
+    if return_boot:
+        TestResult = namedtuple('TestResult', ['statistic', 'pvalue', 'bootstraps'])
+        return TestResult(test_stat, p_value, null_distr)
+    else:
+        TestResult = namedtuple('TestResult', ['statistic', 'pvalue'])
+        return TestResult(test_stat, p_value)
 
 
 def jaccard_stat(a: List[tuple], b:List[tuple]) -> float:

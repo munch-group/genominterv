@@ -102,7 +102,11 @@ def remap(query: Tuple[int], annot: List[tuple], relative=False, include_prox_co
         query_start = interval_start
     else:
         # both inside different segments
-        return []
+        interval_start = np.nan
+        interval_end = np.nan
+        interval_mid = float('inf')
+        query_start = np.nan
+        query_end = np.nan
 
     scale = 1 / (interval_end - interval_start) if relative else 1
 
@@ -183,7 +187,8 @@ def interval_distance(query: pandas.DataFrame, annot: pandas.DataFrame, relative
 
 
 def remap_interval_data(query: pandas.DataFrame, annot: pandas.DataFrame, relative:bool=False,
-                      overlap_as_zero:bool=False, span_as_zero:bool=False) -> pandas.DataFrame:
+                        include_prox_coord=False, overlap_as_zero:bool=False, 
+                        span_as_zero:bool=False) -> pandas.DataFrame:
     """
     Computes the distance from each query interval to the closest interval
     in annot. Original coordinates are preserved as `orig_start` and
@@ -200,6 +205,8 @@ def remap_interval_data(query: pandas.DataFrame, annot: pandas.DataFrame, relati
         Data frame with annotation intervals.        
     relative : 
         Return relative distance (0-1) instead of absolute distance, by default False.
+    include_prox_coord : 
+        Include coordinates of the closest annotation segment, by default False.
     overlap_as_zero : 
         Set distance to zero if one end of a query segment overlaps an annotation segment, by default False.
         This does not apply to query segments embedded in or spanning on or more annotation segments.
@@ -230,14 +237,18 @@ def remap_interval_data(query: pandas.DataFrame, annot: pandas.DataFrame, relati
             # start, end = (row['start'], row['end'])
         for row in group.itertuples(index=False):            
             start, end = row.start, row.end
-            for remapped_start, remapped_end, start_prox, end_prox in remap(
-                    (start, end), annot_tups, include_prox_coord=True,
+            for remapped_start, remapped_end, *prox_coord in remap(
+                    (start, end), annot_tups, include_prox_coord=include_prox_coord,
                     overlap_as_zero=overlap_as_zero, span_as_zero=span_as_zero, relative=relative
                     ):
-                remapped.append((remapped_start, remapped_end, start_prox, end_prox) + tuple(row))
+                remapped.append((remapped_start, remapped_end, *prox_coord ) + tuple(row))
 
+        if include_prox_coord:
+            columns = ('start_remap', 'end_remap', 'start_prox', 'end_prox')
+        else:
+            columns = ('start_remap', 'end_remap')
         df = pandas.DataFrame().from_records(remapped, 
-                columns=('start_remap', 'end_remap', 'start_prox', 'end_prox') + column_names)
+                columns=columns+column_names)
             # df = pandas.DataFrame().from_records(remapped, columns=['idx', 'start_remap', 'end_remap']).set_index('idx')
             # df = pandas.merge(group, df, right_index=True, left_index=True)
 
@@ -251,10 +262,10 @@ def remap_interval_data(query: pandas.DataFrame, annot: pandas.DataFrame, relati
                             'end_remap': 'end'})
             )
 
-    df['start_orig'] = df['start_orig'].astype('Int64')
-    df['end_orig'] = df['end_orig'].astype('Int64')
-    df['start_prox'] = df['start_prox'].astype('Int64')
-    df['end_prox'] = df['end_prox'].astype('Int64')
+    # df['start_orig'] = df['start_orig'].astype('Int64')
+    # df['end_orig'] = df['end_orig'].astype('Int64')
+    # df['start_prox'] = df['start_prox'].astype('Int64')
+    # df['end_prox'] = df['end_prox'].astype('Int64')
 
     return df
 

@@ -178,6 +178,9 @@ def bootstrap(chromosome_sizes: Union[str, dict], samples:int=100000, smaller:bo
         def wrapper(query, annot, **kwargs):
 
             stat = func(query, annot, **kwargs)
+            if stat is None or np.isnan(stat):
+                print("Warning: statistic is None or NaN: ", stat, file=sys.stderr)
+                return None, None
 
             if cores > 1:
                 def _fun(query, annot, kwargs):
@@ -194,7 +197,7 @@ def bootstrap(chromosome_sizes: Union[str, dict], samples:int=100000, smaller:bo
             boot.sort()
 
             if smaller:
-                p_value = bisect.bisect_left(boot, stat) / len(boot)
+                p_value = bisect.bisect_right(boot, stat) / len(boot)
             else:
                 p_value = (len(boot) - bisect.bisect_left(boot, stat)) / len(boot)
             if p_value == 0:
